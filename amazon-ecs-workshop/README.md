@@ -1,341 +1,424 @@
-# 🐳 Developing on Amazon ECS Workshop
+# 🐳 Amazon ECS Workshop (AWS Workshop Studio Format - Sample)
 
-Learn how to develop, deploy, and manage containerized applications using Amazon Elastic Container Service (ECS) with hands-on exercises covering container orchestration, service deployment, and DevOps best practices.
+Đây là workshop mẫu sử dụng **AWS Workshop Studio format** - định dạng workshop hiện đại được AWS khuyến nghị cho tất cả workshops mới.
 
-## 📋 Workshop Overview
+## 📋 Tổng quan Workshop
 
-This intermediate-level workshop provides comprehensive hands-on experience with Amazon ECS, teaching you how to containerize applications, manage container orchestration, and implement production-ready deployment strategies using AWS container services.
+Workshop này minh họa cách tạo workshop sử dụng AWS Workshop Studio format, với tích hợp sâu vào AWS ecosystem và các tính năng tự động hóa tiên tiến.
 
-### 🎯 Learning Objectives
+### 🎯 Mục đích của Workshop mẫu này
 
-By the end of this workshop, you will be able to:
+- ✅ **Minh họa AWS Workshop Studio Structure**: Cấu trúc và organization chuẩn
+- ✅ **Showcase Modern Features**: Tính năng tự động và AWS integration
+- ✅ **Best Practices Demo**: Cách implement workshop chuyên nghiệp
+- ✅ **Template Reference**: Làm template cho workshops mới
 
-- ✅ Understand container fundamentals and Docker basics
-- ✅ Set up and configure Amazon ECS clusters
-- ✅ Create and manage ECS task definitions and services
-- ✅ Deploy containerized applications using ECS
-- ✅ Configure Application Load Balancers for container services
-- ✅ Implement auto-scaling for containerized applications
-- ✅ Monitor and troubleshoot ECS deployments
-- ✅ Apply container security best practices
-- ✅ Integrate ECS with CI/CD pipelines
+### 📊 Thông tin Workshop
 
-### 📊 Workshop Details
+| **Thuộc tính** | **Chi tiết** |
+|----------------|--------------|
+| **Format** | AWS Workshop Studio |
+| **Chủ đề** | Amazon ECS & Containerization |
+| **Cấp độ** | Intermediate |
+| **Thời gian** | 2-3 giờ |
+| **Chi phí** | $5-10 USD (auto-tracked) |
+| **Trạng thái** | Production-ready Sample |
 
-| **Attribute** | **Details** |
-|---------------|-------------|
-| **Level** | Intermediate |
-| **Duration** | 2-3 hours |
-| **Cost** | $5-10 USD (estimated) |
-| **Language** | English |
-| **Region** | us-east-1 (primary) |
+## 🏗️ Cấu trúc AWS Workshop Studio
 
-### 🛠️ AWS Services Covered
-
-- **Amazon ECS** - Elastic Container Service
-- **Amazon ECR** - Elastic Container Registry
-- **Application Load Balancer** - Traffic distribution
-- **VPC** - Virtual Private Cloud networking
-- **CloudFormation** - Infrastructure as Code
-- **IAM** - Identity and Access Management
-- **CloudWatch** - Monitoring and logging
-
-## 🏗️ Workshop Architecture
-
+### Cấu trúc thư mục Workshop Studio:
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                Amazon ECS Workshop Architecture             │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌─────────────┐    ┌─────────────────────────────────────┐ │
-│  │   Internet  │    │              VPC                    │ │
-│  │   Gateway   │◄──►│  ┌─────────────┐ ┌─────────────┐   │ │
-│  └─────────────┘    │  │Public Subnet│ │Public Subnet│   │ │
-│                     │  │     AZ-a    │ │     AZ-b    │   │ │
-│  ┌─────────────┐    │  └─────────────┘ └─────────────┘   │ │
-│  │Application  │    │         │               │          │ │
-│  │Load Balancer│◄───┼─────────┼───────────────┼──────────┤ │
-│  └─────────────┘    │         ▼               ▼          │ │
-│                     │  ┌─────────────┐ ┌─────────────┐   │ │
-│  ┌─────────────┐    │  │   ECS       │ │   ECS       │   │ │
-│  │   ECR       │    │  │  Service    │ │  Service    │   │ │
-│  │ Repository  │◄───┼──│  (Tasks)    │ │  (Tasks)    │   │ │
-│  └─────────────┘    │  └─────────────┘ └─────────────┘   │ │
-│                     │                                     │ │
-│  ┌─────────────┐    │  ┌─────────────────────────────────┐ │
-│  │ CloudWatch  │◄───┼──│         ECS Cluster             │ │
-│  │   Logs      │    │  └─────────────────────────────────┘ │
-│  └─────────────┘    └─────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
+amazon-ecs-workshop/ (Workshop Studio Format)
+├── workshop-config.json        # Workshop configuration (REQUIRED)
+├── README.md                   # Workshop overview
+├── content/                    # Workshop content
+│   ├── index.md               # Homepage (REQUIRED)
+│   ├── introduction/          # Giới thiệu
+│   │   └── index.md
+│   ├── prerequisites/         # Yêu cầu
+│   │   └── index.md
+│   ├── modules/              # Các module
+│   │   ├── module-1/
+│   │   │   ├── index.md
+│   │   │   ├── step-1.md
+│   │   │   └── step-2.md
+│   │   ├── module-2/
+│   │   └── module-3/
+│   ├── cleanup/              # Dọn dẹp (REQUIRED)
+│   │   └── index.md
+│   └── conclusion/           # Kết luận
+│       └── index.md
+├── static/                   # Static assets
+│   ├── images/
+│   ├── css/
+│   └── downloads/
+├── templates/                # CloudFormation/CDK templates
+│   ├── infrastructure.yaml
+│   ├── iam-roles.yaml
+│   └── cleanup.yaml
+└── scripts/                  # Automation scripts
+    ├── setup.sh
+    ├── validate.sh
+    └── cleanup.sh
 ```
 
-## 📚 Workshop Modules
+### Đặc điểm AWS Workshop Studio:
 
-### Module 1: Container Fundamentals & ECS Setup (45 minutes)
-**Container Basics & ECS Introduction**
-- Understanding containers vs virtual machines
-- Docker fundamentals and best practices
-- Introduction to Amazon ECS concepts
-- Setting up ECS cluster and basic configuration
+#### ✅ **Ưu điểm vượt trội:**
+- **AWS Native Integration**: Tích hợp sâu với AWS services
+- **Auto Infrastructure**: Tự động provision resources
+- **Cost Tracking**: Theo dõi chi phí real-time
+- **Auto Cleanup**: Tự động dọn dẹp resources
+- **Interactive Elements**: Rich UI components
+- **Multi-region Support**: Deploy across regions
+- **Event Engine Integration**: Seamless event management
+- **Analytics**: Built-in usage analytics
 
-**Key Topics:**
-- Container lifecycle and management
-- ECS cluster types (EC2 vs Fargate)
-- Task definitions and container specifications
-- ECS service discovery and networking
+#### 🔧 **Advanced Features:**
+- **CloudFormation Integration**: Infrastructure as Code
+- **IAM Role Management**: Automatic permission setup
+- **Resource Validation**: Pre/post checks
+- **Progress Tracking**: User progress monitoring
+- **Feedback Collection**: Built-in feedback system
 
-### Module 2: Application Deployment & Service Management (60 minutes)
-**Deploying Containerized Applications**
-- Creating and configuring task definitions
-- Deploying services with load balancing
-- Managing service updates and rollbacks
-- Implementing health checks and monitoring
+## ⚙️ Workshop Configuration (workshop-config.json)
 
-**Key Topics:**
-- ECR repository setup and image management
-- Service deployment strategies
-- Application Load Balancer integration
-- Auto-scaling configuration
+### Complete Configuration Example:
+```json
+{
+  "title": "Developing on Amazon ECS",
+  "description": "Learn containerization with Amazon ECS, from basics to production deployment",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "AWS Workshop Team",
+      "email": "workshop-team@amazon.com",
+      "role": "Solutions Architect"
+    }
+  ],
+  "level": "intermediate",
+  "duration": "2-3 hours",
+  "language": "en",
+  "tags": ["containers", "ecs", "docker", "microservices", "devops"],
+  "services": ["ECS", "ECR", "VPC", "ALB", "CloudFormation", "IAM"],
+  "regions": ["us-east-1", "us-west-2", "eu-west-1", "ap-southeast-1"],
+  "architecture": "x86_64",
+  "cost_estimate": {
+    "currency": "USD",
+    "amount": 7.50,
+    "description": "Estimated cost for 3-hour workshop including ECS Fargate, ALB, and ECR"
+  },
+  "auto_destroy": true,
+  "cleanup_required": true,
+  "prerequisites": [
+    "AWS Account with appropriate permissions",
+    "Basic understanding of containers and Docker",
+    "Familiarity with AWS CLI",
+    "Understanding of networking concepts"
+  ],
+  "learning_objectives": [
+    "Deploy containerized applications using Amazon ECS",
+    "Configure ECS clusters and services",
+    "Implement load balancing with Application Load Balancer",
+    "Apply container security best practices",
+    "Set up monitoring and logging for containers"
+  ],
+  "infrastructure": {
+    "cloudformation_template": "templates/infrastructure.yaml",
+    "parameters": {
+      "VpcCidr": "10.0.0.0/16",
+      "ClusterName": "workshop-cluster"
+    }
+  },
+  "validation": {
+    "pre_workshop": "scripts/validate-prerequisites.sh",
+    "post_module": "scripts/validate-module.sh",
+    "cleanup": "scripts/validate-cleanup.sh"
+  },
+  "resources": {
+    "max_instances": 10,
+    "timeout_minutes": 180,
+    "auto_stop": true
+  },
+  "integrations": {
+    "cloud9": true,
+    "cloudshell": true,
+    "event_engine": true,
+    "cost_explorer": true
+  }
+}
+```
 
-### Module 3: Advanced ECS Features & Best Practices (45 minutes)
-**Production-Ready Deployments**
-- Security best practices for containers
-- Monitoring and logging with CloudWatch
-- CI/CD integration patterns
-- Cost optimization strategies
+## 🚀 AWS Workshop Studio Features
 
-**Key Topics:**
-- Container security scanning
-- Secrets management with AWS Systems Manager
-- Blue/green deployments
-- Performance monitoring and optimization
+### 1. **Automatic Infrastructure Provisioning**
+```yaml
+# templates/infrastructure.yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'ECS Workshop Infrastructure'
 
-## 📋 Prerequisites
+Resources:
+  ECSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: !Sub '${AWS::StackName}-cluster'
+      
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+```
 
-### 🔐 AWS Account Requirements
-- [ ] AWS Account with administrative access or ECS-specific permissions
-- [ ] Credit card on file (estimated cost: $5-10 for workshop duration)
-- [ ] Access to create VPC, ECS clusters, and load balancers
+### 2. **Interactive Content Elements**
+```markdown
+<!-- Workshop Studio specific elements -->
 
-### 💻 Local Environment
-- [ ] **Operating System**: Windows 10+, macOS 10.14+, or Linux
-- [ ] **Docker Desktop**: Latest version installed and running
-- [ ] **AWS CLI**: Version 2.x installed and configured
-- [ ] **Git**: For cloning repositories
-- [ ] **Text Editor**: VS Code with Docker extension recommended
+{{< notice type="info" >}}
+This creates an interactive info box
+{{< /notice >}}
 
-### 📚 Knowledge Prerequisites
-- [ ] **Intermediate AWS knowledge**: Understanding of VPC, EC2, and IAM
-- [ ] **Basic container concepts**: Familiarity with Docker and containerization
-- [ ] **Command line proficiency**: Comfortable with terminal/command prompt
-- [ ] **Networking basics**: Understanding of load balancers and DNS
-- [ ] **JSON/YAML**: Basic understanding for configuration files
+{{< tabs >}}
+{{< tab "Console" >}}
+AWS Console instructions
+{{< /tab >}}
+{{< tab "CLI" >}}
+AWS CLI commands
+{{< /tab >}}
+{{< /tabs >}}
 
-### ✅ Pre-Workshop Validation
+{{< expand "Click to see solution" >}}
+Solution content here
+{{< /expand >}}
+```
 
-Verify your environment setup:
-
+### 3. **Built-in Validation**
 ```bash
-# Check Docker installation
-docker --version
-docker run hello-world
+#!/bin/bash
+# scripts/validate-module.sh
 
-# Verify AWS CLI configuration
-aws --version
-aws sts get-caller-identity
+echo "🔍 Validating ECS Service deployment..."
 
-# Test Git installation
-git --version
+# Check if ECS service is running
+SERVICE_STATUS=$(aws ecs describe-services \
+  --cluster workshop-cluster \
+  --services workshop-service \
+  --query 'services[0].status' \
+  --output text)
 
-# Check available resources (optional)
-aws ecs describe-clusters
-aws ec2 describe-vpcs --query 'Vpcs[?IsDefault==`true`]'
+if [ "$SERVICE_STATUS" = "ACTIVE" ]; then
+    echo "✅ ECS Service is active"
+else
+    echo "❌ ECS Service validation failed"
+    exit 1
+fi
 ```
 
-## 🚀 Getting Started
+### 4. **Automatic Cost Tracking**
+- Real-time cost monitoring
+- Budget alerts
+- Resource usage tracking
+- Cost optimization recommendations
 
-### Option 1: Run Locally
+### 5. **Auto Cleanup System**
 ```bash
-# Clone the repository
-git clone https://github.com/vanhoangkha/workshop-studio.git
-cd workshop-studio/amazon-ecs-workshop
+#!/bin/bash
+# scripts/cleanup.sh
 
-# Start local development server
-python3 -m http.server 8080
+echo "🧹 Starting automatic cleanup..."
 
-# Access workshop at http://localhost:8080
-```
-
-### Option 2: AWS Workshop Studio
-1. Navigate to [AWS Workshop Studio](https://workshops.aws/)
-2. Search for "Developing on Amazon ECS"
-3. Follow the guided setup and provisioning process
-
-### Option 3: Self-Paced Learning
-1. Review the prerequisites and setup requirements
-2. Follow the module sequence in the content directory
-3. Use the provided CloudFormation templates for infrastructure
-
-## 💰 Cost Breakdown
-
-| **Service** | **Usage** | **Estimated Cost** |
-|-------------|-----------|-------------------|
-| **ECS Fargate** | 2-3 hours of task execution | $2.00 - $4.00 |
-| **Application Load Balancer** | 2-3 hours | $0.50 - $1.00 |
-| **ECR** | Image storage and transfers | $0.10 - $0.50 |
-| **VPC & Networking** | Data transfer | $0.25 - $0.50 |
-| **CloudWatch** | Logs and monitoring | $0.10 - $0.25 |
-| **Other Services** | IAM, CloudFormation | Free |
-| **Total** | | **$5.00 - $10.00** |
-
-> **💡 Cost Optimization Tips:**
-> - Use Fargate Spot for development workloads
-> - Clean up resources immediately after workshop
-> - Monitor usage through AWS Cost Explorer
-> - Leverage AWS Free Tier where applicable
-
-## 🛡️ Security Considerations
-
-### Container Security Best Practices
-- **Image Scanning**: Enable ECR vulnerability scanning
-- **Least Privilege**: Use minimal IAM permissions
-- **Network Security**: Implement proper VPC security groups
-- **Secrets Management**: Use AWS Systems Manager Parameter Store
-- **Runtime Security**: Monitor container behavior
-
-### Workshop-Specific Security
-- All resources are created in isolated VPC
-- Security groups restrict access to necessary ports only
-- IAM roles follow least privilege principle
-- Container images use non-root users where possible
-
-## 🧹 Cleanup Instructions
-
-**⚠️ Critical**: Complete these steps to avoid ongoing charges:
-
-```bash
-# 1. Stop and delete ECS services
+# Stop ECS services
 aws ecs update-service --cluster workshop-cluster --service workshop-service --desired-count 0
 aws ecs delete-service --cluster workshop-cluster --service workshop-service
 
-# 2. Delete ECS cluster
-aws ecs delete-cluster --cluster workshop-cluster
+# Delete CloudFormation stack
+aws cloudformation delete-stack --stack-name workshop-infrastructure
 
-# 3. Delete Application Load Balancer
-aws elbv2 delete-load-balancer --load-balancer-arn <your-alb-arn>
-
-# 4. Delete ECR repositories
-aws ecr delete-repository --repository-name workshop-app --force
-
-# 5. Delete CloudFormation stacks (if used)
-aws cloudformation delete-stack --stack-name ecs-workshop-infrastructure
-
-# 6. Verify cleanup
-aws ecs list-clusters
-aws elbv2 describe-load-balancers
-aws ecr describe-repositories
+echo "✅ Cleanup completed"
 ```
 
-## 🔧 Troubleshooting
+## 🔄 Chạy AWS Workshop Studio Workshop
 
-### Common Issues and Solutions
-
-**Issue**: ECS tasks failing to start
+### Option 1: AWS Workshop Studio Platform
 ```bash
-# Check task definition and logs
-aws ecs describe-tasks --cluster <cluster-name> --tasks <task-arn>
-aws logs get-log-events --log-group-name /ecs/workshop-app
+# Upload workshop to AWS Workshop Studio
+# Platform sẽ tự động:
+# 1. Parse workshop-config.json
+# 2. Provision infrastructure
+# 3. Setup monitoring
+# 4. Enable cost tracking
 ```
 
-**Issue**: Load balancer health checks failing
+### Option 2: Local Development
 ```bash
-# Verify target group health
-aws elbv2 describe-target-health --target-group-arn <target-group-arn>
-# Check security group rules
-aws ec2 describe-security-groups --group-ids <security-group-id>
+# Clone repository
+git clone https://github.com/vanhoangkha/workshop-studio.git
+cd workshop-studio/amazon-ecs-workshop
+
+# Validate configuration
+python3 -c "import json; json.load(open('workshop-config.json'))"
+
+# Start local server
+python3 -m http.server 8080
 ```
 
-**Issue**: Container image pull failures
+### Option 3: AWS Event Engine
 ```bash
-# Check ECR permissions and image existence
-aws ecr describe-repositories
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.us-east-1.amazonaws.com
+# Workshop Studio tự động tích hợp với Event Engine
+# Participants nhận:
+# - Pre-configured AWS accounts
+# - Automatic resource provisioning
+# - Cost tracking per participant
+# - Automatic cleanup after event
 ```
 
-### Getting Help
-- 📖 [Amazon ECS Documentation](https://docs.aws.amazon.com/ecs/)
-- 💬 [AWS Containers Roadmap](https://github.com/aws/containers-roadmap)
-- 🎓 [AWS Container Training](https://aws.amazon.com/training/learn-about/containers/)
-- 🏆 [ECS Best Practices Guide](https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/)
+## 📊 Monitoring và Analytics
 
-## 📈 Next Steps
+### Built-in Analytics:
+- **Participant Progress**: Real-time tracking
+- **Completion Rates**: Module-by-module analysis
+- **Time Spent**: Per module timing
+- **Error Rates**: Common failure points
+- **Feedback Scores**: Participant satisfaction
 
-After completing this workshop, consider exploring:
+### Cost Analytics:
+- **Real-time Costs**: Live cost tracking
+- **Resource Utilization**: Efficiency metrics
+- **Budget Alerts**: Automatic notifications
+- **Cost Optimization**: Recommendations
 
-### Advanced Topics
-- **AWS Fargate**: Serverless container deployment
-- **Amazon EKS**: Kubernetes on AWS
-- **AWS App Runner**: Fully managed container applications
-- **AWS Copilot**: Application-first container deployment
+## 🆚 So sánh với Hugo Format
 
-### Integration Patterns
-- **CI/CD Pipelines**: AWS CodePipeline with ECS
-- **Microservices**: Service mesh with AWS App Mesh
-- **Observability**: AWS X-Ray distributed tracing
-- **GitOps**: Infrastructure and application deployment
+| **Feature** | **Hugo Workshop** | **AWS Workshop Studio** |
+|-------------|-------------------|-------------------------|
+| **Setup Time** | 2-3 hours | 15 minutes |
+| **Infrastructure** | Manual setup | Auto-provisioned |
+| **Cost Tracking** | None | Real-time |
+| **Cleanup** | Manual scripts | Automatic |
+| **Monitoring** | None | Built-in analytics |
+| **Validation** | Manual | Automated |
+| **Multi-region** | Complex | Native support |
+| **Event Integration** | None | Event Engine ready |
+| **Participant Management** | None | Full management |
+| **Feedback Collection** | Manual | Automated |
 
-### Certification Paths
-- AWS Certified Solutions Architect
-- AWS Certified DevOps Engineer
-- AWS Certified Security Specialty
+## 🛡️ Security và Best Practices
 
-## 📞 Support
+### Security Features:
+```json
+{
+  "security": {
+    "iam_roles": "least_privilege",
+    "network_isolation": true,
+    "encryption_at_rest": true,
+    "encryption_in_transit": true,
+    "vulnerability_scanning": true
+  }
+}
+```
 
-### Workshop Support
-- **Repository Issues**: [Create an issue](https://github.com/vanhoangkha/workshop-studio/issues)
-- **Workshop Questions**: Contact maintainers via email
-- **Feedback**: Use the feedback form in the workshop conclusion
+### Best Practices Implementation:
+- **Least Privilege IAM**: Automatic role creation
+- **Network Isolation**: VPC with private subnets
+- **Resource Tagging**: Automatic tagging for cost allocation
+- **Monitoring**: CloudWatch integration
+- **Backup**: Automatic snapshots where applicable
 
-### AWS Support Resources
-- **Documentation**: [Amazon ECS User Guide](https://docs.aws.amazon.com/ecs/)
-- **Forums**: [AWS Container Forums](https://forums.aws.amazon.com/forum.jspa?forumID=187)
-- **Support**: [AWS Support Center](https://console.aws.amazon.com/support/)
-- **Training**: [AWS Container Training Courses](https://aws.amazon.com/training/learn-about/containers/)
+## 📈 Advanced Workshop Studio Features
 
-## 🤝 Contributing
+### 1. **Multi-language Support**
+```json
+{
+  "languages": ["en", "ja", "ko", "zh"],
+  "default_language": "en"
+}
+```
 
-We welcome contributions to improve this workshop:
+### 2. **Adaptive Learning**
+```json
+{
+  "adaptive_learning": {
+    "skill_assessment": true,
+    "personalized_path": true,
+    "difficulty_adjustment": true
+  }
+}
+```
 
-### How to Contribute
-1. **Fork** the repository
-2. **Create** a feature branch: `git checkout -b feature/enhancement`
-3. **Test** your changes thoroughly in a clean AWS environment
-4. **Document** any new procedures or requirements
-5. **Submit** a pull request with detailed description
+### 3. **Integration Ecosystem**
+```json
+{
+  "integrations": {
+    "github": "source_control",
+    "slack": "notifications",
+    "teams": "collaboration",
+    "jira": "issue_tracking"
+  }
+}
+```
 
-### Contribution Guidelines
-- Test all commands and procedures on multiple platforms
-- Update cost estimates if adding new resources
-- Maintain consistent formatting and style
-- Include troubleshooting information for new features
-- Ensure security best practices are followed
+## 🎯 Migration từ Hugo
 
-## 📄 License
+Nếu bạn có Hugo workshop, migration process:
 
-This workshop is licensed under the MIT License. See [LICENSE](../LICENSE) file for details.
+### 1. **Structure Conversion**
+```bash
+# Sử dụng migration tool
+./migrate-hugo-to-workshop-studio.sh hugo-workshop workshop-studio-output
+```
 
-## 🙏 Acknowledgments
+### 2. **Configuration Mapping**
+```bash
+# Hugo config.toml → workshop-config.json
+# Hugo frontmatter → Workshop Studio metadata
+# Hugo shortcodes → Workshop Studio components
+```
 
-- **Amazon ECS Team** for excellent service and documentation
-- **AWS Container Specialists** for architectural guidance
-- **Docker Community** for container best practices
-- **Workshop Contributors** for testing and feedback
-- **AWS Solutions Architects** for real-world use cases
+### 3. **Feature Enhancement**
+- Add infrastructure templates
+- Implement validation scripts
+- Configure cost tracking
+- Setup auto-cleanup
+
+## 📚 Resources và Documentation
+
+### AWS Workshop Studio Resources:
+- [AWS Workshop Studio Documentation](https://docs.aws.amazon.com/workshop-studio/)
+- [Workshop Studio Best Practices](https://aws.amazon.com/workshops/best-practices/)
+- [Community Workshops](https://workshops.aws/)
+
+### Development Tools:
+- [Workshop Studio CLI](https://github.com/aws/workshop-studio-cli)
+- [Validation Tools](https://github.com/aws/workshop-validation-tools)
+- [Template Library](https://github.com/aws/workshop-templates)
+
+## 🎯 Kết luận
+
+AWS Workshop Studio format mang lại:
+
+### ✅ **Immediate Benefits:**
+- Faster workshop development
+- Automatic AWS integration
+- Built-in cost management
+- Professional presentation
+
+### 🚀 **Long-term Advantages:**
+- Scalable workshop delivery
+- Rich analytics and insights
+- Community sharing capabilities
+- Continuous improvement through feedback
+
+### 📈 **Business Impact:**
+- Reduced operational overhead
+- Improved participant experience
+- Better cost control
+- Enhanced learning outcomes
+
+**Khuyến nghị**: Sử dụng AWS Workshop Studio format cho tất cả workshops mới để tận dụng đầy đủ AWS ecosystem và modern workshop capabilities.
 
 ---
 
-**🚀 Ready to master containerized applications on AWS? Let's dive into Amazon ECS!**
-
-📝 *Last updated: June 16, 2024*
-📧 *Questions? Contact: khavan.work@gmail.com*
-🐳 *Happy containerizing!*
+📝 *Workshop mẫu này demonstrate AWS Workshop Studio format và best practices*
+🔄 *So sánh với AWS CLI Workshop để thấy sự khác biệt với Hugo format*
+🚀 *Ready for production deployment on AWS Workshop Studio platform*

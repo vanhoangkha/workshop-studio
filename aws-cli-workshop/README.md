@@ -1,263 +1,241 @@
-# 🚀 AWS CLI Fundamentals Workshop
+# 🚀 AWS CLI Workshop (Hugo Format - Sample)
 
-Master the AWS Command Line Interface with hands-on exercises covering IAM, S3, EC2, and automation best practices.
+Đây là workshop mẫu sử dụng **Hugo static site generator** - định dạng workshop truyền thống trước khi AWS Workshop Studio ra đời.
 
-## 📋 Workshop Overview
+## 📋 Tổng quan Workshop
 
-This comprehensive workshop teaches you how to effectively use the AWS Command Line Interface (CLI) to manage AWS resources, automate tasks, and implement best practices for cloud operations.
+Workshop này minh họa cách tạo workshop AWS sử dụng Hugo framework, cho phép tạo static website với nội dung workshop được tổ chức theo cấu trúc thư mục và markdown files.
 
-### 🎯 Learning Objectives
+### 🎯 Mục đích của Workshop mẫu này
 
-By the end of this workshop, you will be able to:
+- ✅ **Minh họa Hugo Workshop Structure**: Cấu trúc thư mục và file organization
+- ✅ **So sánh với AWS Workshop Studio**: Hiểu sự khác biệt giữa 2 format
+- ✅ **Migration Reference**: Làm cơ sở cho việc chuyển đổi sang Workshop Studio
+- ✅ **Best Practices**: Học cách tổ chức nội dung workshop hiệu quả
 
-- ✅ Install and configure AWS CLI on your local machine
-- ✅ Understand AWS CLI authentication and security best practices
-- ✅ Manage IAM users, groups, and policies using CLI commands
-- ✅ Perform S3 operations including bucket management and file transfers
-- ✅ Launch and manage EC2 instances through the command line
-- ✅ Automate AWS tasks using CLI scripts and best practices
-- ✅ Troubleshoot common CLI issues and errors
+### 📊 Thông tin Workshop
 
-### 📊 Workshop Details
+| **Thuộc tính** | **Chi tiết** |
+|----------------|--------------|
+| **Format** | Hugo Static Site Generator |
+| **Chủ đề** | AWS CLI Fundamentals |
+| **Cấp độ** | Beginner to Intermediate |
+| **Thời gian** | 2-3 giờ |
+| **Trạng thái** | Sample/Template |
 
-| **Attribute** | **Details** |
-|---------------|-------------|
-| **Level** | Beginner to Intermediate |
-| **Duration** | 2-3 hours |
-| **Cost** | $2-5 USD (estimated) |
-| **Language** | English |
-| **Region** | us-east-1 (primary) |
+## 🏗️ Cấu trúc Hugo Workshop
 
-### 🛠️ AWS Services Covered
-
-- **AWS CLI** - Command Line Interface fundamentals
-- **IAM** - Identity and Access Management
-- **S3** - Simple Storage Service
-- **EC2** - Elastic Compute Cloud
-- **CloudFormation** - Infrastructure as Code basics
-
-## 🏗️ Workshop Architecture
-
+### Cấu trúc thư mục Hugo:
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    AWS CLI Workshop                         │
-├─────────────────────────────────────────────────────────────┤
-│  Module 1: CLI Installation & Configuration                 │
-│  ├── AWS CLI v2 Installation                               │
-│  ├── Credential Configuration                              │
-│  └── Basic Commands & Help System                          │
-├─────────────────────────────────────────────────────────────┤
-│  Module 2: IAM Management                                   │
-│  ├── User and Group Management                             │
-│  ├── Policy Creation and Attachment                        │
-│  └── Role Management                                        │
-├─────────────────────────────────────────────────────────────┤
-│  Module 3: S3 Operations                                    │
-│  ├── Bucket Creation and Management                         │
-│  ├── File Upload/Download Operations                        │
-│  └── Advanced S3 Features                                  │
-├─────────────────────────────────────────────────────────────┤
-│  Module 4: EC2 Management                                   │
-│  ├── Instance Launch and Configuration                      │
-│  ├── Security Groups and Key Pairs                         │
-│  └── Instance Lifecycle Management                         │
-├─────────────────────────────────────────────────────────────┤
-│  Module 5: Automation & Best Practices                      │
-│  ├── CLI Scripting Techniques                              │
-│  ├── Error Handling and Logging                            │
-│  └── Security Best Practices                               │
-└─────────────────────────────────────────────────────────────┘
+aws-cli-workshop/ (Hugo Format)
+├── config.toml                 # Hugo configuration
+├── content/                    # Workshop content
+│   ├── _index.md              # Homepage
+│   ├── introduction/          # Giới thiệu
+│   │   └── _index.md
+│   ├── prerequisites/         # Yêu cầu
+│   │   └── _index.md
+│   ├── modules/              # Các module
+│   │   ├── module-1/
+│   │   │   ├── _index.md
+│   │   │   ├── step-1.md
+│   │   │   └── step-2.md
+│   │   ├── module-2/
+│   │   └── ...
+│   ├── cleanup/              # Dọn dẹp
+│   │   └── _index.md
+│   └── conclusion/           # Kết luận
+│       └── _index.md
+├── static/                   # Static assets
+│   ├── images/
+│   ├── css/
+│   └── js/
+├── layouts/                  # Hugo templates
+│   ├── _default/
+│   ├── partials/
+│   └── shortcodes/
+└── themes/                   # Hugo theme
+    └── workshop-theme/
 ```
 
-## 📋 Prerequisites
+### Đặc điểm Hugo Workshop:
 
-### 🔐 AWS Account Requirements
-- [ ] AWS Account with administrative access or appropriate IAM permissions
-- [ ] Credit card on file (minimal charges expected: $2-5)
-- [ ] Access to create IAM users, S3 buckets, and EC2 instances
+#### ✅ **Ưu điểm:**
+- **Static Site**: Nhanh, bảo mật, dễ host
+- **Markdown Support**: Viết nội dung dễ dàng
+- **Theme System**: Customizable appearance
+- **Git-friendly**: Version control tốt
+- **Offline Access**: Có thể chạy local
 
-### 💻 Local Environment
-- [ ] **Operating System**: Windows 10+, macOS 10.14+, or Linux
-- [ ] **Terminal/Command Prompt**: Access to command line interface
-- [ ] **Text Editor**: VS Code, Sublime Text, or similar
-- [ ] **Internet Connection**: Stable broadband connection
+#### ❌ **Hạn chế:**
+- **Setup phức tạp**: Cần cài Hugo, theme, config
+- **Không có tích hợp AWS**: Phải tự setup infrastructure
+- **Không có auto-cleanup**: Phải tự quản lý resources
+- **Không có cost tracking**: Không theo dõi chi phí tự động
+- **Limited interactivity**: Ít tính năng tương tác
 
-### 📚 Knowledge Prerequisites
-- [ ] Basic understanding of cloud computing concepts
-- [ ] Familiarity with command line/terminal usage
-- [ ] Basic knowledge of AWS core services (helpful but not required)
-- [ ] Understanding of JSON format (basic level)
+## 🔧 Cách chạy Hugo Workshop
 
-### ✅ Pre-Workshop Validation
-
-Run these commands to verify your setup:
-
+### Prerequisites:
 ```bash
-# Check if you have a terminal/command prompt
-echo "Terminal is working!"
+# Cài đặt Hugo
+# macOS
+brew install hugo
 
-# Verify internet connectivity
-ping -c 3 aws.amazon.com
+# Ubuntu/Debian
+sudo apt install hugo
 
-# Check if you have a text editor (example with VS Code)
-code --version
+# Windows
+choco install hugo
 ```
 
-## 🚀 Getting Started
-
-### Option 1: Run Locally
+### Chạy workshop:
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/vanhoangkha/workshop-studio.git
 cd workshop-studio/aws-cli-workshop
 
-# Start a local web server
-python3 -m http.server 8080
+# Chạy Hugo development server
+hugo server -D
 
-# Open your browser to http://localhost:8080
+# Truy cập http://localhost:1313
 ```
 
-### Option 2: AWS Workshop Studio
-1. Access [AWS Workshop Studio](https://workshops.aws/)
-2. Search for "AWS CLI Fundamentals"
-3. Follow the guided setup process
-
-## 📚 Workshop Modules
-
-### Module 1: CLI Installation & Configuration (30 minutes)
-- Install AWS CLI v2 on your operating system
-- Configure credentials using multiple methods
-- Understand CLI profiles and configuration files
-- Test basic commands and explore help system
-
-### Module 2: IAM Management (45 minutes)
-- Create and manage IAM users and groups
-- Attach and detach policies
-- Work with IAM roles and assume role operations
-- Implement least privilege access principles
-
-### Module 3: S3 Operations (45 minutes)
-- Create and configure S3 buckets
-- Upload, download, and sync files
-- Manage bucket policies and permissions
-- Explore advanced S3 features via CLI
-
-### Module 4: EC2 Management (45 minutes)
-- Launch EC2 instances with custom configurations
-- Manage security groups and key pairs
-- Monitor instance status and performance
-- Terminate and clean up resources
-
-### Module 5: Automation & Best Practices (30 minutes)
-- Write effective CLI scripts
-- Implement error handling and logging
-- Apply security best practices
-- Explore advanced CLI features and tips
-
-## 💰 Cost Breakdown
-
-| **Service** | **Usage** | **Estimated Cost** |
-|-------------|-----------|-------------------|
-| **EC2** | t3.micro instance (2-3 hours) | $0.50 - $1.00 |
-| **S3** | Storage and requests | $0.10 - $0.50 |
-| **Data Transfer** | Minimal | $0.05 - $0.25 |
-| **Other Services** | IAM, CloudFormation | Free |
-| **Total** | | **$2.00 - $5.00** |
-
-> **💡 Cost Optimization Tips:**
-> - Use AWS Free Tier eligible resources when possible
-> - Complete cleanup section to avoid ongoing charges
-> - Monitor usage through AWS Billing Dashboard
-
-## 🧹 Cleanup Instructions
-
-**⚠️ Important**: Complete these steps to avoid ongoing charges:
-
+### Build static site:
 ```bash
-# 1. Terminate EC2 instances
-aws ec2 terminate-instances --instance-ids i-1234567890abcdef0
+# Build static files
+hugo
 
-# 2. Delete S3 buckets and contents
-aws s3 rm s3://your-workshop-bucket --recursive
-aws s3 rb s3://your-workshop-bucket
-
-# 3. Delete IAM resources (if created)
-aws iam delete-user --user-name workshop-user
-
-# 4. Verify cleanup
-aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,State.Name]'
-aws s3 ls | grep workshop
+# Deploy static files từ thư mục public/
 ```
 
-## 🔧 Troubleshooting
+## 📝 Hugo Content Structure
 
-### Common Issues and Solutions
+### Frontmatter Example:
+```yaml
+---
+title: "Module 1: AWS CLI Installation"
+weight: 10
+chapter: false
+pre: "<b>1. </b>"
+---
 
-**Issue**: AWS CLI not found after installation
+# AWS CLI Installation
+
+Content goes here...
+```
+
+### Hugo Shortcodes:
+```markdown
+{{< notice info >}}
+This is an info notice
+{{< /notice >}}
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+Linux instructions
+{{% /tab %}}
+{{% tab name="Windows" %}}
+Windows instructions
+{{% /tab %}}
+{{< /tabs >}}
+```
+
+## 🔄 Migration từ Hugo sang AWS Workshop Studio
+
+Quá trình chuyển đổi workshop này sang AWS Workshop Studio format:
+
+### 1. **Structure Mapping:**
+```
+Hugo Format              →    Workshop Studio Format
+├── config.toml         →    workshop-config.json
+├── content/_index.md   →    content/index.md
+├── content/modules/    →    content/modules/
+├── static/            →    static/
+└── layouts/           →    templates/
+```
+
+### 2. **Content Conversion:**
+- **Frontmatter**: YAML → JSON metadata
+- **Hugo shortcodes**: → Standard markdown
+- **Navigation**: Hugo menu → Workshop Studio navigation
+- **Styling**: Hugo theme → Workshop Studio templates
+
+### 3. **Configuration Changes:**
+```toml
+# Hugo config.toml
+title = "AWS CLI Workshop"
+theme = "workshop-theme"
+
+[params]
+  version = "1.0"
+  author = "AWS Team"
+```
+
+```json
+// Workshop Studio workshop-config.json
+{
+  "title": "AWS CLI Workshop",
+  "description": "Learn AWS CLI fundamentals",
+  "level": "beginner",
+  "duration": "2-3 hours",
+  "version": "1.0.0"
+}
+```
+
+## 🆚 So sánh Hugo vs AWS Workshop Studio
+
+| **Aspect** | **Hugo Workshop** | **AWS Workshop Studio** |
+|------------|-------------------|--------------------------|
+| **Setup** | Phức tạp (Hugo + Theme) | Đơn giản (JSON config) |
+| **Hosting** | Tự host (S3, GitHub Pages) | AWS managed |
+| **Infrastructure** | Tự quản lý | Auto-provisioning |
+| **Cost Tracking** | Manual | Automatic |
+| **Cleanup** | Manual scripts | Auto-cleanup |
+| **Interactivity** | Limited | Rich interactive features |
+| **AWS Integration** | None | Deep integration |
+| **Maintenance** | High | Low |
+
+## 🛠️ Tools và Scripts
+
+### Migration Script:
 ```bash
-# Solution: Add AWS CLI to PATH or reinstall
-export PATH=$PATH:/usr/local/bin/aws
+# Sử dụng migration script có sẵn
+./migrate-hugo-to-workshop-studio.sh aws-cli-workshop aws-cli-converted
 ```
 
-**Issue**: Access denied errors
+### Hugo Development:
 ```bash
-# Solution: Check IAM permissions and credentials
-aws sts get-caller-identity
-aws configure list
+# Watch for changes
+hugo server --watch --buildDrafts
+
+# Build with specific environment
+hugo --environment production
 ```
 
-**Issue**: Region-related errors
-```bash
-# Solution: Verify and set correct region
-aws configure set region us-east-1
-```
+## 📚 Learning Resources
 
-### Getting Help
-- 📖 [AWS CLI Documentation](https://docs.aws.amazon.com/cli/)
-- 💬 [AWS CLI GitHub Issues](https://github.com/aws/aws-cli/issues)
-- 🎓 [AWS Training and Certification](https://aws.amazon.com/training/)
+### Hugo Documentation:
+- [Hugo Official Docs](https://gohugo.io/documentation/)
+- [Hugo Themes](https://themes.gohugo.io/)
+- [Hugo Workshop Templates](https://github.com/topics/hugo-workshop)
 
-## 📞 Support
+### Migration Resources:
+- [Hugo to Workshop Studio Migration Guide](../HUGO_TO_WORKSHOP_STUDIO_MIGRATION.md)
+- [AWS Workshop Studio Guidelines](../AWS_WORKSHOP_STUDIO_GUIDELINE.md)
 
-### Workshop Support
-- **Issues**: Create an issue in this repository
-- **Questions**: Contact workshop maintainers
-- **Feedback**: Use the feedback form in the workshop
+## 🎯 Kết luận
 
-### AWS Support
-- **Documentation**: [AWS CLI User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)
-- **Forums**: [AWS Developer Forums](https://forums.aws.amazon.com/)
-- **Support**: [AWS Support Center](https://console.aws.amazon.com/support/)
+Workshop Hugo này serve như một **reference implementation** để:
 
-## 🤝 Contributing
+1. **Hiểu Hugo workflow** và cấu trúc workshop truyền thống
+2. **So sánh với AWS Workshop Studio** để thấy được improvements
+3. **Practice migration** từ format cũ sang format mới
+4. **Learn best practices** cho cả 2 formats
 
-We welcome contributions to improve this workshop:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/improvement`
-3. Make your changes and test thoroughly
-4. Submit a pull request with detailed description
-
-### Contribution Guidelines
-- Follow existing code and documentation style
-- Test all commands and procedures
-- Update documentation for any changes
-- Ensure cross-platform compatibility
-
-## 📄 License
-
-This workshop is licensed under the MIT License. See [LICENSE](../LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- AWS CLI team for excellent documentation and tools
-- AWS Workshop Studio team for the platform
-- Community contributors and testers
-- AWS Solutions Architects for best practices guidance
+**Khuyến nghị**: Sử dụng AWS Workshop Studio cho workshops mới vì có nhiều advantages và AWS native integration.
 
 ---
 
-**🌟 Ready to master the AWS CLI? Let's get started!**
-
-📝 *Last updated: June 16, 2024*
-📧 *Questions? Contact: khavan.work@gmail.com*
+📝 *Workshop mẫu này được tạo để minh họa Hugo format và làm cơ sở cho migration*
+🔄 *Xem Amazon ECS Workshop để thấy AWS Workshop Studio format*
