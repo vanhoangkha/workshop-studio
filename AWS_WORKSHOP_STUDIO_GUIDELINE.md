@@ -1,303 +1,658 @@
-# AWS Workshop Studio - Guideline Tạo Workshop
+# AWS Workshop Studio - Guideline Tạo Workshop Chi Tiết
 
-## Tổng quan
-AWS Workshop Studio là nền tảng để tạo và chia sẻ các workshop tương tác về AWS. Guideline này sẽ hướng dẫn bạn tạo workshop chất lượng cao.
+## 📋 Tổng quan
+AWS Workshop Studio là nền tảng chính thức của AWS để tạo, chia sẻ và chạy các workshop tương tác. Guideline này sẽ hướng dẫn bạn tạo workshop chất lượng cao từ A đến Z.
 
-## 1. Cấu trúc thư mục chuẩn
+## 🎯 Mục tiêu Workshop
+Trước khi bắt đầu, hãy xác định rõ:
+- **Đối tượng học viên**: Beginner, Intermediate, Advanced
+- **Thời gian dự kiến**: 1-2 giờ, 2-4 giờ, hoặc full-day
+- **Kiến thức cần có**: Prerequisites cụ thể
+- **Kết quả mong đợi**: Học viên sẽ làm được gì sau workshop
+
+## 🏗️ Cấu trúc thư mục chuẩn
 
 ```
 workshop-name/
 ├── README.md                 # Mô tả tổng quan workshop
-├── workshop-config.json      # Cấu hình workshop
+├── workshop-config.json      # Cấu hình workshop (bắt buộc)
 ├── content/                  # Nội dung workshop
-│   ├── index.md             # Trang chủ
-│   ├── introduction/        # Giới thiệu
-│   │   └── index.md
+│   ├── index.md             # Trang chủ workshop
+│   ├── introduction/        # Giới thiệu và overview
+│   │   ├── index.md
+│   │   └── images/
 │   ├── prerequisites/       # Yêu cầu trước khi bắt đầu
-│   │   └── index.md
+│   │   ├── index.md
+│   │   ├── aws-account.md
+│   │   ├── tools-setup.md
+│   │   └── permissions.md
 │   ├── modules/            # Các module chính
 │   │   ├── module-1/
 │   │   │   ├── index.md
-│   │   │   └── assets/     # Hình ảnh, code samples
+│   │   │   ├── step-1.md
+│   │   │   ├── step-2.md
+│   │   │   └── images/
 │   │   ├── module-2/
-│   │   └── module-3/
-│   ├── cleanup/            # Dọn dẹp tài nguyên
-│   │   └── index.md
-│   └── conclusion/         # Kết luận
-│       └── index.md
-├── static/                 # Tài nguyên tĩnh
+│   │   └── module-n/
+│   ├── cleanup/            # Dọn dẹp resources
+│   │   ├── index.md
+│   │   └── scripts/
+│   └── conclusion/         # Kết luận và next steps
+│       ├── index.md
+│       ├── resources.md
+│       └── feedback.md
+├── static/                 # Assets tĩnh
 │   ├── images/
-│   └── code/
-└── templates/             # CloudFormation/CDK templates
-    ├── infrastructure.yaml
-    └── application.yaml
+│   ├── css/
+│   ├── js/
+│   └── downloads/
+├── templates/              # CloudFormation/CDK templates
+│   ├── infrastructure.yaml
+│   ├── iam-roles.yaml
+│   └── cleanup.yaml
+└── scripts/               # Scripts hỗ trợ
+    ├── setup.sh
+    ├── validate.sh
+    └── cleanup.sh
 ```
 
-## 2. File cấu hình workshop-config.json
+## ⚙️ Cấu hình Workshop (workshop-config.json)
 
+### Template cơ bản:
 ```json
 {
-  "title": "Developing on Amazon ECS",
-  "description": "Learn how to develop and deploy containerized applications on Amazon ECS",
-  "level": "intermediate",
-  "duration": "2-3 hours",
-  "services": ["ECS", "ECR", "VPC", "ALB", "CloudFormation"],
-  "tags": ["containers", "microservices", "devops"],
+  "title": "Workshop Title - Descriptive and Clear",
+  "description": "Detailed description of what participants will learn and build",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Your Name",
-      "email": "your.email@example.com"
+      "email": "your.email@example.com",
+      "role": "Solutions Architect"
     }
   ],
-  "version": "1.0.0",
-  "language": "en",
-  "region": "us-east-1"
+  "level": "beginner|intermediate|advanced",
+  "duration": "2-3 hours",
+  "language": "vi|en",
+  "tags": ["aws", "serverless", "containers", "beginner"],
+  "services": ["lambda", "s3", "dynamodb", "apigateway"],
+  "regions": ["us-east-1", "us-west-2", "ap-southeast-1"],
+  "architecture": "x86_64|arm64",
+  "cost_estimate": {
+    "currency": "USD",
+    "amount": 5.00,
+    "description": "Estimated cost for running this workshop"
+  },
+  "auto_destroy": true,
+  "cleanup_required": true,
+  "prerequisites": [
+    "Basic AWS knowledge",
+    "Familiarity with command line",
+    "AWS Account with appropriate permissions"
+  ],
+  "learning_objectives": [
+    "Deploy serverless applications using AWS Lambda",
+    "Configure API Gateway for REST APIs",
+    "Implement DynamoDB for data storage",
+    "Apply security best practices"
+  ]
 }
 ```
 
-## 3. Cấu trúc nội dung từng trang
+### Cấu hình nâng cao:
+```json
+{
+  "infrastructure": {
+    "cloudformation_template": "templates/infrastructure.yaml",
+    "parameters": {
+      "InstanceType": "t3.micro",
+      "KeyPairName": "workshop-keypair"
+    }
+  },
+  "validation": {
+    "pre_workshop": "scripts/validate-prerequisites.sh",
+    "post_module": "scripts/validate-module.sh",
+    "cleanup": "scripts/validate-cleanup.sh"
+  },
+  "resources": {
+    "max_instances": 5,
+    "timeout_minutes": 180,
+    "auto_stop": true
+  },
+  "integrations": {
+    "cloud9": true,
+    "cloudshell": true,
+    "event_engine": true
+  }
+}
+```
 
-### 3.1 Trang chủ (content/index.md)
+## 📝 Viết nội dung Workshop
 
+### 1. Trang chủ (content/index.md)
 ```markdown
-# Workshop Title
+---
+title: "Workshop Title"
+weight: 10
+---
 
-## Overview
+# Welcome to [Workshop Name]
+
+## 🎯 Workshop Overview
 Brief description of what participants will learn and build.
 
-## Learning Objectives
-- Objective 1
-- Objective 2
-- Objective 3
+## 🕐 Duration
+Approximately X hours
 
-## Prerequisites
-- AWS Account with appropriate permissions
-- Basic knowledge of containers
-- Familiarity with AWS CLI
+## 🎓 Learning Objectives
+By the end of this workshop, you will be able to:
+- [ ] Objective 1
+- [ ] Objective 2
+- [ ] Objective 3
 
-## Architecture
-![Architecture Diagram](../static/images/architecture.png)
+## 🏗️ Architecture
+![Architecture Diagram](images/architecture.png)
 
-## Estimated Duration
-2-3 hours
+## 💰 Cost
+This workshop will cost approximately $X.XX to run.
 
-## Cost
-Estimated cost: $5-10 USD
+## 🚀 Let's Get Started!
+Click **Next** to begin with the prerequisites.
 ```
 
-### 3.2 Giới thiệu (content/introduction/index.md)
-
+### 2. Giới thiệu (content/introduction/index.md)
 ```markdown
-# Introduction
+---
+title: "Introduction"
+weight: 20
+---
 
-## What is Amazon ECS?
-Amazon Elastic Container Service (ECS) is a fully managed container orchestration service...
+# Introduction to [Technology/Service]
+
+## What is [Technology/Service]?
+Detailed explanation with real-world examples.
+
+## Why use [Technology/Service]?
+Benefits and use cases.
 
 ## Key Concepts
-- **Task Definition**: Blueprint for your application
-- **Service**: Ensures desired number of tasks are running
-- **Cluster**: Logical grouping of compute resources
+- **Concept 1**: Definition and explanation
+- **Concept 2**: Definition and explanation
 
-## Workshop Scenario
-In this workshop, you will build a containerized web application...
+## Architecture Patterns
+Common patterns and best practices.
+
+## Real-world Use Cases
+- Use case 1 with example
+- Use case 2 with example
 ```
 
-### 3.3 Prerequisites (content/prerequisites/index.md)
-
+### 3. Prerequisites (content/prerequisites/index.md)
 ```markdown
+---
+title: "Prerequisites"
+weight: 30
+---
+
 # Prerequisites
 
-## AWS Account Setup
-1. Ensure you have an AWS account
-2. Create an IAM user with appropriate permissions
-3. Configure AWS CLI
+## 🔐 AWS Account Requirements
+- [ ] AWS Account with administrative access
+- [ ] Credit card on file (for potential charges)
+- [ ] Service limits check
 
-## Required Tools
-- AWS CLI v2
-- Docker Desktop
-- Git
-- Text editor (VS Code recommended)
+## 🛠️ Tools and Software
+- [ ] AWS CLI v2.x installed and configured
+- [ ] Git installed
+- [ ] Code editor (VS Code recommended)
+- [ ] Docker (if applicable)
 
-## Verification Steps
+## 📚 Knowledge Prerequisites
+- [ ] Basic understanding of AWS core services
+- [ ] Familiarity with command line interface
+- [ ] Basic programming knowledge (if applicable)
+
+## ✅ Validation Steps
 Run these commands to verify your setup:
 
 ```bash
+# Check AWS CLI
 aws --version
-docker --version
+aws sts get-caller-identity
+
+# Check other tools
 git --version
-```
+docker --version
 ```
 
-### 3.4 Module chính (content/modules/module-1/index.md)
+## 🚨 Important Notes
+- This workshop will create AWS resources that incur costs
+- Make sure to complete the cleanup section
+- Estimated cost: $X.XX
+```
 
+### 4. Module Structure (content/modules/module-1/index.md)
 ```markdown
-# Module 1: Setting up the Environment
+---
+title: "Module 1: [Module Name]"
+weight: 40
+---
 
-## Objectives
-- Create VPC and networking components
-- Set up ECS cluster
-- Configure security groups
+# Module 1: [Module Name]
 
-## Step 1: Create VPC
-1. Navigate to VPC console
-2. Click "Create VPC"
-3. Configure the following settings:
-   - Name: `workshop-vpc`
-   - CIDR: `10.0.0.0/16`
+## 🎯 Module Objectives
+By the end of this module, you will:
+- [ ] Objective 1
+- [ ] Objective 2
 
-```bash
-aws ec2 create-vpc --cidr-block 10.0.0.0/16 --tag-specifications 'ResourceType=vpc,Tags=[{Key=Name,Value=workshop-vpc}]'
+## 📋 Overview
+Brief overview of what will be covered.
+
+## 🏗️ Architecture
+What we're building in this module.
+
+## ⏱️ Estimated Time
+X minutes
+
+## 🚀 Let's Begin!
 ```
 
-## Step 2: Create Subnets
-Create public and private subnets in different AZs...
+### 5. Step-by-step Instructions
+```markdown
+---
+title: "Step 1: [Step Name]"
+weight: 41
+---
 
-## Verification
-Verify your setup by running:
+# Step 1: [Step Name]
+
+## What we're doing
+Clear explanation of the step's purpose.
+
+## Instructions
+
+### 1. Action Description
+Detailed step-by-step instructions.
+
 ```bash
-aws ec2 describe-vpcs --filters "Name=tag:Name,Values=workshop-vpc"
+# Command to run
+aws s3 mb s3://my-workshop-bucket-$(date +%s)
 ```
 
-## Troubleshooting
+**Expected Output:**
+```
+make_bucket: my-workshop-bucket-1234567890
+```
+
+### 2. Verification
+How to verify the step was completed successfully.
+
+```bash
+# Verification command
+aws s3 ls | grep my-workshop-bucket
+```
+
+## 🔍 Troubleshooting
 Common issues and solutions:
-- Issue 1: Solution
-- Issue 2: Solution
 
-## Next Steps
-In the next module, we'll deploy our first container...
+**Issue**: Error message example
+**Solution**: Step-by-step solution
+
+## ✅ Checkpoint
+- [ ] Task 1 completed
+- [ ] Task 2 completed
+- [ ] Verification successful
+
+## 📸 Screenshots
+Include relevant screenshots with annotations.
 ```
 
-### 3.5 Cleanup (content/cleanup/index.md)
+## 🎨 Best Practices cho Content
+
+### 1. Ngôn ngữ và Tone
+- **Rõ ràng và đơn giản**: Tránh thuật ngữ phức tạp
+- **Thân thiện**: Sử dụng tone conversational
+- **Hướng dẫn cụ thể**: Mỗi bước phải rõ ràng
+- **Khuyến khích**: Động viên học viên
+
+### 2. Cấu trúc nội dung
+- **Tiêu đề mô tả**: Rõ ràng về nội dung
+- **Mục tiêu rõ ràng**: Mỗi module/step có mục tiêu cụ thể
+- **Checkpoint**: Điểm kiểm tra sau mỗi bước quan trọng
+- **Troubleshooting**: Dự đoán và giải quyết vấn đề
+
+### 3. Code và Commands
+```markdown
+# Sử dụng code blocks với syntax highlighting
+```bash
+aws s3 cp file.txt s3://bucket-name/
+```
+
+# Giải thích command
+```bash
+# This command copies a local file to S3
+# Replace 'bucket-name' with your actual bucket name
+aws s3 cp file.txt s3://your-bucket-name/
+```
+
+# Expected output
+```
+upload: ./file.txt to s3://your-bucket-name/file.txt
+```
+```
+
+### 4. Hình ảnh và Screenshots
+- **Chất lượng cao**: Ít nhất 1080p
+- **Annotations**: Highlight các phần quan trọng
+- **Consistent**: Cùng browser, theme, size
+- **Alt text**: Mô tả cho accessibility
 
 ```markdown
-# Cleanup
-
-## Important
-To avoid ongoing charges, please delete all resources created in this workshop.
-
-## Automated Cleanup
-Use the provided cleanup script:
-
-```bash
-./scripts/cleanup.sh
+![Architecture Diagram](images/architecture.png "Workshop Architecture Overview")
 ```
 
-## Manual Cleanup Steps
-If the script fails, follow these manual steps:
+## 🔧 Templates và CloudFormation
 
-1. Delete ECS Services
-2. Delete ECS Cluster
-3. Delete Load Balancer
-4. Delete VPC and associated resources
-
-## Verification
-Ensure all resources are deleted by checking the AWS Console.
-```
-
-## 4. Best Practices
-
-### 4.1 Nội dung
-- **Rõ ràng và súc tích**: Mỗi bước phải dễ hiểu
-- **Có hình ảnh minh họa**: Screenshots và diagrams
-- **Code examples**: Cung cấp code hoàn chỉnh
-- **Verification steps**: Cách kiểm tra kết quả
-- **Troubleshooting**: Xử lý lỗi thường gặp
-
-### 4.2 Cấu trúc
-- **Modular design**: Chia thành các module độc lập
-- **Progressive complexity**: Từ đơn giản đến phức tạp
-- **Consistent formatting**: Sử dụng markdown chuẩn
-- **Navigation**: Links giữa các trang
-
-### 4.3 Kỹ thuật
-- **Tested instructions**: Test tất cả các bước
-- **Resource cleanup**: Luôn có phần cleanup
-- **Cost awareness**: Thông báo về chi phí
-- **Security best practices**: Không hardcode credentials
-
-## 5. Templates và Scripts
-
-### 5.1 CloudFormation Template (templates/infrastructure.yaml)
-
+### 1. Infrastructure Template
 ```yaml
+# templates/infrastructure.yaml
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'Infrastructure for ECS Workshop'
+Description: 'Workshop Infrastructure'
 
 Parameters:
-  VpcCidr:
+  WorkshopName:
     Type: String
-    Default: '10.0.0.0/16'
-    Description: CIDR block for VPC
+    Default: 'aws-workshop'
+    Description: 'Name of the workshop'
 
 Resources:
-  VPC:
-    Type: AWS::EC2::VPC
+  WorkshopBucket:
+    Type: AWS::S3::Bucket
     Properties:
-      CidrBlock: !Ref VpcCidr
-      EnableDnsHostnames: true
-      EnableDnsSupport: true
-      Tags:
-        - Key: Name
-          Value: workshop-vpc
-
-  # Add more resources...
+      BucketName: !Sub '${WorkshopName}-${AWS::AccountId}-${AWS::Region}'
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
 
 Outputs:
-  VpcId:
-    Description: VPC ID
-    Value: !Ref VPC
+  BucketName:
+    Description: 'Workshop S3 Bucket Name'
+    Value: !Ref WorkshopBucket
     Export:
-      Name: !Sub '${AWS::StackName}-VpcId'
+      Name: !Sub '${AWS::StackName}-BucketName'
 ```
 
-### 5.2 Cleanup Script (scripts/cleanup.sh)
+### 2. IAM Roles Template
+```yaml
+# templates/iam-roles.yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Workshop IAM Roles'
 
+Resources:
+  WorkshopRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub 'WorkshopRole-${AWS::Region}'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: WorkshopPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:PutObject
+                Resource: !Sub 'arn:aws:s3:::workshop-*/*'
+```
+
+## 🧪 Testing và Validation
+
+### 1. Pre-workshop Validation Script
 ```bash
 #!/bin/bash
+# scripts/validate-prerequisites.sh
 
-echo "Starting cleanup process..."
+echo "🔍 Validating prerequisites..."
 
-# Delete ECS resources
-aws ecs update-service --cluster workshop-cluster --service workshop-service --desired-count 0
-aws ecs delete-service --cluster workshop-cluster --service workshop-service
+# Check AWS CLI
+if ! command -v aws &> /dev/null; then
+    echo "❌ AWS CLI not found. Please install AWS CLI v2"
+    exit 1
+fi
 
-# Delete CloudFormation stacks
-aws cloudformation delete-stack --stack-name workshop-infrastructure
+# Check AWS credentials
+if ! aws sts get-caller-identity &> /dev/null; then
+    echo "❌ AWS credentials not configured"
+    exit 1
+fi
 
-echo "Cleanup completed. Please verify in AWS Console."
+# Check required permissions
+echo "✅ AWS CLI configured"
+
+# Check other tools
+for tool in git docker; do
+    if command -v $tool &> /dev/null; then
+        echo "✅ $tool installed"
+    else
+        echo "⚠️  $tool not found (may be optional)"
+    fi
+done
+
+echo "🎉 Prerequisites validation completed!"
 ```
 
-## 6. Testing và Quality Assurance
+### 2. Module Validation Script
+```bash
+#!/bin/bash
+# scripts/validate-module.sh
 
-### 6.1 Checklist trước khi publish
-- [ ] Tất cả các bước đã được test
-- [ ] Screenshots được cập nhật
-- [ ] Links hoạt động đúng
-- [ ] Code examples chạy được
-- [ ] Cleanup script hoạt động
-- [ ] Chi phí được tính toán chính xác
+MODULE=$1
+echo "🔍 Validating Module $MODULE..."
 
-### 6.2 Review Process
-1. **Technical Review**: Kiểm tra tính chính xác kỹ thuật
-2. **Content Review**: Kiểm tra ngữ pháp và cấu trúc
-3. **User Testing**: Test với người dùng thực tế
+case $MODULE in
+    "1")
+        # Validate S3 bucket creation
+        if aws s3 ls | grep -q "workshop-bucket"; then
+            echo "✅ S3 bucket created successfully"
+        else
+            echo "❌ S3 bucket not found"
+            exit 1
+        fi
+        ;;
+    "2")
+        # Validate Lambda function
+        if aws lambda get-function --function-name workshop-function &> /dev/null; then
+            echo "✅ Lambda function created successfully"
+        else
+            echo "❌ Lambda function not found"
+            exit 1
+        fi
+        ;;
+esac
 
-## 7. Deployment và Maintenance
+echo "🎉 Module $MODULE validation completed!"
+```
 
-### 7.1 Version Control
-- Sử dụng Git để quản lý version
-- Tag các release versions
-- Maintain changelog
+## 🧹 Cleanup Section
 
-### 7.2 Updates
-- Cập nhật khi có service changes
-- Monitor feedback và cải thiện
-- Keep dependencies up to date
+### Cleanup Instructions (content/cleanup/index.md)
+```markdown
+---
+title: "Cleanup"
+weight: 90
+---
 
-## 8. Ví dụ thực tế
+# Workshop Cleanup
 
-Tham khảo cấu trúc của workshop "developing-on-amazon-ecs" trong thư mục này để hiểu rõ hơn về cách áp dụng guideline.
+## 🚨 Important
+To avoid ongoing charges, please complete all cleanup steps.
 
-## Kết luận
+## 🗑️ Resources to Delete
 
-Việc tạo một AWS Workshop Studio chất lượng đòi hỏi sự chuẩn bị kỹ lưỡng và attention to detail. Hãy luôn đặt mình vào vị trí của người học để tạo ra trải nghiệm tốt nhất.
+### 1. CloudFormation Stacks
+```bash
+# Delete main workshop stack
+aws cloudformation delete-stack --stack-name workshop-stack
+
+# Wait for deletion to complete
+aws cloudformation wait stack-delete-complete --stack-name workshop-stack
+```
+
+### 2. S3 Buckets
+```bash
+# Empty and delete S3 buckets
+aws s3 rm s3://your-workshop-bucket --recursive
+aws s3 rb s3://your-workshop-bucket
+```
+
+### 3. Lambda Functions
+```bash
+# Delete Lambda functions
+aws lambda delete-function --function-name workshop-function
+```
+
+## ✅ Verification
+Run these commands to verify cleanup:
+
+```bash
+# Check CloudFormation stacks
+aws cloudformation list-stacks --stack-status-filter DELETE_COMPLETE
+
+# Check S3 buckets
+aws s3 ls | grep workshop
+
+# Check Lambda functions
+aws lambda list-functions | grep workshop
+```
+
+## 💰 Cost Verification
+- Check AWS Billing Dashboard
+- Verify no ongoing charges
+- Set up billing alerts for future
+```
+
+## 📊 Analytics và Feedback
+
+### 1. Feedback Form
+```markdown
+---
+title: "Feedback"
+weight: 100
+---
+
+# Workshop Feedback
+
+## 📝 Please provide your feedback
+
+### Overall Rating
+- [ ] Excellent (5/5)
+- [ ] Good (4/5)
+- [ ] Average (3/5)
+- [ ] Below Average (2/5)
+- [ ] Poor (1/5)
+
+### What did you like most?
+[Text area for feedback]
+
+### What could be improved?
+[Text area for feedback]
+
+### Would you recommend this workshop?
+- [ ] Yes
+- [ ] No
+
+### Additional Comments
+[Text area for feedback]
+
+## 📧 Contact
+For questions or support: your.email@example.com
+```
+
+## 🚀 Publishing và Distribution
+
+### 1. Pre-publication Checklist
+- [ ] All content reviewed and tested
+- [ ] Screenshots updated and consistent
+- [ ] Code examples tested
+- [ ] Cost estimates accurate
+- [ ] Cleanup procedures verified
+- [ ] Feedback mechanisms in place
+
+### 2. Version Control
+```bash
+# Tag releases
+git tag -a v1.0.0 -m "Initial workshop release"
+git push origin v1.0.0
+```
+
+### 3. Documentation Updates
+- Update README.md with workshop details
+- Create CHANGELOG.md for version tracking
+- Update workshop-config.json version
+
+## 🔄 Maintenance và Updates
+
+### 1. Regular Reviews
+- **Monthly**: Check for AWS service updates
+- **Quarterly**: Review and update content
+- **Annually**: Major version updates
+
+### 2. Issue Tracking
+- Monitor participant feedback
+- Track common issues
+- Update troubleshooting sections
+
+### 3. Version Management
+```json
+{
+  "version": "1.2.0",
+  "changelog": {
+    "1.2.0": "Added new module on security best practices",
+    "1.1.0": "Updated for new AWS Console UI",
+    "1.0.0": "Initial release"
+  }
+}
+```
+
+## 📚 Resources và Tools
+
+### 1. Useful Tools
+- **Markdown Editors**: Typora, Mark Text
+- **Screenshot Tools**: Snagit, LightShot
+- **Diagram Tools**: Draw.io, Lucidchart
+- **Code Formatters**: Prettier, Black
+
+### 2. AWS Resources
+- [AWS Workshop Studio Documentation](https://docs.aws.amazon.com/workshop-studio/)
+- [AWS Architecture Center](https://aws.amazon.com/architecture/)
+- [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/)
+
+### 3. Community
+- AWS Community Builders
+- AWS User Groups
+- Stack Overflow AWS tags
+
+---
+
+## 🎯 Kết luận
+
+Tạo một workshop chất lượng cao đòi hỏi:
+- **Preparation**: Lên kế hoạch chi tiết
+- **Content**: Nội dung rõ ràng, dễ hiểu
+- **Testing**: Test kỹ lưỡng trước khi publish
+- **Maintenance**: Cập nhật thường xuyên
+
+Hãy luôn đặt mình vào vị trí của học viên và tự hỏi: "Liệu tôi có thể hoàn thành workshop này một cách dễ dàng không?"
+
+**Good luck với workshop của bạn! 🚀**
