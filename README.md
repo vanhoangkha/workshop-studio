@@ -11,9 +11,9 @@ Repository này chứa các workshop AWS đã được chuyển đổi từ đ�
 ```
 workshop-studio/
 ├── README.md                                    # File này
-├── 📁 000011-AWSCLI/                           # Workshop Hugo gốc
-├── 📁 000011-AWSCLI-converted/                 # Workshop đã chuyển đổi
-├── 📁 developing-on-amazon-ecs/                # Workshop ECS
+├── 📁 aws-cli-original/                        # Workshop Hugo gốc
+├── 📁 aws-cli-workshop/                        # AWS CLI Workshop (converted)
+├── 📁 amazon-ecs-workshop/                     # Amazon ECS Workshop
 ├── 🔧 migrate-hugo-to-workshop-studio.sh       # Script migration tự động
 ├── 📖 AWS_WORKSHOP_STUDIO_GUIDELINE.md         # Hướng dẫn tạo workshop
 ├── 📖 HUGO_TO_WORKSHOP_STUDIO_MIGRATION.md     # Hướng dẫn migration
@@ -22,25 +22,31 @@ workshop-studio/
 
 ## 🎯 Workshop có sẵn
 
-### 1. AWS CLI Workshop (000011-AWSCLI-converted)
+### 1. AWS CLI Workshop (aws-cli-workshop)
 - **Mô tả**: Workshop toàn diện về AWS Command Line Interface
 - **Thời gian**: 2-3 giờ
 - **Cấp độ**: Beginner đến Intermediate
+- **Chi phí ước tính**: $2-5 USD
 - **Nội dung**:
-  - Cài đặt và cấu hình AWS CLI
-  - Quản lý IAM users và roles
-  - Làm việc với S3, EC2, Lambda
-  - Best practices và troubleshooting
+  - Cài đặt và cấu hình AWS CLI v2
+  - Quản lý IAM users, groups và roles
+  - Làm việc với S3, EC2, CloudFormation
+  - Automation và scripting best practices
+  - Troubleshooting và security practices
 
-### 2. Developing on Amazon ECS
-- **Mô tả**: Workshop phát triển ứng dụng trên Amazon ECS
-- **Thời gian**: 3-4 giờ
+### 2. Amazon ECS Workshop (amazon-ecs-workshop)
+- **Mô tả**: Workshop phát triển ứng dụng containerized trên Amazon ECS
+- **Thời gian**: 2-3 giờ
 - **Cấp độ**: Intermediate
+- **Chi phí ước tính**: $5-10 USD
 - **Nội dung**:
-  - Container fundamentals
-  - ECS cluster setup
-  - Service deployment và scaling
-  - CI/CD integration
+  - Container fundamentals và Docker basics
+  - ECS cluster setup và configuration
+  - Task definitions và service deployment
+  - Application Load Balancer integration
+  - Auto-scaling và monitoring
+  - CI/CD integration patterns
+  - Security best practices cho containers
 
 ## 🛠️ Công cụ Migration
 
@@ -76,9 +82,9 @@ cd workshop-studio
 ### 2. Chạy Workshop có sẵn
 ```bash
 # Chọn workshop muốn chạy
-cd 000011-AWSCLI-converted
+cd aws-cli-workshop
 # hoặc
-cd developing-on-amazon-ecs
+cd amazon-ecs-workshop
 
 # Xem hướng dẫn trong README.md của từng workshop
 ```
