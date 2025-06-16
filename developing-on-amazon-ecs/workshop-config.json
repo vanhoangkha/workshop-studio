@@ -1,0 +1,24 @@
+{
+  "title": "Developing on Amazon ECS",
+  "description": "Learn how to develop, deploy, and manage containerized applications using Amazon Elastic Container Service (ECS)",
+  "level": "intermediate",
+  "duration": "2-3 hours",
+  "services": ["ECS", "ECR", "VPC", "ALB", "CloudFormation", "IAM"],
+  "tags": ["containers", "microservices", "devops", "docker", "orchestration"],
+  "authors": [
+    {
+      "name": "AWS Workshop Team",
+      "email": "workshop-team@amazon.com"
+    }
+  ],
+  "version": "1.0.0",
+  "language": "en",
+  "region": "us-east-1",
+  "estimated_cost": "$5-10 USD",
+  "prerequisites": [
+    "AWS Account with appropriate permissions",
+    "Basic knowledge of containers and Docker",
+    "Familiarity with AWS CLI",
+    "Understanding of networking concepts"
+  ]
+}

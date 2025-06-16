@@ -1,0 +1,23 @@
+{
+  "title": "AWS CLI Fundamentals",
+  "description": "Master the AWS Command Line Interface with hands-on exercises covering IAM, S3, EC2, and automation best practices",
+  "level": "beginner",
+  "duration": "2-3 hours",
+  "services": ["CLI", "IAM", "S3", "EC2", "CloudFormation"],
+  "tags": ["cli", "automation", "scripting", "iam", "s3"],
+  "authors": [
+    {
+      "name": "AWS Workshop Team",
+      "email": "workshop-team@amazon.com"
+    }
+  ],
+  "version": "1.0.0",
+  "language": "en",
+  "region": "us-east-1",
+  "estimated_cost": "$2-5 USD",
+  "prerequisites": [
+    "AWS Account with appropriate permissions",
+    "Basic command line knowledge",
+    "Text editor"
+  ]
+}
