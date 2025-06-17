@@ -1,0 +1,194 @@
+{
+  "title": "Serverless Web Application with AWS Lambda and DynamoDB",
+  "description": "Build a complete serverless web application using AWS Lambda, API Gateway, DynamoDB, and S3. Learn modern serverless architecture patterns, security best practices, and cost optimization techniques.",
+  "version": "2.1.0",
+  "level": "intermediate",
+  "duration": "3-4 hours",
+  "language": "en",
+  "tags": [
+    "serverless",
+    "lambda",
+    "dynamodb",
+    "api-gateway",
+    "s3",
+    "cloudfront",
+    "cognito",
+    "full-stack"
+  ],
+  
+  "cost_estimate": {
+    "currency": "USD",
+    "amount": 12.50,
+    "description": "Estimated cost for 4-hour workshop including Lambda, DynamoDB, API Gateway, S3, and CloudFront",
+    "breakdown": {
+      "lambda_invocations": 2.00,
+      "api_gateway_calls": 1.50,
+      "dynamodb_operations": 3.00,
+      "s3_storage_requests": 1.00,
+      "cloudfront_distribution": 2.00,
+      "cognito_users": 1.00,
+      "data_transfer": 2.00
+    }
+  },
+  
+  "auto_destroy": true,
+  "auto_destroy_timeout": 300,
+  "cleanup_verification": true,
+  
+  "services": [
+    "AWS Lambda",
+    "Amazon API Gateway",
+    "Amazon DynamoDB",
+    "Amazon S3",
+    "Amazon CloudFront",
+    "Amazon Cognito",
+    "AWS CloudFormation",
+    "Amazon CloudWatch",
+    "AWS IAM"
+  ],
+  
+  "regions": [
+    "us-east-1",
+    "us-west-2",
+    "eu-west-1",
+    "eu-central-1",
+    "ap-southeast-1",
+    "ap-northeast-1"
+  ],
+  
+  "infrastructure": {
+    "cloudformation_template": "templates/main-infrastructure.yaml",
+    "nested_stacks": [
+      "templates/networking.yaml",
+      "templates/storage.yaml",
+      "templates/compute.yaml",
+      "templates/security.yaml"
+    ],
+    "parameters": {
+      "EnvironmentName": "ServerlessWorkshop",
+      "DomainName": "workshop.example.com",
+      "CertificateArn": "arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012"
+    }
+  },
+  
+  "validation": {
+    "pre_workshop": "scripts/validate-prerequisites.sh",
+    "post_module": "scripts/validate-module.sh",
+    "cleanup_verification": "scripts/verify-cleanup.sh",
+    "integration_tests": "scripts/run-integration-tests.sh"
+  },
+  
+  "features": {
+    "progress_tracking": true,
+    "cost_tracking": true,
+    "feedback_collection": true,
+    "analytics": true,
+    "multi_language": false,
+    "offline_mode": false,
+    "mobile_optimized": true,
+    "accessibility_compliant": true
+  },
+  
+  "learning_objectives": [
+    "Design and implement serverless architecture patterns",
+    "Configure API Gateway with Lambda integration",
+    "Implement DynamoDB data modeling and operations",
+    "Set up authentication with Amazon Cognito",
+    "Deploy static websites with S3 and CloudFront",
+    "Implement monitoring and logging best practices",
+    "Apply security best practices for serverless applications",
+    "Optimize costs in serverless architectures"
+  ],
+  
+  "prerequisites": {
+    "aws_experience": "Basic AWS Console familiarity",
+    "programming_experience": "JavaScript/Node.js basics",
+    "tools_required": [
+      "AWS CLI v2",
+      "Node.js 18+",
+      "Git",
+      "Text editor (VS Code recommended)"
+    ],
+    "aws_permissions": [
+      "Lambda full access",
+      "API Gateway full access",
+      "DynamoDB full access",
+      "S3 full access",
+      "CloudFront full access",
+      "Cognito full access",
+      "CloudFormation full access",
+      "IAM role creation"
+    ]
+  },
+  
+  "modules": [
+    {
+      "id": "introduction",
+      "title": "Workshop Introduction",
+      "duration": "15 minutes",
+      "type": "overview"
+    },
+    {
+      "id": "prerequisites",
+      "title": "Prerequisites and Setup",
+      "duration": "20 minutes",
+      "type": "setup"
+    },
+    {
+      "id": "module1",
+      "title": "Serverless Backend with Lambda and DynamoDB",
+      "duration": "60 minutes",
+      "type": "hands-on"
+    },
+    {
+      "id": "module2",
+      "title": "API Gateway and Authentication",
+      "duration": "45 minutes",
+      "type": "hands-on"
+    },
+    {
+      "id": "module3",
+      "title": "Frontend Deployment with S3 and CloudFront",
+      "duration": "45 minutes",
+      "type": "hands-on"
+    },
+    {
+      "id": "module4",
+      "title": "Monitoring and Optimization",
+      "duration": "30 minutes",
+      "type": "hands-on"
+    },
+    {
+      "id": "cleanup",
+      "title": "Resource Cleanup",
+      "duration": "15 minutes",
+      "type": "cleanup"
+    },
+    {
+      "id": "conclusion",
+      "title": "Next Steps and Resources",
+      "duration": "10 minutes",
+      "type": "conclusion"
+    }
+  ],
+  
+  "support": {
+    "documentation_url": "https://github.com/aws-samples/serverless-workshop-studio",
+    "issues_url": "https://github.com/aws-samples/serverless-workshop-studio/issues",
+    "contact_email": "serverless-workshop@amazon.com",
+    "slack_channel": "#serverless-workshop-support",
+    "office_hours": "Tuesdays 2-3 PM PST"
+  },
+  
+  "metadata": {
+    "created_by": "AWS Solutions Architecture Team",
+    "created_date": "2024-01-15",
+    "last_updated": "2024-06-15",
+    "review_cycle": "quarterly",
+    "next_review": "2024-09-15",
+    "workshop_id": "ws-serverless-webapp-001",
+    "category": "Application Development",
+    "difficulty_score": 7,
+    "completion_rate_target": 85
+  }
+}
