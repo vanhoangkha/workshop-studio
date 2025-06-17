@@ -1,6 +1,6 @@
-# 🚀 HƯỚNG DẪN PHÁT TRIỂN AWS WORKSHOP STUDIO - PHẦN 2
+# 🚀 AWS WORKSHOP STUDIO DEVELOPMENT GUIDE - PART 2
 
-## 5. Phát triển nội dung
+## 5. Content Development
 
 ### 5.1 Module Development Framework
 
@@ -190,7 +190,7 @@ In Module 2, we'll push this image to Amazon ECR and deploy it to ECS!
 **💡 Pro Tip:** Always test containers locally before pushing to registries.
 ```
 
-### 5.2 Interactive Elements và Rich Content
+### 5.2 Interactive Elements and Rich Content
 
 **🎨 Visual Elements Integration:**
 ```markdown
@@ -333,7 +333,7 @@ fi
 
 ---
 
-## 6. Thiết lập Infrastructure
+## 6. Infrastructure Setup
 
 ### 6.1 CloudFormation Template Design
 
@@ -704,7 +704,7 @@ Outputs:
       Name: !Sub ${EnvironmentName}-ECR-Repository
 ```
 
-### 6.2 IAM Roles và Security
+### 6.2 IAM Roles and Security
 
 **🔐 IAM Roles Template (templates/iam-roles.yaml):**
 ```yaml
@@ -792,4 +792,4 @@ Outputs:
       Name: !Sub ${EnvironmentName}-ECSTaskRole-ARN
 ```
 
-Tôi sẽ tiếp tục với phần còn lại trong file tiếp theo...
+I'll continue with the remaining parts in the next file...

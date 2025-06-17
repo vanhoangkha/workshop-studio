@@ -1,29 +1,29 @@
 # 🚀 AWS Workshop Studio Collection
 
-Bộ sưu tập workshop mẫu và công cụ migration cho **AWS Workshop Studio** - nền tảng workshop hiện đại của AWS với tích hợp sâu và tự động hóa tiên tiến.
+Comprehensive workshop samples and migration tools for **AWS Workshop Studio** - AWS's modern workshop platform with deep integration and advanced automation.
 
-## 📋 Tổng quan
+## 📋 Overview
 
-Repository này cung cấp:
-- **Workshop samples** cho cả Hugo format (legacy) và AWS Workshop Studio format (modern)
-- **Migration tools** để chuyển đổi từ Hugo sang Workshop Studio
-- **Comprehensive documentation** về AWS Workshop Studio best practices
-- **Templates và guidelines** để tạo workshop chuyên nghiệp
+This repository provides:
+- **Workshop samples** for both Hugo format (legacy) and AWS Workshop Studio format (modern)
+- **Migration tools** to convert from Hugo to Workshop Studio
+- **Comprehensive documentation** on AWS Workshop Studio best practices
+- **Templates and guidelines** for creating professional workshops
 
-## 🎯 AWS Workshop Studio - Tại sao nên sử dụng?
+## 🎯 AWS Workshop Studio - Why Use It?
 
-AWS Workshop Studio là evolution của workshop development, mang lại:
+AWS Workshop Studio is the evolution of workshop development, providing:
 
 ### ✅ **Automatic Infrastructure Management**
-- **Auto-provisioning**: Tự động tạo AWS resources
-- **Cost tracking**: Theo dõi chi phí real-time
-- **Auto-cleanup**: Dọn dẹp resources tự động
+- **Auto-provisioning**: Automatically create AWS resources
+- **Cost tracking**: Real-time cost monitoring
+- **Auto-cleanup**: Automatic resource cleanup
 - **Multi-region support**: Deploy across AWS regions
 
 ### ✅ **Enhanced User Experience**
 - **Interactive elements**: Rich UI components
 - **Progress tracking**: Monitor participant progress
-- **Built-in validation**: Automatic checks và verification
+- **Built-in validation**: Automatic checks and verification
 - **Responsive design**: Works on all devices
 
 ### ✅ **Enterprise Features**
@@ -32,11 +32,11 @@ AWS Workshop Studio là evolution của workshop development, mang lại:
 - **Feedback collection**: Built-in survey system
 - **Multi-language support**: Global accessibility
 
-## 🏗️ Cấu trúc Project
+## 🏗️ Project Structure
 
 ```
 workshop-studio/
-├── README.md                                    # File này - AWS Workshop Studio guide
+├── README.md                                    # This file - AWS Workshop Studio guide
 ├── 📁 aws-cli-workshop/                        # 🔶 Hugo Format Sample
 │   ├── README.md                               # Hugo workshop documentation
 │   ├── content/                                # Hugo content structure
@@ -51,9 +51,15 @@ workshop-studio/
 │   └── scripts/                                # Automation scripts
 ├── 📁 aws-cli-original/                        # Original Hugo source
 ├── 🔧 migrate-hugo-to-workshop-studio.sh       # Migration automation tool
-├── 📖 AWS_WORKSHOP_STUDIO_GUIDELINE.md         # Comprehensive creation guide
+├── 📖 AWS_WORKSHOP_STUDIO_DEVELOPMENT_GUIDE.md # Comprehensive creation guide
+├── 📖 AWS_WORKSHOP_STUDIO_DEVELOPMENT_GUIDE_PART2.md # Development guide part 2
+├── 📖 AWS_WORKSHOP_STUDIO_DEVELOPMENT_GUIDE_PART3.md # Development guide part 3
 ├── 📖 HUGO_TO_WORKSHOP_STUDIO_MIGRATION.md     # Migration documentation
-└── 📖 MIGRATION_COMPLETE_GUIDE.md              # Complete migration reference
+├── 📖 MIGRATION_COMPLETE_GUIDE.md              # Complete migration reference
+└── 📁 examples/                                # Complete workshop examples
+    ├── complete-workshop-example/              # Full serverless application
+    ├── testing-framework-example/              # Testing framework setup
+    └── README.md                               # Examples overview
 ```
 
 ## 🆚 Format Comparison: Hugo vs AWS Workshop Studio
@@ -75,61 +81,61 @@ workshop-studio/
 ## 🎯 Workshop Samples
 
 ### 1. 🔶 AWS CLI Workshop (Hugo Format - Legacy)
-**Mục đích**: Minh họa Hugo workshop structure và làm reference cho migration
+**Purpose**: Illustrate Hugo workshop structure and serve as reference for migration
 
 - **Format**: Hugo Static Site Generator
-- **Chủ đề**: AWS CLI Fundamentals
-- **Cấp độ**: Beginner to Intermediate
-- **Trạng thái**: Sample/Template for migration reference
-- **Đặc điểm**:
-  - Traditional Hugo structure với config.toml
+- **Topic**: AWS CLI Fundamentals
+- **Level**: Beginner to Intermediate
+- **Status**: Sample/Template for migration reference
+- **Features**:
+  - Traditional Hugo structure with config.toml
   - Static site generation
   - Manual infrastructure setup required
   - Good for understanding legacy format
 
-**Khi nào sử dụng Hugo format:**
-- ❌ **Không khuyến nghị** cho workshops mới
-- ✅ **Chỉ sử dụng** khi cần maintain legacy workshops
-- ✅ **Learning purpose** để hiểu evolution của workshop formats
+**When to use Hugo format:**
+- ❌ **Not recommended** for new workshops
+- ✅ **Only use** when maintaining legacy workshops
+- ✅ **Learning purpose** to understand evolution of workshop formats
 
 ### 2. 🟢 Amazon ECS Workshop (AWS Workshop Studio Format - Modern)
-**Mục đích**: Demonstrate AWS Workshop Studio capabilities và best practices
+**Purpose**: Demonstrate AWS Workshop Studio capabilities and best practices
 
 - **Format**: AWS Workshop Studio
-- **Chủ đề**: Amazon ECS & Containerization
-- **Cấp độ**: Intermediate
-- **Chi phí**: $5-10 USD (auto-tracked)
-- **Trạng thái**: Production-ready sample
-- **Đặc điểm**:
+- **Topic**: Amazon ECS & Containerization
+- **Level**: Intermediate
+- **Cost**: $5-10 USD (auto-tracked)
+- **Status**: Production-ready sample
+- **Features**:
   - Modern workshop-config.json configuration
   - Automatic infrastructure provisioning
-  - Built-in cost tracking và cleanup
+  - Built-in cost tracking and cleanup
   - Rich interactive elements
 
-**Khi nào sử dụng Workshop Studio format:**
-- ✅ **Khuyến nghị** cho tất cả workshops mới
-- ✅ **Production workshops** cần professional features
-- ✅ **Enterprise events** với nhiều participants
-- ✅ **Cost-sensitive** workshops cần tracking
+**When to use Workshop Studio format:**
+- ✅ **Recommended** for all new workshops
+- ✅ **Production workshops** requiring professional features
+- ✅ **Enterprise events** with multiple participants
+- ✅ **Cost-sensitive** workshops requiring tracking
 
 ## 🔧 Migration Tools
 
 ### Automatic Migration Script
 ```bash
-# Chuyển đổi Hugo workshop sang Workshop Studio format
+# Convert Hugo workshop to Workshop Studio format
 ./migrate-hugo-to-workshop-studio.sh <hugo-workshop-path> [output-directory]
 ```
 
 **Migration capabilities:**
 - ✅ **Structure conversion**: Hugo → Workshop Studio layout
 - ✅ **Configuration mapping**: config.toml → workshop-config.json
-- ✅ **Content processing**: Frontmatter và shortcode conversion
-- ✅ **Asset optimization**: Image và static file handling
-- ✅ **Validation**: Automatic checks và error reporting
+- ✅ **Content processing**: Frontmatter and shortcode conversion
+- ✅ **Asset optimization**: Image and static file handling
+- ✅ **Validation**: Automatic checks and error reporting
 
 ### Migration Process:
 1. **Analysis**: Scan Hugo workshop structure
-2. **Conversion**: Transform content và configuration
+2. **Conversion**: Transform content and configuration
 3. **Enhancement**: Add Workshop Studio features
 4. **Validation**: Verify converted workshop
 5. **Documentation**: Generate migration report
@@ -175,7 +181,7 @@ content/
 │   ├── module-2/        # Progressive difficulty
 │   └── module-n/        # Comprehensive coverage
 ├── cleanup/             # Resource cleanup (REQUIRED)
-└── conclusion/          # Next steps và resources
+└── conclusion/          # Next steps and resources
 ```
 
 #### 3. **Infrastructure Templates** - Automatic Provisioning
@@ -194,7 +200,7 @@ Resources:
   # Automatically provisioned by Workshop Studio
 ```
 
-#### 4. **Automation Scripts** - Validation và Cleanup
+#### 4. **Automation Scripts** - Validation and Cleanup
 ```bash
 #!/bin/bash
 # scripts/validate-module.sh
@@ -217,12 +223,12 @@ echo "🔍 Validating module completion..."
 - **Feedback aggregation**: Participant satisfaction scores
 
 #### **Security & Compliance**
-- **Least privilege IAM**: Automatic role creation với minimal permissions
-- **Network isolation**: VPC với proper security groups
-- **Encryption**: At-rest và in-transit encryption
+- **Least privilege IAM**: Automatic role creation with minimal permissions
+- **Network isolation**: VPC with proper security groups
+- **Encryption**: At-rest and in-transit encryption
 - **Audit logging**: Complete activity tracking
 
-## 🚀 Getting Started với AWS Workshop Studio
+## 🚀 Getting Started with AWS Workshop Studio
 
 ### Option 1: Use Sample Workshops
 ```bash
@@ -232,11 +238,11 @@ cd workshop-studio
 
 # Explore Hugo format (legacy)
 cd aws-cli-workshop
-# Review structure và documentation
+# Review structure and documentation
 
 # Explore Workshop Studio format (modern)
 cd ../amazon-ecs-workshop
-# Study workshop-config.json và advanced features
+# Study workshop-config.json and advanced features
 ```
 
 ### Option 2: Create New Workshop
@@ -248,7 +254,7 @@ cd my-new-workshop
 # Customize workshop-config.json
 # Update content/ directory
 # Modify templates/ for your infrastructure
-# Test với validation scripts
+# Test with validation scripts
 ```
 
 ### Option 3: Migrate Existing Hugo Workshop
@@ -257,35 +263,35 @@ cd my-new-workshop
 ./migrate-hugo-to-workshop-studio.sh my-hugo-workshop my-workshop-studio
 
 # Review migration results
-# Enhance với Workshop Studio features
-# Test và validate
+# Enhance with Workshop Studio features
+# Test and validate
 ```
 
 ## 📋 Workshop Studio Best Practices
 
 ### 🎯 **Planning Phase**
-- **Define clear learning objectives** với measurable outcomes
+- **Define clear learning objectives** with measurable outcomes
 - **Estimate costs accurately** including all AWS services
-- **Plan for multiple skill levels** với optional advanced sections
+- **Plan for multiple skill levels** with optional advanced sections
 - **Design for scalability** to handle various audience sizes
 
 ### 🏗️ **Development Phase**
-- **Use infrastructure as code** với CloudFormation/CDK
+- **Use infrastructure as code** with CloudFormation/CDK
 - **Implement comprehensive validation** at each step
-- **Design for failure** với robust error handling
-- **Test across regions** để ensure global compatibility
+- **Design for failure** with robust error handling
+- **Test across regions** to ensure global compatibility
 
 ### 🚀 **Deployment Phase**
-- **Validate thoroughly** trước khi publish
+- **Validate thoroughly** before publishing
 - **Monitor costs** during initial runs
-- **Collect feedback** và iterate quickly
-- **Maintain documentation** với regular updates
+- **Collect feedback** and iterate quickly
+- **Maintain documentation** with regular updates
 
 ### 🔄 **Maintenance Phase**
-- **Regular cost reviews** để optimize spending
-- **Update for service changes** khi AWS releases new features
-- **Analyze participant data** để improve experience
-- **Version control** để track changes over time
+- **Regular cost reviews** to optimize spending
+- **Update for service changes** when AWS releases new features
+- **Analyze participant data** to improve experience
+- **Version control** to track changes over time
 
 ## 💰 Cost Optimization Strategies
 
@@ -314,18 +320,18 @@ cd my-new-workshop
 ## 🤝 Contributing to Workshop Studio Ecosystem
 
 ### **Workshop Contributions**
-1. **Fork repository** và create feature branch
-2. **Follow Workshop Studio guidelines** trong documentation
+1. **Fork repository** and create feature branch
+2. **Follow Workshop Studio guidelines** in documentation
 3. **Test thoroughly** across multiple regions
-4. **Submit pull request** với detailed description
+4. **Submit pull request** with detailed description
 
 ### **Tool Improvements**
-- **Migration script enhancements** cho better conversion
-- **Validation tool improvements** cho comprehensive checking
-- **Template additions** cho common use cases
-- **Documentation updates** cho clarity và completeness
+- **Migration script enhancements** for better conversion
+- **Validation tool improvements** for comprehensive checking
+- **Template additions** for common use cases
+- **Documentation updates** for clarity and completeness
 
-## 📞 Support và Resources
+## 📞 Support and Resources
 
 ### **AWS Workshop Studio Official**
 - 📖 [AWS Workshop Studio Documentation](https://docs.aws.amazon.com/workshop-studio/)
@@ -362,28 +368,28 @@ cd my-new-workshop
 - [ ] **Community workshop** marketplace
 - [ ] **Enterprise features** showcase
 
-## 🎯 Kết luận
+## 🎯 Conclusion
 
-**AWS Workshop Studio represents the future of workshop development** với:
+**AWS Workshop Studio represents the future of workshop development** with:
 
 ### **Immediate Benefits:**
 - ⚡ **Faster development**: Hours instead of days
-- 💰 **Cost control**: Real-time tracking và automatic cleanup
+- 💰 **Cost control**: Real-time tracking and automatic cleanup
 - 🔧 **Less maintenance**: AWS-managed infrastructure
-- 📊 **Better insights**: Built-in analytics và feedback
+- 📊 **Better insights**: Built-in analytics and feedback
 
 ### **Strategic Advantages:**
 - 🌍 **Global scalability**: Multi-region deployment
 - 🏢 **Enterprise ready**: Professional features out-of-the-box
 - 🔄 **Future proof**: Continuous AWS innovation
-- 🤝 **Community driven**: Shared templates và best practices
+- 🤝 **Community driven**: Shared templates and best practices
 
 ### **Migration Path:**
-1. **Learn** từ samples trong repository này
-2. **Experiment** với Workshop Studio format
+1. **Learn** from samples in this repository
+2. **Experiment** with Workshop Studio format
 3. **Migrate** existing Hugo workshops
-4. **Enhance** với advanced features
-5. **Share** với community
+4. **Enhance** with advanced features
+5. **Share** with community
 
 ---
 
@@ -391,7 +397,7 @@ cd my-new-workshop
 
 📝 *Comprehensive guide to modern workshop development*
 🔄 *From legacy Hugo to cutting-edge Workshop Studio*
-💡 *Best practices, tools, và real-world examples*
+💡 *Best practices, tools, and real-world examples*
 
 📧 *Questions? Contact: khavan.work@gmail.com*
 ⭐ *Star this repository if it helps your workshop journey!*

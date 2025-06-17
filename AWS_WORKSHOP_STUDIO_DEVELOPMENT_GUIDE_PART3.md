@@ -1,6 +1,6 @@
-# 🚀 HƯỚNG DẪN PHÁT TRIỂN AWS WORKSHOP STUDIO - PHẦN 3
+# 🚀 AWS WORKSHOP STUDIO DEVELOPMENT GUIDE - PART 3
 
-## 7. Testing và Validation
+## 7. Testing and Validation
 
 ### 7.1 Automated Testing Framework
 
@@ -134,39 +134,6 @@ done
 echo "✅ File structure validation passed"
 ```
 
-```bash
-#!/bin/bash
-# tests/unit/test-markdown-syntax.sh
-
-echo "🔍 Testing Markdown syntax..."
-
-CONTENT_DIR="$(dirname "$(dirname "$0")")/content"
-
-# Find all markdown files
-find "$CONTENT_DIR" -name "*.md" -type f | while read -r file; do
-    echo "Checking: $file"
-    
-    # Check for common markdown issues
-    if grep -q "^#[^# ]" "$file"; then
-        echo "⚠️ Warning: Headers should have space after # in $file"
-    fi
-    
-    # Check for broken internal links
-    if grep -q "\[.*\](\.\./" "$file"; then
-        echo "✅ Internal links found in $file"
-    fi
-    
-    # Check for frontmatter
-    if head -n 1 "$file" | grep -q "^---$"; then
-        echo "✅ Frontmatter found in $file"
-    else
-        echo "⚠️ Warning: No frontmatter in $file"
-    fi
-done
-
-echo "✅ Markdown syntax check completed"
-```
-
 ### 7.2 Integration Testing
 
 **🔗 End-to-End Testing Script:**
@@ -255,38 +222,7 @@ aws ecr get-login-password --region "$REGION" | docker login --username AWS --pa
 docker tag test-app:latest "$ECR_URI:latest"
 docker push "$ECR_URI:latest"
 
-echo "📋 Step 4: Deploy ECS Service"
-# Create task definition
-cat > task-definition.json << EOF
-{
-  "family": "test-task",
-  "networkMode": "awsvpc",
-  "requiresCompatibilities": ["FARGATE"],
-  "cpu": "256",
-  "memory": "512",
-  "executionRoleArn": "$(aws cloudformation describe-stacks --stack-name "$STACK_NAME" --region "$REGION" --query 'Stacks[0].Outputs[?OutputKey==`ECSTaskExecutionRoleArn`].OutputValue' --output text)",
-  "containerDefinitions": [
-    {
-      "name": "test-container",
-      "image": "$ECR_URI:latest",
-      "portMappings": [{"containerPort": 3000}],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/ecs/test-task",
-          "awslogs-region": "$REGION",
-          "awslogs-stream-prefix": "ecs"
-        }
-      }
-    }
-  ]
-}
-EOF
-
-# Register task definition
-aws ecs register-task-definition --cli-input-json file://task-definition.json --region "$REGION"
-
-echo "📋 Step 5: Test Application"
+echo "📋 Step 4: Test Application"
 # Wait for ALB to be ready and test
 sleep 60
 RESPONSE=$(curl -s "$ALB_URL" || echo "Connection failed")
@@ -302,7 +238,7 @@ fi
 echo "🎉 All integration tests completed successfully!"
 ```
 
-### 7.3 Performance và Load Testing
+### 7.3 Performance and Load Testing
 
 **⚡ Performance Testing:**
 ```bash
@@ -365,7 +301,7 @@ fi
 
 ---
 
-## 8. Deployment và Publishing
+## 8. Deployment and Publishing
 
 ### 8.1 Workshop Studio Deployment Process
 
@@ -496,130 +432,9 @@ echo "📊 Workshop URL: https://workshop-studio.aws.amazon.com/workshops/$WORKS
 }
 ```
 
-**📝 Release Script:**
-```bash
-#!/bin/bash
-# scripts/release.sh
-
-set -e
-
-CURRENT_VERSION=$(jq -r '.version' workshop-config.json)
-echo "Current version: $CURRENT_VERSION"
-
-# Get new version from user
-read -p "Enter new version (e.g., 1.1.0): " NEW_VERSION
-
-# Validate version format
-if ! [[ $NEW_VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-    echo "❌ Invalid version format. Use MAJOR.MINOR.PATCH"
-    exit 1
-fi
-
-# Update workshop-config.json
-jq ".version = \"$NEW_VERSION\"" workshop-config.json > tmp.json && mv tmp.json workshop-config.json
-
-# Update CHANGELOG.md
-DATE=$(date +%Y-%m-%d)
-sed -i "1i\\## [$NEW_VERSION] - $DATE\n" CHANGELOG.md
-
-# Commit changes
-git add workshop-config.json CHANGELOG.md
-git commit -m "Release version $NEW_VERSION"
-git tag -a "v$NEW_VERSION" -m "Version $NEW_VERSION"
-
-# Push changes
-git push origin main
-git push origin "v$NEW_VERSION"
-
-echo "✅ Version $NEW_VERSION released successfully!"
-```
-
-### 8.3 Monitoring và Analytics
-
-**📊 Workshop Analytics Dashboard:**
-```json
-{
-  "analytics_config": {
-    "tracking_enabled": true,
-    "metrics": {
-      "participation": {
-        "total_starts": "counter",
-        "completion_rate": "percentage",
-        "average_duration": "time",
-        "drop_off_points": "array"
-      },
-      "performance": {
-        "page_load_times": "histogram",
-        "api_response_times": "histogram",
-        "error_rates": "percentage"
-      },
-      "costs": {
-        "average_cost_per_participant": "currency",
-        "total_infrastructure_cost": "currency",
-        "cost_by_service": "breakdown"
-      },
-      "feedback": {
-        "satisfaction_score": "rating",
-        "difficulty_rating": "rating",
-        "improvement_suggestions": "text"
-      }
-    },
-    "dashboards": {
-      "real_time": "CloudWatch Dashboard",
-      "historical": "QuickSight Dashboard",
-      "cost_analysis": "Cost Explorer"
-    }
-  }
-}
-```
-
-**📈 Monitoring Setup:**
-```yaml
-# monitoring/cloudwatch-dashboard.yaml
-AWSTemplateFormatVersion: '2010-09-09'
-Description: 'Workshop Monitoring Dashboard'
-
-Resources:
-  WorkshopDashboard:
-    Type: AWS::CloudWatch::Dashboard
-    Properties:
-      DashboardName: !Sub '${EnvironmentName}-Workshop-Metrics'
-      DashboardBody: !Sub |
-        {
-          "widgets": [
-            {
-              "type": "metric",
-              "properties": {
-                "metrics": [
-                  ["AWS/ApplicationELB", "RequestCount", "LoadBalancer", "${ApplicationLoadBalancer}"],
-                  ["AWS/ApplicationELB", "TargetResponseTime", "LoadBalancer", "${ApplicationLoadBalancer}"]
-                ],
-                "period": 300,
-                "stat": "Sum",
-                "region": "${AWS::Region}",
-                "title": "Application Load Balancer Metrics"
-              }
-            },
-            {
-              "type": "metric",
-              "properties": {
-                "metrics": [
-                  ["AWS/ECS", "CPUUtilization", "ServiceName", "${ECSService}", "ClusterName", "${ECSCluster}"],
-                  ["AWS/ECS", "MemoryUtilization", "ServiceName", "${ECSService}", "ClusterName", "${ECSCluster}"]
-                ],
-                "period": 300,
-                "stat": "Average",
-                "region": "${AWS::Region}",
-                "title": "ECS Service Metrics"
-              }
-            }
-          ]
-        }
-```
-
 ---
 
-## 9. Monitoring và Maintenance
+## 9. Monitoring and Maintenance
 
 ### 9.1 Operational Monitoring
 
@@ -679,18 +494,6 @@ for stack in "${CLOUDFORMATION_STACKS[@]}"; do
     check_cloudformation_stack "$stack"
 done
 
-# Check workshop metrics
-echo -e "\n📊 Workshop Metrics (Last 24 hours)..."
-aws cloudwatch get-metric-statistics \
-    --namespace "AWS/Workshop/ECS" \
-    --metric-name "ParticipantCount" \
-    --start-time "$(date -d '24 hours ago' -u +%Y-%m-%dT%H:%M:%S)" \
-    --end-time "$(date -u +%Y-%m-%dT%H:%M:%S)" \
-    --period 3600 \
-    --statistics Sum \
-    --query 'Datapoints[0].Sum' \
-    --output text
-
 echo "🏥 Health check completed"
 ```
 
@@ -730,92 +533,81 @@ aws logs filter-log-events \
     --filter-pattern "ERROR" \
     --query 'events[*].message'
 
-# 5. Cleanup Old Resources
-echo "🧹 Cleaning Up Old Resources..."
-# Remove old CloudFormation stacks
-aws cloudformation list-stacks \
-    --stack-status-filter DELETE_COMPLETE \
-    --query 'StackSummaries[?CreationTime<=`2024-01-01`].StackName' \
-    --output text | xargs -I {} aws cloudformation delete-stack --stack-name {}
-
-# 6. Update Documentation
-echo "📚 Updating Documentation..."
-# Generate API documentation
-swagger-codegen generate -i api-spec.yaml -l html2 -o docs/api/
-
 echo "✅ Maintenance completed"
 ```
 
-### 9.3 Incident Response
+---
 
-**🚨 Incident Response Playbook:**
-```markdown
-# Workshop Incident Response Playbook
+## 10. Best Practices and Optimization
 
-## Severity Levels
+### 10.1 Workshop Studio Best Practices
 
-### P1 - Critical (Workshop Completely Down)
-- **Response Time**: 15 minutes
-- **Actions**:
-  1. Acknowledge incident in monitoring system
-  2. Check AWS Service Health Dashboard
-  3. Verify CloudFormation stack status
-  4. Check application logs
-  5. Implement immediate workaround if possible
-  6. Communicate to stakeholders
+**🎯 Planning Phase:**
+- **Define clear learning objectives** with measurable outcomes
+- **Estimate costs accurately** including all AWS services
+- **Plan for multiple skill levels** with optional advanced sections
+- **Design for scalability** to handle various audience sizes
 
-### P2 - High (Partial Functionality Loss)
-- **Response Time**: 1 hour
-- **Actions**:
-  1. Investigate root cause
-  2. Check resource utilization
-  3. Review recent deployments
-  4. Implement fix or rollback
+**🏗️ Development Phase:**
+- **Use infrastructure as code** with CloudFormation/CDK
+- **Implement comprehensive validation** at each step
+- **Design for failure** with robust error handling
+- **Test across regions** to ensure global compatibility
 
-### P3 - Medium (Performance Degradation)
-- **Response Time**: 4 hours
-- **Actions**:
-  1. Monitor metrics trends
-  2. Optimize resource allocation
-  3. Schedule maintenance window if needed
+**🚀 Deployment Phase:**
+- **Validate thoroughly** before publishing
+- **Monitor costs** during initial runs
+- **Collect feedback** and iterate quickly
+- **Maintain documentation** with regular updates
 
-## Common Issues and Solutions
+### 10.2 Cost Optimization Strategies
 
-### Issue: High Workshop Costs
-**Symptoms**: Cost alerts triggered
-**Investigation**:
+**💰 Resource Right-sizing:**
+```json
+{
+  "cost_optimization": {
+    "instance_types": ["t3.micro", "t3.small"],
+    "auto_scaling": true,
+    "spot_instances": true,
+    "scheduled_shutdown": true
+  }
+}
+```
+
+**🧹 Automatic Cleanup:**
 ```bash
-# Check current running resources
-aws ec2 describe-instances --filters "Name=tag:Workshop,Values=ECS-Container-Workshop" --query 'Reservations[*].Instances[*].[InstanceId,State.Name,InstanceType]'
-
-# Check ECS services
-aws ecs list-services --cluster ECSWorkshop-Cluster
+# Built-in cleanup ensures no lingering costs
+{
+  "auto_destroy": true,
+  "cleanup_timeout": 30,
+  "force_cleanup": true
+}
 ```
 
-**Resolution**:
-1. Scale down unnecessary services
-2. Review auto-scaling policies
-3. Implement cost optimization recommendations
+### 10.3 Security Best Practices
 
-### Issue: Participant Cannot Access Workshop
-**Symptoms**: 403/404 errors, authentication failures
-**Investigation**:
-```bash
-# Check IAM permissions
-aws iam simulate-principal-policy --policy-source-arn arn:aws:iam::ACCOUNT:user/workshop-participant --action-names ecs:DescribeClusters
+**🔒 Security Implementation:**
+- **Least privilege IAM** policies for all resources
+- **Encryption at rest** and in transit
+- **Network isolation** with VPCs and security groups
+- **Regular security audits** and vulnerability scanning
 
-# Check security groups
-aws ec2 describe-security-groups --filters "Name=tag:Workshop,Values=ECS-Container-Workshop"
-```
+**🛡️ Compliance Considerations:**
+- **Data residency** requirements
+- **Audit logging** for all actions
+- **Access controls** and authentication
+- **Regular compliance reviews**
 
-**Resolution**:
-1. Verify IAM policies
-2. Check security group rules
-3. Validate network connectivity
-```
+---
 
-Tôi đã tạo hướng dẫn chi tiết về phát triển AWS Workshop Studio. Bạn có thể xem các file đã tạo:
+## 🎉 Conclusion
 
-<function_calls>
-<invoke name="fs_read">
-<parameter name="path">/home/ubuntu/workshop-studio
+This comprehensive guide provides everything you need to develop professional AWS Workshop Studio workshops. From initial planning to deployment and maintenance, following these practices will ensure your workshops are:
+
+- **Production-ready** with robust infrastructure
+- **Cost-optimized** with automatic cleanup
+- **Secure** with best practices implemented
+- **Scalable** for various audience sizes
+- **Maintainable** with proper monitoring
+
+**🚀 Ready to build amazing workshops? Start with the examples and customize for your needs!**

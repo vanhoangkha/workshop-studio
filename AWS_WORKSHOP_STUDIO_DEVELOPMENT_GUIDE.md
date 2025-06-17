@@ -1,43 +1,43 @@
-# 🚀 HƯỚNG DẪN PHÁT TRIỂN AWS WORKSHOP STUDIO CHUẨN CHỈNH
+# 🚀 AWS WORKSHOP STUDIO DEVELOPMENT GUIDE
 
-## 📋 Mục lục
-1. [Tổng quan AWS Workshop Studio](#1-tổng-quan-aws-workshop-studio)
-2. [Chuẩn bị môi trường phát triển](#2-chuẩn-bị-môi-trường-phát-triển)
-3. [Thiết kế và lập kế hoạch workshop](#3-thiết-kế-và-lập-kế-hoạch-workshop)
-4. [Tạo cấu trúc workshop](#4-tạo-cấu-trúc-workshop)
-5. [Phát triển nội dung](#5-phát-triển-nội-dung)
-6. [Thiết lập infrastructure](#6-thiết-lập-infrastructure)
-7. [Testing và validation](#7-testing-và-validation)
-8. [Deployment và publishing](#8-deployment-và-publishing)
-9. [Monitoring và maintenance](#9-monitoring-và-maintenance)
-10. [Best practices và optimization](#10-best-practices-và-optimization)
+## 📋 Table of Contents
+1. [AWS Workshop Studio Overview](#1-aws-workshop-studio-overview)
+2. [Development Environment Setup](#2-development-environment-setup)
+3. [Workshop Design and Planning](#3-workshop-design-and-planning)
+4. [Workshop Structure Creation](#4-workshop-structure-creation)
+5. [Content Development](#5-content-development)
+6. [Infrastructure Setup](#6-infrastructure-setup)
+7. [Testing and Validation](#7-testing-and-validation)
+8. [Deployment and Publishing](#8-deployment-and-publishing)
+9. [Monitoring and Maintenance](#9-monitoring-and-maintenance)
+10. [Best Practices and Optimization](#10-best-practices-and-optimization)
 
 ---
 
-## 1. Tổng quan AWS Workshop Studio
+## 1. AWS Workshop Studio Overview
 
-### 1.1 AWS Workshop Studio là gì?
+### 1.1 What is AWS Workshop Studio?
 
-AWS Workshop Studio là nền tảng hiện đại của AWS để tạo, quản lý và triển khai các workshop tương tác. Khác với format Hugo truyền thống, Workshop Studio cung cấp:
+AWS Workshop Studio is AWS's modern platform for creating, managing, and deploying interactive workshops. Unlike traditional Hugo format, Workshop Studio provides:
 
-**🎯 Tính năng chính:**
-- **Automatic Infrastructure Management**: Tự động provisioning và cleanup
-- **Cost Tracking**: Theo dõi chi phí real-time
-- **Interactive Elements**: UI components phong phú
-- **Analytics Dashboard**: Insights chi tiết về participant
-- **Multi-region Support**: Deploy trên nhiều AWS regions
+**🎯 Key Features:**
+- **Automatic Infrastructure Management**: Auto-provisioning and cleanup
+- **Cost Tracking**: Real-time cost monitoring
+- **Interactive Elements**: Rich UI components
+- **Analytics Dashboard**: Detailed participant insights
+- **Multi-region Support**: Deploy across AWS regions
 
-**📊 So sánh với Hugo Format:**
+**📊 Comparison with Hugo Format:**
 
-| Tiêu chí | Hugo Format | AWS Workshop Studio |
+| Criteria | Hugo Format | AWS Workshop Studio |
 |----------|-------------|-------------------|
-| Setup Time | 2-3 ngày | 4-6 giờ |
+| Setup Time | 2-3 days | 4-6 hours |
 | AWS Integration | Manual | Native |
 | Cost Management | Manual tracking | Real-time monitoring |
 | Infrastructure | Manual CloudFormation | Auto-provisioned |
 | Maintenance | High | Low (AWS managed) |
 
-### 1.2 Kiến trúc Workshop Studio
+### 1.2 Workshop Studio Architecture
 
 ```
 AWS Workshop Studio Architecture
@@ -66,18 +66,18 @@ AWS Workshop Studio Architecture
 
 ---
 
-## 2. Chuẩn bị môi trường phát triển
+## 2. Development Environment Setup
 
 ### 2.1 Prerequisites
 
-**🔧 Tools cần thiết:**
+**🔧 Required Tools:**
 ```bash
 # AWS CLI v2
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 
-# Node.js và npm
+# Node.js and npm
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
@@ -107,7 +107,7 @@ aws sts get-caller-identity
 
 **📁 Workspace Setup:**
 ```bash
-# Tạo workspace directory
+# Create workspace directory
 mkdir -p ~/aws-workshop-development
 cd ~/aws-workshop-development
 
@@ -170,7 +170,7 @@ my-workshop/
 
 ---
 
-## 3. Thiết kế và lập kế hoạch workshop
+## 3. Workshop Design and Planning
 
 ### 3.1 Workshop Planning Framework
 
@@ -259,7 +259,7 @@ Workshop Flow Design
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### 3.3 Cost Planning và Estimation
+### 3.3 Cost Planning and Estimation
 
 **💰 Cost Analysis Framework:**
 ```json
@@ -299,11 +299,11 @@ Workshop Flow Design
 
 ---
 
-## 4. Tạo cấu trúc workshop
+## 4. Workshop Structure Creation
 
 ### 4.1 Workshop Configuration (workshop-config.json)
 
-Đây là file cốt lõi của AWS Workshop Studio:
+This is the core file of AWS Workshop Studio:
 
 ```json
 {
@@ -551,4 +551,4 @@ Before proceeding, verify:
 **🎯 Next Step:** Once validation is complete, proceed to Module 1!
 ```
 
-Tôi sẽ tiếp tục với các phần còn lại trong file tiếp theo...
+I'll continue with the remaining parts in the next file...
