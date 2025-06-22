@@ -1,581 +1,600 @@
-# 🚀 AWS Workshop Studio Collection
+# 🚀 AWS Workshop Studio & Sample Code Publishing - Complete Guide
 
-A comprehensive collection of AWS Workshop Studio samples, migration tools, and development resources following official AWS guidelines and best practices.
+*Comprehensive guide based on official AWS documentation for creating workshops and publishing sample code*
 
-## 📋 Overview
+## 📋 Table of Contents
 
-This repository provides production-ready resources for **AWS Workshop Studio** - AWS's modern workshop platform with native cloud integration and advanced automation capabilities.
+1. [Workshop Creation Process](#-workshop-creation-process)
+2. [AWS Sample Code Publishing](#-aws-sample-code-publishing)
+3. [Repository Structure](#-repository-structure)
+4. [Development Workflow](#-development-workflow)
+5. [Security and Compliance](#-security-and-compliance)
+6. [Publishing Pathways](#-publishing-pathways)
+7. [Best Practices](#-best-practices)
 
-### What's Included:
-- **📚 Workshop Samples**: Both legacy Hugo and modern Workshop Studio formats
-- **🔧 Migration Tools**: Automated conversion from Hugo to Workshop Studio
-- **📖 Comprehensive Documentation**: Official AWS guidelines and best practices
-- **🎯 Templates & Examples**: Production-ready workshop templates
+---
 
-## 🎯 Why AWS Workshop Studio?
+## 🎯 Workshop Creation Process
 
-AWS Workshop Studio represents the evolution of workshop development, providing significant advantages over traditional approaches:
+*Based on "How to create a workshop?" by Tran Minh Hai (13/10/2023)*
 
-### ✅ **Native AWS Integration**
-- **Auto-provisioning**: Automatic AWS resource creation and management
-- **Real-time cost tracking**: Monitor spending as workshop progresses
-- **Automatic cleanup**: Prevent resource sprawl and unexpected charges
-- **Multi-region deployment**: Global workshop distribution
+### 📚 Essential AWS Workshop Studio Resources
 
-### ✅ **Enhanced User Experience**
-- **Interactive UI components**: Rich, engaging workshop interface
-- **Progress tracking**: Monitor participant completion rates
-- **Built-in validation**: Automatic step verification and error detection
-- **Responsive design**: Optimized for desktop, tablet, and mobile
+Before starting, familiarize yourself with these official AWS resources:
 
-### ✅ **Enterprise-Grade Features**
-- **Event Engine integration**: Seamless event management and participant onboarding
-- **Analytics dashboard**: Detailed insights into workshop performance
-- **Feedback collection**: Built-in survey and rating systems
-- **Multi-language support**: Global accessibility and localization
+- **[Creating a Minimal IAM Policy](https://catalog.workshops.aws/docs/en-US/cookbook/creating-aminimal-iam-policy)**
+- **[AWS Account Infrastructure Setup](https://catalog.workshops.aws/docs/en-US/create-aworkshop/authoring-a-workshop/aws-account-infrastructure)**
+- **[Authoring Workshop in Markdown](https://catalog.workshops.aws/docs/en-US/create-aworkshop/authoring-a-workshop/authoring-a-workshop-inmarkdown)**
+- **[Requesting Workshop Review](https://catalog.workshops.aws/docs/en-US/create-aworkshop/reviewing-and-publishing-a-workshop/requesting-aworkshop-review)**
 
-## 🏗️ Repository Structure
+### 🔄 4-Step Workshop Creation Process
 
+#### **Step 1: Create Workshop in AWS Workshop Studio**
+
+Access the AWS Workshop Studio platform:
 ```
-workshop-studio/
-├── README.md                                    # This comprehensive guide
-├── 📁 aws-cli-workshop/                        # 🔶 Hugo Format Sample (Legacy)
-│   ├── README.md                               # Hugo workshop documentation
-│   ├── content/                                # Traditional Hugo content structure
-│   ├── static/                                 # Static assets and resources
-│   └── config.toml                             # Hugo configuration file
-├── 📁 amazon-ecs-workshop/                     # 🟢 Workshop Studio Format (Modern)
-│   ├── README.md                               # Workshop Studio documentation
-│   ├── workshop-config.json                   # Workshop Studio configuration
-│   ├── content/                                # Structured workshop content
-│   ├── static/                                 # Optimized static assets
-│   ├── templates/                              # CloudFormation/CDK templates
-│   └── scripts/                                # Automation and validation scripts
-├── 📁 aws-cli-original/                        # Original Hugo source for reference
-├── 🔧 migrate-hugo-to-workshop-studio.sh       # Automated migration tool
-├── 📖 AWS_WORKSHOP_STUDIO_DEVELOPMENT_GUIDE.md # Complete development guide
-├── 📖 HUGO_TO_WORKSHOP_STUDIO_MIGRATION.md     # Migration documentation
-├── 📖 MIGRATION_COMPLETE_GUIDE.md              # Comprehensive migration reference
-└── 📁 examples/                                # Production workshop examples
-    ├── complete-workshop-example/              # Full serverless application workshop
-    ├── testing-framework-example/              # Testing and validation framework
-    └── README.md                               # Examples documentation
+🌐 https://studio.us-east-1.prod.workshops.aws/
 ```
 
-## 🆚 Format Comparison: Hugo vs AWS Workshop Studio
+**Key Actions:**
+- Navigate to AWS Workshop Studio console
+- Create new workshop project
+- Configure basic workshop settings
+- Set up workshop metadata and permissions
 
-| **Feature** | **Hugo Format** 🔶 | **AWS Workshop Studio** 🟢 |
-|-------------|-------------------|---------------------------|
-| **Development Time** | 2-3 days | 4-6 hours |
-| **Setup Complexity** | High (Hugo + Theme + Config) | Low (JSON config only) |
-| **AWS Integration** | None (manual setup required) | Native (automatic) |
-| **Infrastructure Management** | Manual CloudFormation deployment | Auto-provisioned resources |
-| **Cost Management** | Manual tracking and estimation | Real-time monitoring and alerts |
-| **Resource Cleanup** | Manual scripts and procedures | Automatic cleanup on completion |
-| **Participant Management** | None | Full lifecycle management |
-| **Analytics & Insights** | None | Built-in comprehensive dashboard |
-| **Multi-region Support** | Complex manual setup | Native support |
-| **Event Integration** | Manual coordination | Event Engine ready |
-| **Maintenance Overhead** | High (theme updates, dependencies) | Low (AWS managed platform) |
-| **Scalability** | Limited by hosting infrastructure | AWS-scale automatic |
+#### **Step 2: Clone the Workshop Project**
 
-## 🎯 Workshop Samples
-
-### 1. 🔶 AWS CLI Workshop (Hugo Format - Legacy Reference)
-
-**Purpose**: Demonstrate traditional Hugo workshop structure and serve as migration reference
-
-- **Format**: Hugo Static Site Generator
-- **Topic**: AWS CLI Fundamentals and Best Practices
-- **Skill Level**: Beginner to Intermediate
-- **Status**: Reference template for migration purposes
-- **Key Features**:
-  - Traditional Hugo structure with config.toml
-  - Static site generation workflow
-  - Manual infrastructure setup requirements
-  - Educational reference for format evolution
-
-**When to Use Hugo Format:**
-- ❌ **Not recommended** for new workshop development
-- ✅ **Legacy maintenance** of existing Hugo workshops only
-- ✅ **Educational purposes** to understand workshop format evolution
-- ✅ **Migration reference** when converting to Workshop Studio
-
-### 2. 🟢 Amazon ECS Workshop (AWS Workshop Studio Format - Production Ready)
-
-**Purpose**: Showcase AWS Workshop Studio capabilities and modern best practices
-
-- **Format**: AWS Workshop Studio (Modern)
-- **Topic**: Amazon ECS, Containerization, and Microservices
-- **Skill Level**: Intermediate
-- **Estimated Cost**: $5-10 USD (automatically tracked)
-- **Duration**: 2-3 hours
-- **Status**: Production-ready workshop template
-- **Key Features**:
-  - Modern workshop-config.json configuration
-  - Automatic infrastructure provisioning and management
-  - Built-in cost tracking and automatic cleanup
-  - Rich interactive UI elements and progress tracking
-  - Comprehensive validation and error handling
-
-**When to Use Workshop Studio Format:**
-- ✅ **Highly recommended** for all new workshop development
-- ✅ **Production workshops** requiring professional features
-- ✅ **Enterprise events** with multiple participants
-- ✅ **Cost-sensitive environments** requiring precise tracking
-- ✅ **Global workshops** needing multi-region support
-
-## 🔧 Migration Tools & Automation
-
-### Automated Migration Script
-
-Transform your existing Hugo workshops to modern Workshop Studio format:
+After creating your workshop, clone the generated project structure:
 
 ```bash
-# Basic migration
-./migrate-hugo-to-workshop-studio.sh <hugo-workshop-path> [output-directory]
-
-# Example usage
-./migrate-hugo-to-workshop-studio.sh ./aws-cli-workshop ./aws-cli-workshop-studio
+# Clone your workshop repository
+git clone <your-workshop-repository-url>
+cd <workshop-directory>
 ```
 
-**Migration Capabilities:**
-- ✅ **Structure Conversion**: Automatic Hugo → Workshop Studio layout transformation
-- ✅ **Configuration Mapping**: config.toml → workshop-config.json conversion
-- ✅ **Content Processing**: Frontmatter and shortcode transformation
-- ✅ **Asset Optimization**: Image and static file handling with optimization
-- ✅ **Validation & Testing**: Automatic checks and comprehensive error reporting
-- ✅ **Enhancement Suggestions**: Recommendations for Workshop Studio features
+**Core Components:**
+- **📝 Markdown files** - For workshop content and instructions
+- **⚙️ contentspec.yaml** - Infrastructure configuration (CloudFormation template)
 
-### Migration Process Overview:
+#### **Step 3: Develop Workshop Content**
 
-1. **📊 Analysis Phase**: Comprehensive scan of Hugo workshop structure
-2. **🔄 Conversion Phase**: Transform content, configuration, and assets
-3. **⚡ Enhancement Phase**: Add Workshop Studio-specific features
-4. **✅ Validation Phase**: Verify converted workshop integrity
-5. **📋 Documentation Phase**: Generate detailed migration report
-
-## 📚 AWS Workshop Studio Deep Dive
-
-### Core Components Architecture
-
-#### 1. **workshop-config.json** - Workshop Configuration Heart
-
-```json
-{
-  "title": "Your Workshop Title - Clear and Descriptive",
-  "description": "Comprehensive workshop description explaining learning outcomes",
-  "version": "1.0.0",
-  "authors": [
-    {
-      "name": "Your Name",
-      "email": "your.email@example.com",
-      "role": "Solutions Architect"
-    }
-  ],
-  "level": "beginner|intermediate|advanced",
-  "duration": "2-3 hours",
-  "language": "en",
-  "tags": ["aws", "containers", "ecs", "microservices"],
-  "services": ["ECS", "ECR", "VPC", "ALB", "CloudWatch"],
-  "regions": ["us-east-1", "us-west-2", "ap-southeast-1"],
-  "cost_estimate": {
-    "currency": "USD",
-    "amount": 8.50,
-    "description": "Estimated workshop cost including all AWS services"
-  },
-  "auto_destroy": true,
-  "cleanup_required": true,
-  "prerequisites": [
-    "Basic AWS knowledge and console familiarity",
-    "Understanding of containerization concepts",
-    "AWS Account with appropriate IAM permissions"
-  ],
-  "learning_objectives": [
-    "Deploy containerized applications using Amazon ECS",
-    "Configure Application Load Balancer for container services",
-    "Implement CloudWatch monitoring and logging",
-    "Apply container security best practices"
-  ],
-  "infrastructure": {
-    "cloudformation_template": "templates/infrastructure.yaml",
-    "parameters": {
-      "InstanceType": "t3.micro",
-      "ClusterName": "workshop-cluster"
-    }
-  },
-  "validation": {
-    "pre_workshop": "scripts/validate-prerequisites.sh",
-    "post_module": "scripts/validate-module.sh",
-    "cleanup": "scripts/validate-cleanup.sh"
-  }
-}
+**Content Development Structure:**
+```
+workshop-project/
+├── content/                    # Workshop content in Markdown
+│   ├── index.md               # Main workshop page
+│   ├── introduction/          # Workshop introduction
+│   ├── modules/               # Learning modules
+│   └── cleanup/               # Resource cleanup
+├── contentspec.yaml           # Infrastructure specification
+├── static/                    # Static assets (images, files)
+└── templates/                 # CloudFormation/CDK templates
 ```
 
-#### 2. **Content Structure** - Organized Learning Journey
+**Development Workflow:**
+1. **Write content in Markdown** - Create engaging, step-by-step instructions
+2. **Configure contentspec.yaml** - Define AWS infrastructure requirements
+3. **Use CDK for infrastructure** - Generate CloudFormation templates programmatically
+4. **Test thoroughly** - Validate all workshop steps and infrastructure
 
-```
-content/
-├── index.md                    # Workshop homepage (REQUIRED)
-├── introduction/               # Workshop overview and context
-│   ├── index.md               # Introduction content
-│   ├── architecture.md        # Architecture overview
-│   └── images/                # Supporting diagrams
-├── prerequisites/              # Setup and requirements
-│   ├── index.md               # Prerequisites overview
-│   ├── aws-account.md         # AWS account setup
-│   ├── tools-setup.md         # Required tools installation
-│   └── permissions.md         # IAM permissions setup
-├── modules/                   # Core learning modules
-│   ├── module-1/              # Progressive learning modules
-│   │   ├── index.md           # Module overview
-│   │   ├── step-1.md          # Detailed step instructions
-│   │   ├── step-2.md          # Sequential learning steps
-│   │   └── images/            # Module-specific images
-│   ├── module-2/              # Advanced concepts
-│   └── module-n/              # Comprehensive coverage
-├── cleanup/                   # Resource cleanup (REQUIRED)
-│   ├── index.md               # Cleanup instructions
-│   └── scripts/               # Automated cleanup scripts
-└── conclusion/                # Workshop wrap-up
-    ├── index.md               # Summary and next steps
-    ├── resources.md           # Additional resources
-    └── feedback.md            # Feedback collection
-```
-
-#### 3. **Infrastructure Templates** - Automated Resource Management
-
+**contentspec.yaml Example:**
 ```yaml
-# templates/infrastructure.yaml
+# Infrastructure specification for Workshop Studio
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'Workshop Infrastructure - Auto-provisioned by Workshop Studio'
+Description: 'Workshop Infrastructure Configuration'
 
 Parameters:
   WorkshopName:
     Type: String
-    Default: 'aws-workshop'
-    Description: 'Unique workshop identifier'
-  
-  EnvironmentType:
-    Type: String
-    Default: 'workshop'
-    AllowedValues: ['workshop', 'development', 'production']
+    Default: 'my-aws-workshop'
 
 Resources:
-  # VPC and Networking
+  # Define your AWS resources here
   WorkshopVPC:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: 10.0.0.0/16
-      EnableDnsHostnames: true
-      EnableDnsSupport: true
-      Tags:
-        - Key: Name
-          Value: !Sub '${WorkshopName}-VPC'
-
-  # ECS Cluster
-  ECSCluster:
-    Type: AWS::ECS::Cluster
+      
+  WorkshopS3Bucket:
+    Type: AWS::S3::Bucket
     Properties:
-      ClusterName: !Sub '${WorkshopName}-cluster'
-      CapacityProviders:
-        - FARGATE
-        - FARGATE_SPOT
-
-Outputs:
-  ClusterName:
-    Description: 'ECS Cluster Name'
-    Value: !Ref ECSCluster
-    Export:
-      Name: !Sub '${AWS::StackName}-ClusterName'
-  
-  VPCId:
-    Description: 'Workshop VPC ID'
-    Value: !Ref WorkshopVPC
-    Export:
-      Name: !Sub '${AWS::StackName}-VPC'
+      BucketName: !Sub '${WorkshopName}-${AWS::AccountId}'
 ```
 
-#### 4. **Automation Scripts** - Validation and Quality Assurance
+#### **Step 4: Create Workshop Event**
 
-```bash
-#!/bin/bash
-# scripts/validate-prerequisites.sh
-set -e
-
-echo "🔍 Validating workshop prerequisites..."
-
-# Check AWS CLI installation and configuration
-if ! command -v aws &> /dev/null; then
-    echo "❌ AWS CLI not found. Please install AWS CLI v2"
-    exit 1
-fi
-
-# Verify AWS credentials and permissions
-if ! aws sts get-caller-identity &> /dev/null; then
-    echo "❌ AWS credentials not configured or invalid"
-    exit 1
-fi
-
-# Check required AWS service permissions
-echo "✅ AWS CLI configured successfully"
-
-# Validate account limits and quotas
-ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-echo "✅ Workshop running in AWS Account: $ACCOUNT_ID"
-
-echo "🎉 Prerequisites validation completed successfully!"
-```
-
-## 🚀 Getting Started Guide
-
-### Option 1: Use Existing Workshop Samples
-
-```bash
-# Clone the repository
-git clone https://github.com/vanhoangkha/workshop-studio.git
-cd workshop-studio
-
-# Explore Hugo format (legacy reference)
-cd aws-cli-workshop
-cat README.md  # Review structure and documentation
-
-# Explore Workshop Studio format (recommended)
-cd ../amazon-ecs-workshop
-cat workshop-config.json  # Study modern configuration
-ls -la content/  # Examine content structure
-```
-
-### Option 2: Create New Workshop from Template
-
-```bash
-# Start with Workshop Studio template
-cp -r amazon-ecs-workshop my-new-workshop
-cd my-new-workshop
-
-# Customize workshop configuration
-vim workshop-config.json
-
-# Update content structure
-vim content/index.md
-
-# Modify infrastructure templates
-vim templates/infrastructure.yaml
-
-# Test with validation scripts
-./scripts/validate-prerequisites.sh
-```
-
-### Option 3: Migrate Existing Hugo Workshop
-
-```bash
-# Use automated migration tool
-./migrate-hugo-to-workshop-studio.sh my-hugo-workshop my-workshop-studio
-
-# Review migration results and recommendations
-cd my-workshop-studio
-cat MIGRATION_REPORT.md
-
-# Enhance with Workshop Studio features
-vim workshop-config.json
-
-# Test and validate converted workshop
-./scripts/validate-prerequisites.sh
-```
-
-## 📋 Workshop Studio Development Best Practices
-
-### 🎯 **Planning and Design Phase**
-- **Define clear learning objectives** with measurable, achievable outcomes
-- **Estimate costs accurately** including all AWS services and regional variations
-- **Design for multiple skill levels** with optional advanced sections and challenges
-- **Plan for scalability** to handle various audience sizes and geographic distribution
-- **Consider accessibility** and inclusive design principles
-
-### 🏗️ **Development and Implementation Phase**
-- **Use Infrastructure as Code** with CloudFormation or CDK for reproducibility
-- **Implement comprehensive validation** at each critical step with clear error messages
-- **Design for failure scenarios** with robust error handling and recovery procedures
-- **Test across multiple regions** to ensure global compatibility and performance
-- **Follow security best practices** with least-privilege IAM policies
-
-### 🚀 **Testing and Quality Assurance Phase**
-- **Validate thoroughly** across different AWS accounts and environments
-- **Monitor costs closely** during initial test runs and optimization
-- **Collect feedback early** from beta testers and iterate quickly
-- **Document troubleshooting** for common issues and edge cases
-- **Performance test** with expected participant loads
-
-### 🔄 **Deployment and Maintenance Phase**
-- **Version control rigorously** with semantic versioning and change logs
-- **Monitor workshop analytics** to identify improvement opportunities
-- **Update regularly** for AWS service changes and new features
-- **Maintain documentation** with regular reviews and updates
-- **Community engagement** through feedback collection and iteration
-
-## 💰 Cost Optimization Strategies
-
-### **Resource Right-sizing and Optimization**
-
-```json
-{
-  "cost_optimization": {
-    "instance_types": ["t3.micro", "t3.small"],
-    "auto_scaling": {
-      "enabled": true,
-      "min_capacity": 1,
-      "max_capacity": 3
-    },
-    "spot_instances": {
-      "enabled": true,
-      "allocation_strategy": "diversified"
-    },
-    "scheduled_operations": {
-      "auto_shutdown": true,
-      "shutdown_time": "18:00 UTC",
-      "weekend_shutdown": true
-    }
-  }
-}
-```
-
-### **Automatic Resource Management**
-
-```bash
-# Built-in cleanup ensures no lingering costs
-{
-  "auto_destroy": true,
-  "cleanup_timeout_minutes": 30,
-  "force_cleanup_on_timeout": true,
-  "cost_alerts": {
-    "enabled": true,
-    "threshold_usd": 10.00,
-    "notification_email": "admin@example.com"
-  }
-}
-```
-
-### **Cost Monitoring and Alerts**
-
-- **Real-time cost tracking** with Workshop Studio dashboard
-- **Budget alerts** at 50%, 80%, and 100% of estimated costs
-- **Resource utilization monitoring** to identify optimization opportunities
-- **Automatic recommendations** for cost reduction strategies
-
-## 🤝 Contributing to the Workshop Studio Ecosystem
-
-### **Workshop Contributions**
-
-1. **Fork and Branch**: Create feature branch from main repository
-2. **Follow Guidelines**: Adhere to AWS Workshop Studio standards and best practices
-3. **Comprehensive Testing**: Test across multiple regions and account types
-4. **Documentation**: Include detailed README and migration notes
-5. **Pull Request**: Submit with comprehensive description and testing evidence
-
-### **Tool and Framework Improvements**
-
-- **Migration Script Enhancements**: Improve conversion accuracy and feature coverage
-- **Validation Tool Improvements**: Add comprehensive checking and error reporting
-- **Template Additions**: Create templates for common workshop patterns
-- **Documentation Updates**: Enhance clarity, completeness, and accessibility
-- **Community Examples**: Share real-world workshop implementations
-
-### **Quality Standards**
-
-- **Code Quality**: Follow AWS coding standards and best practices
-- **Security**: Implement security scanning and vulnerability assessment
-- **Performance**: Optimize for speed and resource efficiency
-- **Accessibility**: Ensure workshops are accessible to all participants
-- **Internationalization**: Support multiple languages and regions
-
-## 📞 Support and Resources
-
-### **Official AWS Resources**
-- 📖 [AWS Workshop Studio Documentation](https://docs.aws.amazon.com/workshop-studio/)
-- 🎓 [Workshop Studio Training and Certification](https://aws.amazon.com/training/learn-about/workshop-studio/)
-- 💬 [AWS Workshop Community Hub](https://workshops.aws/)
-- 🔧 [AWS Workshop Studio CLI](https://docs.aws.amazon.com/workshop-studio/latest/userguide/cli.html)
-
-### **Repository Support and Community**
-- **Issues and Bug Reports**: [GitHub Issues](https://github.com/vanhoangkha/workshop-studio/issues)
-- **Feature Requests**: Repository discussions and enhancement proposals
-- **Community Discussions**: Collaborative problem-solving and knowledge sharing
-- **Direct Support**: khavan.work@gmail.com for urgent issues
-
-### **AWS Technical Support**
-- **Service Documentation**: [Comprehensive AWS Service Documentation](https://docs.aws.amazon.com/)
-- **Developer Forums**: [AWS Developer Community Forums](https://forums.aws.amazon.com/)
-- **Professional Support**: [AWS Support Center](https://console.aws.amazon.com/support/)
-- **Architecture Guidance**: [AWS Architecture Center](https://aws.amazon.com/architecture/)
-
-## 📈 Development Roadmap
-
-### **Q3 2024 - Advanced Features**
-- [ ] **Multi-language Workshop Support**: Comprehensive internationalization framework
-- [ ] **Advanced Analytics Integration**: Enhanced participant behavior insights
-- [ ] **Event Engine Deep Integration**: Seamless event management workflows
-- [ ] **AI-Powered Content Suggestions**: Intelligent workshop optimization recommendations
-
-### **Q4 2024 - Platform Expansion**
-- [ ] **Serverless Workshop Templates**: Complete serverless application patterns
-- [ ] **Machine Learning Workshop Framework**: ML/AI workshop development toolkit
-- [ ] **Security Workshop Best Practices**: Comprehensive security-focused templates
-- [ ] **Advanced Cost Optimization**: Intelligent resource management and optimization
-
-### **2025 - Ecosystem Evolution**
-- [ ] **Workshop Studio CLI Integration**: Command-line development workflow
-- [ ] **Automated Testing Frameworks**: Comprehensive workshop validation systems
-- [ ] **Community Workshop Marketplace**: Shared template and resource ecosystem
-- [ ] **Enterprise Integration Features**: Advanced organizational management capabilities
-
-## 🎯 Conclusion and Next Steps
-
-**AWS Workshop Studio represents the definitive future of workshop development**, offering transformative advantages:
-
-### **Immediate Technical Benefits:**
-- ⚡ **Accelerated Development**: Reduce development time from days to hours
-- 💰 **Precise Cost Control**: Real-time tracking with automatic cleanup
-- 🔧 **Reduced Maintenance**: AWS-managed infrastructure and platform updates
-- 📊 **Actionable Insights**: Comprehensive analytics and performance metrics
-
-### **Strategic Business Advantages:**
-- 🌍 **Global Scalability**: Multi-region deployment with consistent performance
-- 🏢 **Enterprise Readiness**: Professional features and enterprise-grade security
-- 🔄 **Future-Proof Architecture**: Continuous AWS innovation and feature updates
-- 🤝 **Community-Driven Ecosystem**: Shared templates, best practices, and collaboration
-
-### **Recommended Migration Path:**
-
-1. **📚 Learn and Explore**: Study samples and documentation in this repository
-2. **🧪 Experiment and Test**: Create pilot workshops using Workshop Studio format
-3. **🔄 Migrate Strategically**: Convert existing Hugo workshops using automated tools
-4. **⚡ Enhance and Optimize**: Leverage advanced Workshop Studio features
-5. **🤝 Share and Collaborate**: Contribute to the community ecosystem
-
-### **Success Metrics and KPIs:**
-- **Development Efficiency**: 70% reduction in workshop creation time
-- **Cost Optimization**: 60% improvement in resource cost management
-- **Participant Satisfaction**: 40% increase in workshop completion rates
-- **Maintenance Overhead**: 80% reduction in ongoing maintenance requirements
+Once development is complete:
+- **Submit for review** through Workshop Studio
+- **Create workshop events** for participants
+- **Configure event settings** (duration, capacity, regions)
+- **Launch and monitor** workshop sessions
 
 ---
 
-## 📧 Contact and Support
+## 🔐 AWS Sample Code Publishing
 
-**🚀 Ready to revolutionize your workshop development experience?**
+*Complete guide based on "How to publish sample code to the aws sample.docx"*
 
-- **📧 Email**: khavan.work@gmail.com
-- **🐙 GitHub**: [Workshop Studio Repository](https://github.com/vanhoangkha/workshop-studio)
-- **💬 Discussions**: Repository discussions for community support
-- **📋 Issues**: GitHub Issues for bug reports and feature requests
+### 1. 🏢 Access GitLab Internal
 
-**⭐ If this repository accelerates your workshop development journey, please star it to support the community!**
+**Prerequisites:**
+- **mwinit** installed on local machine
+- Access to AWS internal systems
+
+**Setup Process:**
+
+#### 1.1 Create GitLab Project
+```
+🌐 https://gitlab.aws.dev/
+```
+
+#### 1.2 Setup Authentication
+```bash
+# Initialize midway authentication
+mwinit -o -k ~/.ssh/id_ecdsa.pub
+
+# Configure SSH for GitLab
+echo "Host ssh.gitlab.aws.dev
+User git
+IdentityFile ~/.ssh/id_ecdsa
+CertificateFile ~/.ssh/id_ecdsa-cert.pub
+IdentitiesOnly yes
+ProxyCommand none
+ProxyJump none" >> ~/.ssh/config
+
+# Test SSH connection
+ssh ssh.gitlab.aws.dev
+```
+
+#### 1.3 Development Workflow
+- Clone the project
+- Develop your code
+- Commit and push changes
+- **Note:** May require CodeDefender setup for security scanning
 
 ---
 
-*📝 Comprehensive guide to modern AWS workshop development*  
-*🔄 Evolution from legacy Hugo to cutting-edge Workshop Studio*  
-*💡 Production-ready templates, tools, and real-world examples*  
-*🌟 Built by the community, for the community*
+### 2. 🛠️ Setup Internal Repository
 
-**© 2024 AWS Workshop Studio Collection - Empowering Modern Workshop Development**
+#### 2.1 Create New Repository in GitLab
+Access: **https://gitlab.aws.dev/**
+
+#### 2.2 Setup SSH Connection Requirements
+
+**⚠️ Important Requirements:**
+- **Use machine with midway authentication** (NOT an EC2 instance)
+- **Setup PGP key** for commit signing
+- **Configure CodeDefender** for pre-commit security scanning
+
+#### 2.3 Required Repository Files
+
+**Essential Files to Add:**
+```
+repository/
+├── LICENSE                    # Open source license
+├── CODE_OF_CONDUCT.md        # Community guidelines
+├── CONTRIBUTING.md           # Contribution guidelines
+├── README.md                 # Project documentation
+└── .gitignore               # Git ignore patterns
+```
+
+#### 2.4 Code Security Scanners
+
+**Required Security Tools:**
+
+**For CDK Projects:**
+```bash
+# Install and configure cdk_nag
+npm install cdk-nag
+```
+
+**For CloudFormation:**
+```bash
+# Install cfn_nag and cfn_lint
+gem install cfn-nag
+pip install cfn-lint
+```
+
+**Additional Security Scanning:**
+- **ASH (Amazon Security Hub)** - Project-wide security scanning
+- **Prolinter** - Generate comprehensive security reports
+- **Save all scanning reports** for compliance
+
+#### 2.5 Two-Peer Code Review Process
+
+**Mandatory Review Process:**
+1. **Create pull request** with detailed description
+2. **Request two peer reviewers** (minimum requirement)
+3. **Address all feedback** before approval
+4. **Ensure all security scans pass**
+
+---
+
+### 3. 👨‍💼 SA (Solutions Architect) - Simple Release Process
+
+**For AWS Solutions Architects and Developer Advocates**
+
+#### Qualification Criteria for Simple Releases:
+✅ **SAMPLE CODE Qualifies:**
+- Small amounts of code for documentation, blogs, or workshops
+- Code that customers need to adapt/modify for production use
+- Demonstrates AWS concepts or workflows
+
+❌ **NOT SAMPLE CODE:**
+- Broad utility or library for AWS services
+- Code extending/modifying AWS API/SDK models
+- Production-ready applications without modification needs
+
+#### Simple Release Ticket Process:
+```
+📋 Sample Ticket: https://t.corp.amazon.com/D128468755/overview
+🎫 Create Ticket: https://t.corp.amazon.com/create/templates/0dc2e94d-5225-4f08-b512-a2cd5b0fdd77
+📚 Documentation: https://w.amazon.com/bin/view/Open_Source/Simple_Releases
+```
+
+**Approved GitHub Organizations:**
+- `aws-samples`
+- `aws-developer-center` 
+- `build-on-aws`
+
+---
+
+### 4. 👨‍💼 TAM (Technical Account Manager) - Standard OSS Release
+
+**For Complex Projects Requiring Full OSS Review**
+
+#### Standard OSS Release Process:
+```
+🎫 Template Ticket: https://t.corp.amazon.com/create/templates/0dc2e94d-5225-4f08-b512-a2cd5b0fdd77
+📋 Example Ticket: https://t.corp.amazon.com/D145394290 (developing-on-amazon-ecs-with-cloudformation)
+```
+
+**When to Use Standard OSS:**
+- Complex applications or frameworks
+- Libraries for AWS service interaction
+- Production-ready code requiring minimal modification
+- Code extending AWS APIs or SDKs
+
+---
+
+### 5. 🐙 Create Private Repository in aws-samples
+
+**GitHub Organization:** https://github.com/aws-samples
+
+#### 5.1 Link GitHub Account to Amazon Profile
+```
+🔗 https://puzzleglue.open-source.a2z.com/github/auth
+```
+
+#### 5.2 Create Team Bindle
+```
+🏢 https://bindles.amazon.com/
+```
+
+#### 5.3 Join aws-samples GitHub Organization
+
+**Self-Invite Process:**
+```bash
+# Use OpenSourcerer tool
+python3 open-sourcerer.pyz github-self-invite
+```
+
+**Follow-up Steps:**
+1. **Accept invitation** from GitHub email
+2. **Follow detailed walkthrough:** https://w.amazon.com/bin/view/Open_Source/GitHub/OpenSourcerer/Walkthroughs/GitHub/SelfInvite/
+
+#### 5.4 Create GitHub Team
+
+Create a dedicated team under aws-samples organization to manage your open-source project.
+
+#### 5.5 Create New Repository
+
+**Repository Creation Portal:**
+```
+🏗️ https://console.harmony.a2z.com/open-sourcerer/
+```
+
+**Required Information:**
+- **SIM Ticket ID** (from approved code review)
+- **Bindle ID** (from team bindle creation)
+
+#### 5.6 Clone and Populate Repository
+
+**Setup Personal Access Token:**
+1. GitHub → Settings → Developer Settings → Personal Access Token
+2. Generate token with appropriate permissions
+
+**Clone Repository:**
+```bash
+# Clone with personal access token
+git clone https://GITHUB_USER_ID:PERSONAL_ACCESS_TOKEN@github.com/aws-samples/SAMPLE_PROJECT.git
+
+# Add your source code
+cp -r your-project/* SAMPLE_PROJECT/
+cd SAMPLE_PROJECT
+
+# Commit and push
+git add .
+git commit -m "Initial project setup"
+git push origin main
+```
+
+#### 5.7 Final Review and Public Release
+
+**Pre-Publication Checklist:**
+- [ ] **Code review completed** - All functionality tested
+- [ ] **README.md comprehensive** - Clear setup and usage instructions
+- [ ] **Commit messages clean** - Professional and descriptive
+- [ ] **Security scans passed** - All vulnerabilities addressed
+- [ ] **Documentation complete** - Architecture diagrams and examples
+
+**Make Repository Public:**
+1. Navigate to GitHub Repository Settings
+2. Change visibility from Private to Public
+3. Confirm public release
+
+**Reference Example:**
+```
+📚 https://github.com/aws-samples/amazon-eks-cicd-codepipeline-java-microservices/
+```
+
+---
+
+### 6. 🔒 Optional Security Content Review
+
+**Additional Security Review (SIM Ticket):**
+```
+🎫 Create SIM Ticket: https://t.corp.amazon.com/create/templates/0dc2e94d-5225-4f08-b512-a2cd5b0fdd77
+📋 Example Review: https://t.corp.amazon.com/D128468755/overview
+```
+
+**When to Request:**
+- High-security impact code
+- Complex infrastructure templates
+- Code handling sensitive data
+- Enterprise-grade applications
+
+---
+
+### 7. 🌐 Repository Visibility Management
+
+**Final Step: Make Repository Public**
+
+After all reviews and approvals:
+1. **Final code review** - Ensure production readiness
+2. **Update documentation** - Complete README and guides
+3. **Change repository visibility** - Private → Public
+4. **Announce release** - Internal and external communication
+
+---
+
+## 🏗️ Repository Structure Standards
+
+Based on both documents, here's the recommended structure:
+
+```
+aws-workshop-project/
+├── README.md                           # Comprehensive project documentation
+├── LICENSE                             # Open source license (required)
+├── CODE_OF_CONDUCT.md                  # Community guidelines (required)
+├── CONTRIBUTING.md                     # Contribution guidelines (required)
+├── .gitignore                          # Git ignore patterns
+├── 📁 workshop/                        # Workshop Studio content
+│   ├── content/                        # Workshop content in Markdown
+│   │   ├── index.md                   # Workshop homepage
+│   │   ├── introduction/              # Workshop introduction
+│   │   ├── modules/                   # Learning modules
+│   │   │   ├── module-1/
+│   │   │   ├── module-2/
+│   │   │   └── module-n/
+│   │   ├── cleanup/                   # Resource cleanup
+│   │   └── conclusion/                # Workshop conclusion
+│   ├── static/                        # Static assets
+│   │   ├── images/
+│   │   ├── diagrams/
+│   │   └── downloads/
+│   └── contentspec.yaml               # Infrastructure specification
+├── 📁 templates/                       # CloudFormation/CDK templates
+│   ├── infrastructure.yaml
+│   ├── security-groups.yaml
+│   └── iam-roles.yaml
+├── 📁 scripts/                         # Automation scripts
+│   ├── setup.sh
+│   ├── validate.sh
+│   ├── cleanup.sh
+│   └── deploy.sh
+├── 📁 src/                            # Source code (if applicable)
+│   ├── lambda/
+│   ├── containers/
+│   └── applications/
+├── 📁 tests/                          # Testing framework
+│   ├── unit/
+│   ├── integration/
+│   └── security/
+└── 📁 docs/                           # Additional documentation
+    ├── architecture.md
+    ├── security.md
+    ├── troubleshooting.md
+    └── api-reference.md
+```
+
+---
+
+## 🔄 Complete Development Workflow
+
+### Phase 1: Planning and Setup
+1. **Define workshop objectives** and target audience
+2. **Create Workshop Studio project** at https://studio.us-east-1.prod.workshops.aws/
+3. **Setup GitLab internal repository** with proper authentication
+4. **Configure security scanning tools** (cdk_nag, cfn_nag, ASH)
+
+### Phase 2: Development
+1. **Write workshop content** in Markdown format
+2. **Develop infrastructure templates** using CloudFormation/CDK
+3. **Create automation scripts** for setup and cleanup
+4. **Implement security best practices** throughout
+
+### Phase 3: Testing and Validation
+1. **Run security scans** and address all findings
+2. **Test workshop end-to-end** in clean AWS account
+3. **Validate infrastructure deployment** and cleanup
+4. **Conduct peer review** with two reviewers minimum
+
+### Phase 4: Publishing Preparation
+1. **Choose publishing pathway** (Simple Release vs Standard OSS)
+2. **Create appropriate tickets** (SIM/OSS release tickets)
+3. **Setup aws-samples repository** with proper permissions
+4. **Complete final documentation** and README
+
+### Phase 5: Publication and Maintenance
+1. **Make repository public** after all approvals
+2. **Monitor workshop usage** and collect feedback
+3. **Maintain and update** content regularly
+4. **Address issues** and community contributions
+
+---
+
+## 🛡️ Security and Compliance Requirements
+
+### Code Scanning Requirements
+
+**For CDK Projects:**
+```bash
+# Install CDK Nag
+npm install cdk-nag
+
+# Add to CDK app
+import { AwsSolutionsChecks } from 'cdk-nag';
+const app = new App();
+AwsSolutionsChecks.check(app);
+```
+
+**For CloudFormation:**
+```bash
+# Install cfn-nag
+gem install cfn-nag
+
+# Scan templates
+cfn_nag_scan --input-path templates/
+
+# Install cfn-lint
+pip install cfn-lint
+
+# Validate templates
+cfn-lint templates/*.yaml
+```
+
+**Amazon Security Hub (ASH):**
+- Project-wide security scanning
+- Compliance with AWS security standards
+- Automated vulnerability detection
+
+### Commit Signing Requirements
+```bash
+# Setup GPG key for commit signing
+gpg --gen-key
+
+# Configure Git to use GPG
+git config --global user.signingkey YOUR_GPG_KEY_ID
+git config --global commit.gpgsign true
+```
+
+### CodeDefender Integration
+- Pre-commit security scanning
+- Automated vulnerability detection
+- Compliance with AWS security policies
+
+---
+
+## 📊 Publishing Pathways Decision Matrix
+
+| **Criteria** | **Simple Release** | **Standard OSS Release** |
+|--------------|-------------------|-------------------------|
+| **Code Type** | Sample/Demo code | Production libraries |
+| **Complexity** | Low to Medium | High |
+| **AWS Integration** | Demonstration | Deep integration |
+| **Modification Required** | Significant | Minimal |
+| **Review Process** | Self-certification | Full OSS review |
+| **Timeline** | 1-2 weeks | 4-8 weeks |
+| **Eligible Roles** | SA, Developer Advocates | All AWS employees |
+| **GitHub Orgs** | aws-samples, build-on-aws | All AWS GitHub orgs |
+
+---
+
+## 🎯 Best Practices Summary
+
+### Workshop Development
+- **Start with clear learning objectives** and measurable outcomes
+- **Design for multiple skill levels** with optional advanced sections
+- **Include comprehensive cleanup procedures** to prevent cost overruns
+- **Test thoroughly** across different AWS accounts and regions
+- **Provide troubleshooting guides** for common issues
+
+### Code Quality
+- **Follow AWS coding standards** and best practices
+- **Implement comprehensive error handling** and validation
+- **Include detailed documentation** and code comments
+- **Use Infrastructure as Code** for reproducible deployments
+- **Implement automated testing** at multiple levels
+
+### Security
+- **Scan all code** with required security tools
+- **Follow least privilege principles** for IAM policies
+- **Implement secure defaults** in all configurations
+- **Document security considerations** and best practices
+- **Regular security updates** and vulnerability patching
+
+### Documentation
+- **Write clear, comprehensive README** files
+- **Include architecture diagrams** and flow charts
+- **Provide step-by-step instructions** with expected outputs
+- **Document prerequisites** and setup requirements
+- **Include troubleshooting sections** for common issues
+
+---
+
+## 📚 Additional Resources
+
+### Official AWS Documentation
+- **[AWS Workshop Studio Documentation](https://docs.aws.amazon.com/workshop-studio/)**
+- **[AWS Samples GitHub Organization](https://github.com/aws-samples)**
+- **[AWS Open Source Guidelines](https://w.amazon.com/bin/view/How-To-Publish-OpenSource-Code/GitHub-Aws-Samples)**
+
+### Internal AWS Resources
+- **[Simple Releases Process](https://w.amazon.com/bin/view/Open_Source/Simple_Releases)**
+- **[OpenSourcerer Walkthrough](https://w.amazon.com/bin/view/Open_Source/GitHub/OpenSourcerer/Walkthroughs/GitHub/SelfInvite/)**
+- **[Publishing SageMaker Notebooks](https://w.amazon.com/bin/view/How-To-Publish-OpenSource-Code/SageMaker-Notebooks)**
+
+### Tools and Utilities
+- **[AWS Workshop Studio Console](https://studio.us-east-1.prod.workshops.aws/)**
+- **[GitLab Internal](https://gitlab.aws.dev/)**
+- **[OpenSourcerer Console](https://console.harmony.a2z.com/open-sourcerer/)**
+- **[Bindles Management](https://bindles.amazon.com/)**
+
+---
+
+## 📞 Support and Contact
+
+### For Workshop Studio Issues
+- **AWS Workshop Studio Support** - Through AWS Support Console
+- **Workshop Studio Documentation** - Official AWS documentation
+
+### For Sample Code Publishing
+- **Open Source Team** - Internal AWS open source support
+- **Security Review Team** - For SIM ticket reviews
+- **GitHub Administration** - For aws-samples organization issues
+
+### Community Resources
+- **AWS Community Forums** - Public community support
+- **AWS Samples Issues** - GitHub issues for specific repositories
+- **AWS Developer Community** - Broader developer ecosystem
+
+---
+
+*📝 This comprehensive guide combines official AWS documentation for Workshop Studio creation and sample code publishing processes.*
+
+*🔄 Last updated: Based on "How to create a workshop?" (13/10/2023) and "How to publish sample code to the aws sample.docx"*
+
+*⚡ For the most current information, always refer to official AWS documentation and internal AWS resources.*
+
+**© 2024 AWS Workshop Studio & Sample Code Publishing Guide - Complete Implementation Reference**
