@@ -86,6 +86,10 @@ Containers provide several advantages:
 
 Now that you understand the basics of Amazon ECS, let's move on to setting up your development environment in the [Prerequisites](../prerequisites/) section.
 
+## Next Steps
+
+Now that you understand the basics of Amazon ECS, let's move on to setting up your development environment in the [Prerequisites](../prerequisites/) section.
+
 ## Additional Resources
 
 - [Amazon ECS Documentation](https://docs.aws.amazon.com/ecs/)
