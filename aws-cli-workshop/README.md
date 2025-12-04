@@ -1,8 +1,8 @@
 # AWS CLI Workshop
 
-**Format:** Hugo Static Site Generator  
-**Level:** Beginner to Intermediate  
-**Duration:** 2-3 hours  
+**Format:** Hugo Static Site Generator
+**Level:** Beginner to Intermediate
+**Duration:** 2-3 hours
 **Status:** Sample/Template
 
 ## Overview

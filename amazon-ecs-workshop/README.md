@@ -1,8 +1,8 @@
 # Amazon ECS Workshop
 
-**Format:** AWS Workshop Studio  
-**Level:** Intermediate  
-**Duration:** 2-3 hours  
+**Format:** AWS Workshop Studio
+**Level:** Intermediate
+**Duration:** 2-3 hours
 **Status:** Production-ready Sample
 
 ## Overview
