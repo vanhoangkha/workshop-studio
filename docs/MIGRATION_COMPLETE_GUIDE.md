@@ -1,6 +1,6 @@
 # Hướng dẫn hoàn chỉnh: Chuyển đổi Hugo sang AWS Workshop Studio
 
-## ✅ Kết quả Migration
+##  Kết quả Migration
 
 Migration từ Hugo workshop `000011-AWSCLI` sang AWS Workshop Studio format đã hoàn thành thành công!
 
@@ -32,7 +32,7 @@ Migration từ Hugo workshop `000011-AWSCLI` sang AWS Workshop Studio format đ�
     └── cleanup.sh           # Automated cleanup
 ```
 
-## 🔄 Các thay đổi chính
+##  Các thay đổi chính
 
 ### 1. Cấu trúc file
 - `_index.md` → `index.md`
@@ -49,45 +49,45 @@ Migration từ Hugo workshop `000011-AWSCLI` sang AWS Workshop Studio format đ�
 - Thêm manual navigation links
 - Clear module progression
 
-## 📝 Hugo Shortcodes đã chuyển đổi
+##  Hugo Shortcodes đã chuyển đổi
 
 | Hugo Shortcode | Workshop Studio Equivalent |
 |----------------|---------------------------|
-| `{{% notice tip %}}` | `> 💡 **Tip**:` |
-| `{{% notice warning %}}` | `> ⚠️ **Warning**:` |
-| `{{% notice info %}}` | `> ℹ️ **Info**:` |
-| `{{% notice note %}}` | `> 📝 **Note**:` |
+| `{{% notice tip %}}` | `>  **Tip**:` |
+| `{{% notice warning %}}` | `> ⚠ **Warning**:` |
+| `{{% notice info %}}` | `> ℹ **Info**:` |
+| `{{% notice note %}}` | `>  **Note**:` |
 | `{{% notice danger %}}` | `> 🚨 **Danger**:` |
 | `{{< highlight bash >}}` | `\`\`\`bash` |
 | `{{% children %}}` | Manual navigation links |
 
-## 🛠️ Script Migration Features
+##  Script Migration Features
 
 ### Tự động chuyển đổi:
-- ✅ Directory structure creation
-- ✅ Content file conversion
-- ✅ Hugo front matter removal
-- ✅ Shortcode conversion
-- ✅ Image path updates
-- ✅ Configuration file creation
-- ✅ README generation
-- ✅ Cleanup script creation
+-  Directory structure creation
+-  Content file conversion
+-  Hugo front matter removal
+-  Shortcode conversion
+-  Image path updates
+-  Configuration file creation
+-  README generation
+-  Cleanup script creation
 
 ### Xử lý edge cases:
-- ✅ Empty source directories
-- ✅ Missing static files
-- ✅ Sample content generation
-- ✅ Error handling and validation
+-  Empty source directories
+-  Missing static files
+-  Sample content generation
+-  Error handling and validation
 
-## 📋 Checklist hoàn thành
+##  Checklist hoàn thành
 
-### ✅ Pre-migration
+###  Pre-migration
 - [x] Backup original Hugo workshop
 - [x] Review Hugo content structure
 - [x] Identify custom shortcodes used
 - [x] List static assets to migrate
 
-### ✅ During migration
+###  During migration
 - [x] Create Workshop Studio directory structure
 - [x] Convert config.toml to workshop-config.json
 - [x] Convert _index.md files to index.md
@@ -96,7 +96,7 @@ Migration từ Hugo workshop `000011-AWSCLI` sang AWS Workshop Studio format đ�
 - [x] Migrate static assets
 - [x] Update internal links
 
-### ✅ Post-migration
+###  Post-migration
 - [x] Test all internal links
 - [x] Verify images display correctly
 - [x] Review content formatting
@@ -104,7 +104,7 @@ Migration từ Hugo workshop `000011-AWSCLI` sang AWS Workshop Studio format đ�
 - [x] Validate workshop-config.json
 - [x] Create README.md
 
-## 🎯 Bước tiếp theo
+##  Bước tiếp theo
 
 ### 1. Customization (Tùy chỉnh nội dung)
 ```bash
@@ -162,7 +162,7 @@ aws configure
 
 Enter your:
 - AWS Access Key ID
-- AWS Secret Access Key  
+- AWS Secret Access Key
 - Default region (e.g., us-east-1)
 - Default output format (json)
 
@@ -240,14 +240,14 @@ aws ec2 describe-instances \
 echo "Deleting CloudFormation stack..."
 aws cloudformation delete-stack --stack-name cli-workshop-setup
 
-echo "✅ Cleanup completed!"
-echo "💡 Please verify in AWS Console that all resources are deleted"
+echo " Cleanup completed!"
+echo " Please verify in AWS Console that all resources are deleted"
 EOF
 
 chmod +x scripts/cleanup.sh
 ```
 
-## 🚀 Testing Workshop
+##  Testing Workshop
 
 ### 1. Content Review
 ```bash
@@ -270,7 +270,7 @@ grep -r "\[.*\](.*)" content/ | grep -v "http"
 grep -r "!\[.*\]" content/
 ```
 
-## 📊 Migration Statistics
+##  Migration Statistics
 
 - **Files converted**: Hugo _index.md → Workshop Studio index.md
 - **Shortcodes converted**: 5 types (notice, highlight, children, etc.)
@@ -279,15 +279,15 @@ grep -r "!\[.*\]" content/
 - **Documentation**: README.md and migration guides
 - **Scripts**: Automated cleanup script
 
-## 🎉 Kết luận
+##  Kết luận
 
 Workshop `000011-AWSCLI` đã được chuyển đổi thành công từ Hugo format sang AWS Workshop Studio format. Cấu trúc mới:
 
-- ✅ Tuân thủ AWS Workshop Studio standards
-- ✅ Có metadata đầy đủ
-- ✅ Navigation rõ ràng
-- ✅ Cleanup procedures
-- ✅ Extensible structure
+-  Tuân thủ AWS Workshop Studio standards
+-  Có metadata đầy đủ
+-  Navigation rõ ràng
+-  Cleanup procedures
+-  Extensible structure
 
 Workshop sẵn sàng để:
 1. Thêm nội dung chi tiết cho từng module
@@ -295,7 +295,7 @@ Workshop sẵn sàng để:
 3. Test với người dùng thực tế
 4. Deploy lên AWS Workshop Studio platform
 
-## 📚 Tài liệu tham khảo
+##  Tài liệu tham khảo
 
 - [AWS Workshop Studio Documentation](https://docs.aws.amazon.com/workshop-studio/)
 - [AWS CLI User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)
@@ -303,4 +303,4 @@ Workshop sẵn sàng để:
 
 ---
 
-**🎯 Workshop đã sẵn sàng cho AWS Workshop Studio!**
+**Workshop đã sẵn sàng cho AWS Workshop Studio!**

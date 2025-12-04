@@ -1,16 +1,16 @@
 # AWS Workshop Studio - Guideline Tạo Workshop Chi Tiết
 
-## 📋 Tổng quan
+##  Tổng quan
 AWS Workshop Studio là nền tảng chính thức của AWS để tạo, chia sẻ và chạy các workshop tương tác. Guideline này sẽ hướng dẫn bạn tạo workshop chất lượng cao từ A đến Z.
 
-## 🎯 Mục tiêu Workshop
+##  Mục tiêu Workshop
 Trước khi bắt đầu, hãy xác định rõ:
 - **Đối tượng học viên**: Beginner, Intermediate, Advanced
 - **Thời gian dự kiến**: 1-2 giờ, 2-4 giờ, hoặc full-day
 - **Kiến thức cần có**: Prerequisites cụ thể
 - **Kết quả mong đợi**: Học viên sẽ làm được gì sau workshop
 
-## 🏗️ Cấu trúc thư mục chuẩn
+##  Cấu trúc thư mục chuẩn
 
 ```
 workshop-name/
@@ -56,7 +56,7 @@ workshop-name/
     └── cleanup.sh
 ```
 
-## ⚙️ Cấu hình Workshop (workshop-config.json)
+##  Cấu hình Workshop (workshop-config.json)
 
 ### Template cơ bản:
 ```json
@@ -127,7 +127,7 @@ workshop-name/
 }
 ```
 
-## 📝 Viết nội dung Workshop
+##  Viết nội dung Workshop
 
 ### 1. Trang chủ (content/index.md)
 ```markdown
@@ -138,25 +138,25 @@ weight: 10
 
 # Welcome to [Workshop Name]
 
-## 🎯 Workshop Overview
+##  Workshop Overview
 Brief description of what participants will learn and build.
 
 ## 🕐 Duration
 Approximately X hours
 
-## 🎓 Learning Objectives
+##  Learning Objectives
 By the end of this workshop, you will be able to:
 - [ ] Objective 1
 - [ ] Objective 2
 - [ ] Objective 3
 
-## 🏗️ Architecture
+##  Architecture
 ![Architecture Diagram](images/architecture.png)
 
 ## 💰 Cost
 This workshop will cost approximately $X.XX to run.
 
-## 🚀 Let's Get Started!
+##  Let's Get Started!
 Click **Next** to begin with the prerequisites.
 ```
 
@@ -196,23 +196,23 @@ weight: 30
 
 # Prerequisites
 
-## 🔐 AWS Account Requirements
+##  AWS Account Requirements
 - [ ] AWS Account with administrative access
 - [ ] Credit card on file (for potential charges)
 - [ ] Service limits check
 
-## 🛠️ Tools and Software
+##  Tools and Software
 - [ ] AWS CLI v2.x installed and configured
 - [ ] Git installed
 - [ ] Code editor (VS Code recommended)
 - [ ] Docker (if applicable)
 
-## 📚 Knowledge Prerequisites
+##  Knowledge Prerequisites
 - [ ] Basic understanding of AWS core services
 - [ ] Familiarity with command line interface
 - [ ] Basic programming knowledge (if applicable)
 
-## ✅ Validation Steps
+##  Validation Steps
 Run these commands to verify your setup:
 
 ```bash
@@ -240,21 +240,21 @@ weight: 40
 
 # Module 1: [Module Name]
 
-## 🎯 Module Objectives
+##  Module Objectives
 By the end of this module, you will:
 - [ ] Objective 1
 - [ ] Objective 2
 
-## 📋 Overview
+##  Overview
 Brief overview of what will be covered.
 
-## 🏗️ Architecture
+##  Architecture
 What we're building in this module.
 
-## ⏱️ Estimated Time
+## ⏱ Estimated Time
 X minutes
 
-## 🚀 Let's Begin!
+##  Let's Begin!
 ```
 
 ### 5. Step-by-step Instructions
@@ -292,13 +292,13 @@ How to verify the step was completed successfully.
 aws s3 ls | grep my-workshop-bucket
 ```
 
-## 🔍 Troubleshooting
+##  Troubleshooting
 Common issues and solutions:
 
 **Issue**: Error message example
 **Solution**: Step-by-step solution
 
-## ✅ Checkpoint
+##  Checkpoint
 - [ ] Task 1 completed
 - [ ] Task 2 completed
 - [ ] Verification successful
@@ -307,7 +307,7 @@ Common issues and solutions:
 Include relevant screenshots with annotations.
 ```
 
-## 🎨 Best Practices cho Content
+##  Best Practices cho Content
 
 ### 1. Ngôn ngữ và Tone
 - **Rõ ràng và đơn giản**: Tránh thuật ngữ phức tạp
@@ -351,7 +351,7 @@ upload: ./file.txt to s3://your-bucket-name/file.txt
 ![Architecture Diagram](images/architecture.png "Workshop Architecture Overview")
 ```
 
-## 🔧 Templates và CloudFormation
+##  Templates và CloudFormation
 
 ### 1. Infrastructure Template
 ```yaml
@@ -416,40 +416,40 @@ Resources:
                 Resource: !Sub 'arn:aws:s3:::workshop-*/*'
 ```
 
-## 🧪 Testing và Validation
+##  Testing và Validation
 
 ### 1. Pre-workshop Validation Script
 ```bash
 #!/bin/bash
 # scripts/validate-prerequisites.sh
 
-echo "🔍 Validating prerequisites..."
+echo " Validating prerequisites..."
 
 # Check AWS CLI
 if ! command -v aws &> /dev/null; then
-    echo "❌ AWS CLI not found. Please install AWS CLI v2"
+    echo " AWS CLI not found. Please install AWS CLI v2"
     exit 1
 fi
 
 # Check AWS credentials
 if ! aws sts get-caller-identity &> /dev/null; then
-    echo "❌ AWS credentials not configured"
+    echo " AWS credentials not configured"
     exit 1
 fi
 
 # Check required permissions
-echo "✅ AWS CLI configured"
+echo " AWS CLI configured"
 
 # Check other tools
 for tool in git docker; do
     if command -v $tool &> /dev/null; then
-        echo "✅ $tool installed"
+        echo " $tool installed"
     else
-        echo "⚠️  $tool not found (may be optional)"
+        echo "⚠  $tool not found (may be optional)"
     fi
 done
 
-echo "🎉 Prerequisites validation completed!"
+echo " Prerequisites validation completed!"
 ```
 
 ### 2. Module Validation Script
@@ -458,30 +458,30 @@ echo "🎉 Prerequisites validation completed!"
 # scripts/validate-module.sh
 
 MODULE=$1
-echo "🔍 Validating Module $MODULE..."
+echo " Validating Module $MODULE..."
 
 case $MODULE in
     "1")
         # Validate S3 bucket creation
         if aws s3 ls | grep -q "workshop-bucket"; then
-            echo "✅ S3 bucket created successfully"
+            echo " S3 bucket created successfully"
         else
-            echo "❌ S3 bucket not found"
+            echo " S3 bucket not found"
             exit 1
         fi
         ;;
     "2")
         # Validate Lambda function
         if aws lambda get-function --function-name workshop-function &> /dev/null; then
-            echo "✅ Lambda function created successfully"
+            echo " Lambda function created successfully"
         else
-            echo "❌ Lambda function not found"
+            echo " Lambda function not found"
             exit 1
         fi
         ;;
 esac
 
-echo "🎉 Module $MODULE validation completed!"
+echo " Module $MODULE validation completed!"
 ```
 
 ## 🧹 Cleanup Section
@@ -498,7 +498,7 @@ weight: 90
 ## 🚨 Important
 To avoid ongoing charges, please complete all cleanup steps.
 
-## 🗑️ Resources to Delete
+## 🗑 Resources to Delete
 
 ### 1. CloudFormation Stacks
 ```bash
@@ -522,7 +522,7 @@ aws s3 rb s3://your-workshop-bucket
 aws lambda delete-function --function-name workshop-function
 ```
 
-## ✅ Verification
+##  Verification
 Run these commands to verify cleanup:
 
 ```bash
@@ -542,7 +542,7 @@ aws lambda list-functions | grep workshop
 - Set up billing alerts for future
 ```
 
-## 📊 Analytics và Feedback
+##  Analytics và Feedback
 
 ### 1. Feedback Form
 ```markdown
@@ -553,7 +553,7 @@ weight: 100
 
 # Workshop Feedback
 
-## 📝 Please provide your feedback
+##  Please provide your feedback
 
 ### Overall Rating
 - [ ] Excellent (5/5)
@@ -579,7 +579,7 @@ weight: 100
 For questions or support: your.email@example.com
 ```
 
-## 🚀 Publishing và Distribution
+##  Publishing và Distribution
 
 ### 1. Pre-publication Checklist
 - [ ] All content reviewed and tested
@@ -601,7 +601,7 @@ git push origin v1.0.0
 - Create CHANGELOG.md for version tracking
 - Update workshop-config.json version
 
-## 🔄 Maintenance và Updates
+##  Maintenance và Updates
 
 ### 1. Regular Reviews
 - **Monthly**: Check for AWS service updates
@@ -625,7 +625,7 @@ git push origin v1.0.0
 }
 ```
 
-## 📚 Resources và Tools
+##  Resources và Tools
 
 ### 1. Useful Tools
 - **Markdown Editors**: Typora, Mark Text
@@ -645,7 +645,7 @@ git push origin v1.0.0
 
 ---
 
-## 🎯 Kết luận
+##  Kết luận
 
 Tạo một workshop chất lượng cao đòi hỏi:
 - **Preparation**: Lên kế hoạch chi tiết
@@ -655,4 +655,4 @@ Tạo một workshop chất lượng cao đòi hỏi:
 
 Hãy luôn đặt mình vào vị trí của học viên và tự hỏi: "Liệu tôi có thể hoàn thành workshop này một cách dễ dàng không?"
 
-**Good luck với workshop của bạn! 🚀**
+**Good luck với workshop của bạn!**

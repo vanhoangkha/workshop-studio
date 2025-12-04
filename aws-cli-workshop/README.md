@@ -1,19 +1,19 @@
-# 🚀 AWS CLI Workshop (Hugo Format - Sample)
+#  AWS CLI Workshop (Hugo Format - Sample)
 
 Đây là workshop mẫu sử dụng **Hugo static site generator** - định dạng workshop truyền thống trước khi AWS Workshop Studio ra đời.
 
-## 📋 Tổng quan Workshop
+##  Tổng quan Workshop
 
 Workshop này minh họa cách tạo workshop AWS sử dụng Hugo framework, cho phép tạo static website với nội dung workshop được tổ chức theo cấu trúc thư mục và markdown files.
 
-### 🎯 Mục đích của Workshop mẫu này
+###  Mục đích của Workshop mẫu này
 
-- ✅ **Minh họa Hugo Workshop Structure**: Cấu trúc thư mục và file organization
-- ✅ **So sánh với AWS Workshop Studio**: Hiểu sự khác biệt giữa 2 format
-- ✅ **Migration Reference**: Làm cơ sở cho việc chuyển đổi sang Workshop Studio
-- ✅ **Best Practices**: Học cách tổ chức nội dung workshop hiệu quả
+-  **Minh họa Hugo Workshop Structure**: Cấu trúc thư mục và file organization
+-  **So sánh với AWS Workshop Studio**: Hiểu sự khác biệt giữa 2 format
+-  **Migration Reference**: Làm cơ sở cho việc chuyển đổi sang Workshop Studio
+-  **Best Practices**: Học cách tổ chức nội dung workshop hiệu quả
 
-### 📊 Thông tin Workshop
+###  Thông tin Workshop
 
 | **Thuộc tính** | **Chi tiết** |
 |----------------|--------------|
@@ -23,7 +23,7 @@ Workshop này minh họa cách tạo workshop AWS sử dụng Hugo framework, ch
 | **Thời gian** | 2-3 giờ |
 | **Trạng thái** | Sample/Template |
 
-## 🏗️ Cấu trúc Hugo Workshop
+##  Cấu trúc Hugo Workshop
 
 ### Cấu trúc thư mục Hugo:
 ```
@@ -60,21 +60,21 @@ aws-cli-workshop/ (Hugo Format)
 
 ### Đặc điểm Hugo Workshop:
 
-#### ✅ **Ưu điểm:**
+####  **Ưu điểm:**
 - **Static Site**: Nhanh, bảo mật, dễ host
 - **Markdown Support**: Viết nội dung dễ dàng
 - **Theme System**: Customizable appearance
 - **Git-friendly**: Version control tốt
 - **Offline Access**: Có thể chạy local
 
-#### ❌ **Hạn chế:**
+####  **Hạn chế:**
 - **Setup phức tạp**: Cần cài Hugo, theme, config
 - **Không có tích hợp AWS**: Phải tự setup infrastructure
 - **Không có auto-cleanup**: Phải tự quản lý resources
 - **Không có cost tracking**: Không theo dõi chi phí tự động
 - **Limited interactivity**: Ít tính năng tương tác
 
-## 🔧 Cách chạy Hugo Workshop
+##  Cách chạy Hugo Workshop
 
 ### Prerequisites:
 ```bash
@@ -109,7 +109,7 @@ hugo
 # Deploy static files từ thư mục public/
 ```
 
-## 📝 Hugo Content Structure
+##  Hugo Content Structure
 
 ### Frontmatter Example:
 ```yaml
@@ -141,7 +141,7 @@ Windows instructions
 {{< /tabs >}}
 ```
 
-## 🔄 Migration từ Hugo sang AWS Workshop Studio
+##  Migration từ Hugo sang AWS Workshop Studio
 
 Quá trình chuyển đổi workshop này sang AWS Workshop Studio format:
 
@@ -196,7 +196,7 @@ theme = "workshop-theme"
 | **AWS Integration** | None | Deep integration |
 | **Maintenance** | High | Low |
 
-## 🛠️ Tools và Scripts
+##  Tools và Scripts
 
 ### Migration Script:
 ```bash
@@ -213,7 +213,7 @@ hugo server --watch --buildDrafts
 hugo --environment production
 ```
 
-## 📚 Learning Resources
+##  Learning Resources
 
 ### Hugo Documentation:
 - [Hugo Official Docs](https://gohugo.io/documentation/)
@@ -224,7 +224,7 @@ hugo --environment production
 - [Hugo to Workshop Studio Migration Guide](../HUGO_TO_WORKSHOP_STUDIO_MIGRATION.md)
 - [AWS Workshop Studio Guidelines](../AWS_WORKSHOP_STUDIO_GUIDELINE.md)
 
-## 🎯 Kết luận
+##  Kết luận
 
 Workshop Hugo này serve như một **reference implementation** để:
 
@@ -237,5 +237,5 @@ Workshop Hugo này serve như một **reference implementation** để:
 
 ---
 
-📝 *Workshop mẫu này được tạo để minh họa Hugo format và làm cơ sở cho migration*
-🔄 *Xem Amazon ECS Workshop để thấy AWS Workshop Studio format*
+ *Workshop mẫu này được tạo để minh họa Hugo format và làm cơ sở cho migration*
+ *Xem Amazon ECS Workshop để thấy AWS Workshop Studio format*

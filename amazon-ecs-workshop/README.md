@@ -2,18 +2,18 @@
 
 Đây là workshop mẫu sử dụng **AWS Workshop Studio format** - định dạng workshop hiện đại được AWS khuyến nghị cho tất cả workshops mới.
 
-## 📋 Tổng quan Workshop
+##  Tổng quan Workshop
 
 Workshop này minh họa cách tạo workshop sử dụng AWS Workshop Studio format, với tích hợp sâu vào AWS ecosystem và các tính năng tự động hóa tiên tiến.
 
-### 🎯 Mục đích của Workshop mẫu này
+###  Mục đích của Workshop mẫu này
 
-- ✅ **Minh họa AWS Workshop Studio Structure**: Cấu trúc và organization chuẩn
-- ✅ **Showcase Modern Features**: Tính năng tự động và AWS integration
-- ✅ **Best Practices Demo**: Cách implement workshop chuyên nghiệp
-- ✅ **Template Reference**: Làm template cho workshops mới
+-  **Minh họa AWS Workshop Studio Structure**: Cấu trúc và organization chuẩn
+-  **Showcase Modern Features**: Tính năng tự động và AWS integration
+-  **Best Practices Demo**: Cách implement workshop chuyên nghiệp
+-  **Template Reference**: Làm template cho workshops mới
 
-### 📊 Thông tin Workshop
+###  Thông tin Workshop
 
 | **Thuộc tính** | **Chi tiết** |
 |----------------|--------------|
@@ -24,7 +24,7 @@ Workshop này minh họa cách tạo workshop sử dụng AWS Workshop Studio fo
 | **Chi phí** | $5-10 USD (auto-tracked) |
 | **Trạng thái** | Production-ready Sample |
 
-## 🏗️ Cấu trúc AWS Workshop Studio
+##  Cấu trúc AWS Workshop Studio
 
 ### Cấu trúc thư mục Workshop Studio:
 ```
@@ -64,7 +64,7 @@ amazon-ecs-workshop/ (Workshop Studio Format)
 
 ### Đặc điểm AWS Workshop Studio:
 
-#### ✅ **Ưu điểm vượt trội:**
+####  **Ưu điểm vượt trội:**
 - **AWS Native Integration**: Tích hợp sâu với AWS services
 - **Auto Infrastructure**: Tự động provision resources
 - **Cost Tracking**: Theo dõi chi phí real-time
@@ -74,14 +74,14 @@ amazon-ecs-workshop/ (Workshop Studio Format)
 - **Event Engine Integration**: Seamless event management
 - **Analytics**: Built-in usage analytics
 
-#### 🔧 **Advanced Features:**
+####  **Advanced Features:**
 - **CloudFormation Integration**: Infrastructure as Code
 - **IAM Role Management**: Automatic permission setup
 - **Resource Validation**: Pre/post checks
 - **Progress Tracking**: User progress monitoring
 - **Feedback Collection**: Built-in feedback system
 
-## ⚙️ Workshop Configuration (workshop-config.json)
+##  Workshop Configuration (workshop-config.json)
 
 ### Complete Configuration Example:
 ```json
@@ -149,7 +149,7 @@ amazon-ecs-workshop/ (Workshop Studio Format)
 }
 ```
 
-## 🚀 AWS Workshop Studio Features
+##  AWS Workshop Studio Features
 
 ### 1. **Automatic Infrastructure Provisioning**
 ```yaml
@@ -162,7 +162,7 @@ Resources:
     Type: AWS::ECS::Cluster
     Properties:
       ClusterName: !Sub '${AWS::StackName}-cluster'
-      
+
   VPC:
     Type: AWS::EC2::VPC
     Properties:
@@ -198,7 +198,7 @@ Solution content here
 #!/bin/bash
 # scripts/validate-module.sh
 
-echo "🔍 Validating ECS Service deployment..."
+echo " Validating ECS Service deployment..."
 
 # Check if ECS service is running
 SERVICE_STATUS=$(aws ecs describe-services \
@@ -208,9 +208,9 @@ SERVICE_STATUS=$(aws ecs describe-services \
   --output text)
 
 if [ "$SERVICE_STATUS" = "ACTIVE" ]; then
-    echo "✅ ECS Service is active"
+    echo " ECS Service is active"
 else
-    echo "❌ ECS Service validation failed"
+    echo " ECS Service validation failed"
     exit 1
 fi
 ```
@@ -235,10 +235,10 @@ aws ecs delete-service --cluster workshop-cluster --service workshop-service
 # Delete CloudFormation stack
 aws cloudformation delete-stack --stack-name workshop-infrastructure
 
-echo "✅ Cleanup completed"
+echo " Cleanup completed"
 ```
 
-## 🔄 Chạy AWS Workshop Studio Workshop
+##  Chạy AWS Workshop Studio Workshop
 
 ### Option 1: AWS Workshop Studio Platform
 ```bash
@@ -273,7 +273,7 @@ python3 -m http.server 8080
 # - Automatic cleanup after event
 ```
 
-## 📊 Monitoring và Analytics
+##  Monitoring và Analytics
 
 ### Built-in Analytics:
 - **Participant Progress**: Real-time tracking
@@ -303,7 +303,7 @@ python3 -m http.server 8080
 | **Participant Management** | None | Full management |
 | **Feedback Collection** | Manual | Automated |
 
-## 🛡️ Security và Best Practices
+## 🛡 Security và Best Practices
 
 ### Security Features:
 ```json
@@ -325,7 +325,7 @@ python3 -m http.server 8080
 - **Monitoring**: CloudWatch integration
 - **Backup**: Automatic snapshots where applicable
 
-## 📈 Advanced Workshop Studio Features
+##  Advanced Workshop Studio Features
 
 ### 1. **Multi-language Support**
 ```json
@@ -358,7 +358,7 @@ python3 -m http.server 8080
 }
 ```
 
-## 🎯 Migration từ Hugo
+##  Migration từ Hugo
 
 Nếu bạn có Hugo workshop, migration process:
 
@@ -381,7 +381,7 @@ Nếu bạn có Hugo workshop, migration process:
 - Configure cost tracking
 - Setup auto-cleanup
 
-## 📚 Resources và Documentation
+##  Resources và Documentation
 
 ### AWS Workshop Studio Resources:
 - [AWS Workshop Studio Documentation](https://docs.aws.amazon.com/workshop-studio/)
@@ -393,23 +393,23 @@ Nếu bạn có Hugo workshop, migration process:
 - [Validation Tools](https://github.com/aws/workshop-validation-tools)
 - [Template Library](https://github.com/aws/workshop-templates)
 
-## 🎯 Kết luận
+##  Kết luận
 
 AWS Workshop Studio format mang lại:
 
-### ✅ **Immediate Benefits:**
+###  **Immediate Benefits:**
 - Faster workshop development
 - Automatic AWS integration
 - Built-in cost management
 - Professional presentation
 
-### 🚀 **Long-term Advantages:**
+###  **Long-term Advantages:**
 - Scalable workshop delivery
 - Rich analytics and insights
 - Community sharing capabilities
 - Continuous improvement through feedback
 
-### 📈 **Business Impact:**
+###  **Business Impact:**
 - Reduced operational overhead
 - Improved participant experience
 - Better cost control
@@ -419,6 +419,6 @@ AWS Workshop Studio format mang lại:
 
 ---
 
-📝 *Workshop mẫu này demonstrate AWS Workshop Studio format và best practices*
-🔄 *So sánh với AWS CLI Workshop để thấy sự khác biệt với Hugo format*
-🚀 *Ready for production deployment on AWS Workshop Studio platform*
+ *Workshop mẫu này demonstrate AWS Workshop Studio format và best practices*
+ *So sánh với AWS CLI Workshop để thấy sự khác biệt với Hugo format*
+ *Ready for production deployment on AWS Workshop Studio platform*

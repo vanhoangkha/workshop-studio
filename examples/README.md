@@ -1,10 +1,10 @@
-# 🎯 AWS Workshop Studio Examples Collection
+#  AWS Workshop Studio Examples Collection
 
 This directory contains comprehensive, production-ready examples demonstrating best practices for AWS Workshop Studio development. Each example is a complete, working workshop that you can use as a template or learning resource.
 
-## 📚 Available Examples
+##  Available Examples
 
-### 1. 🚀 **Complete Workshop Example** - Serverless Web Application
+### 1.  **Complete Workshop Example** - Serverless Web Application
 **Path**: `complete-workshop-example/`
 
 A comprehensive serverless web application workshop demonstrating:
@@ -41,7 +41,7 @@ A security-focused workshop demonstrating:
 
 **Perfect for**: Security and compliance workshops
 
-### 4. 📊 **Data Analytics Workshop** - Big Data Processing
+### 4.  **Data Analytics Workshop** - Big Data Processing
 **Path**: `data-analytics-workshop-example/`
 
 A data analytics workshop covering:
@@ -65,7 +65,7 @@ An enterprise-grade workshop demonstrating:
 
 **Perfect for**: Enterprise and large-scale deployments
 
-## 🎯 How to Use These Examples
+##  How to Use These Examples
 
 ### Option 1: Direct Deployment
 ```bash
@@ -110,7 +110,7 @@ vim content/index.md
 vim templates/main-infrastructure.yaml
 ```
 
-## 📋 Example Comparison Matrix
+##  Example Comparison Matrix
 
 | Feature | Complete | AI/ML | Security | Data Analytics | Enterprise |
 |---------|----------|-------|----------|----------------|------------|
@@ -118,41 +118,41 @@ vim templates/main-infrastructure.yaml
 | **Duration** | 3-4 hours | 4-6 hours | 2-3 hours | 4-5 hours | 6-8 hours |
 | **Cost** | $12-15 | $25-40 | $8-12 | $30-50 | $50-100 |
 | **Services** | 8+ | 12+ | 10+ | 15+ | 20+ |
-| **Automation** | ✅ Full | ✅ Full | ✅ Full | ✅ Full | ✅ Full |
-| **Testing** | ✅ Complete | ✅ Complete | ✅ Complete | ✅ Complete | ✅ Complete |
-| **Monitoring** | ✅ Basic | ✅ Advanced | ✅ Security | ✅ Analytics | ✅ Enterprise |
+| **Automation** |  Full |  Full |  Full |  Full |  Full |
+| **Testing** |  Complete |  Complete |  Complete |  Complete |  Complete |
+| **Monitoring** |  Basic |  Advanced |  Security |  Analytics |  Enterprise |
 
-## 🛠️ Common Features Across All Examples
+##  Common Features Across All Examples
 
-### ✅ **Workshop Studio Best Practices**
+###  **Workshop Studio Best Practices**
 - **Comprehensive workshop-config.json** with all required fields
 - **Structured content** with clear learning objectives
 - **Interactive elements** and progress tracking
 - **Cost estimation** and real-time tracking
 - **Multi-region support** and deployment flexibility
 
-### ✅ **Infrastructure as Code**
+###  **Infrastructure as Code**
 - **CloudFormation templates** for all resources
 - **Nested stacks** for complex architectures
 - **Parameter validation** and error handling
 - **Resource tagging** and organization
 - **Automatic cleanup** mechanisms
 
-### ✅ **Automation and Testing**
+###  **Automation and Testing**
 - **Prerequisites validation** scripts
 - **One-click deployment** automation
 - **Comprehensive testing** (unit, integration, E2E)
 - **Monitoring and alerting** setup
 - **Cleanup verification** scripts
 
-### ✅ **Documentation and Support**
+###  **Documentation and Support**
 - **Detailed README** files
-- **Step-by-step instructions** 
+- **Step-by-step instructions**
 - **Troubleshooting guides**
 - **Architecture diagrams**
 - **Code comments** and explanations
 
-## 🚀 Getting Started Guide
+##  Getting Started Guide
 
 ### Step 1: Choose Your Example
 ```bash
@@ -207,7 +207,7 @@ vim templates/main-infrastructure.yaml
 ./scripts/deploy-workshop.sh
 ```
 
-## 📊 Example Metrics and Analytics
+##  Example Metrics and Analytics
 
 ### Usage Statistics
 - **Total Downloads**: 10,000+ per month
@@ -217,7 +217,7 @@ vim templates/main-infrastructure.yaml
 
 ### Popular Examples
 1. **Complete Workshop** - 40% of usage
-2. **AI/ML Workshop** - 25% of usage  
+2. **AI/ML Workshop** - 25% of usage
 3. **Security Workshop** - 20% of usage
 4. **Data Analytics** - 10% of usage
 5. **Enterprise** - 5% of usage
@@ -294,13 +294,13 @@ git push origin feature/my-new-example
 
 ---
 
-## 🎉 Ready to Build Amazing Workshops?
+##  Ready to Build Amazing Workshops?
 
 Choose an example that matches your needs and start building! Each example is designed to be:
 
 - **Production-ready** - Deploy immediately or use as foundation
-- **Educational** - Learn best practices and modern patterns  
+- **Educational** - Learn best practices and modern patterns
 - **Customizable** - Adapt to your specific requirements
 - **Scalable** - Handle workshops from 10 to 1000+ participants
 
-**Happy workshop building! 🚀**
+**Happy workshop building! **

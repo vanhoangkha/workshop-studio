@@ -1,6 +1,6 @@
-# 🚀 AWS WORKSHOP STUDIO DEVELOPMENT GUIDE
+#  AWS WORKSHOP STUDIO DEVELOPMENT GUIDE
 
-## 📋 Table of Contents
+##  Table of Contents
 1. [AWS Workshop Studio Overview](#1-aws-workshop-studio-overview)
 2. [Development Environment Setup](#2-development-environment-setup)
 3. [Workshop Design and Planning](#3-workshop-design-and-planning)
@@ -20,14 +20,14 @@
 
 AWS Workshop Studio is AWS's modern platform for creating, managing, and deploying interactive workshops. Unlike traditional Hugo format, Workshop Studio provides:
 
-**🎯 Key Features:**
+**Key Features:**
 - **Automatic Infrastructure Management**: Auto-provisioning and cleanup
 - **Cost Tracking**: Real-time cost monitoring
 - **Interactive Elements**: Rich UI components
 - **Analytics Dashboard**: Detailed participant insights
 - **Multi-region Support**: Deploy across AWS regions
 
-**📊 Comparison with Hugo Format:**
+**Comparison with Hugo Format:**
 
 | Criteria | Hugo Format | AWS Workshop Studio |
 |----------|-------------|-------------------|
@@ -70,7 +70,7 @@ AWS Workshop Studio Architecture
 
 ### 2.1 Prerequisites
 
-**🔧 Required Tools:**
+**Required Tools:**
 ```bash
 # AWS CLI v2
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -118,7 +118,7 @@ cd workshop-studio
 
 ### 2.2 Development Environment
 
-**🛠️ VS Code Extensions:**
+**VS Code Extensions:**
 ```json
 {
   "recommendations": [
@@ -132,7 +132,7 @@ cd workshop-studio
 }
 ```
 
-**⚙️ Project Structure Template:**
+**Project Structure Template:**
 ```
 my-workshop/
 ├── .vscode/                    # VS Code configuration
@@ -174,7 +174,7 @@ my-workshop/
 
 ### 3.1 Workshop Planning Framework
 
-**🎯 Define Learning Objectives:**
+**Define Learning Objectives:**
 ```markdown
 ## Learning Objectives Template
 
@@ -223,7 +223,7 @@ my-workshop/
 
 ### 3.2 Content Architecture Design
 
-**📚 Module Structure Planning:**
+**Module Structure Planning:**
 ```
 Workshop Flow Design
 ┌─────────────────────────────────────────────────────────────┐
@@ -314,32 +314,32 @@ This is the core file of AWS Workshop Studio:
   "duration": "2-3 hours",
   "language": "en",
   "tags": ["containers", "ecs", "docker", "microservices", "aws"],
-  
+
   "cost_estimate": {
     "currency": "USD",
     "amount": 8.50,
     "description": "Estimated cost for 3-hour workshop including EC2, ECS, and supporting services"
   },
-  
+
   "auto_destroy": true,
   "auto_destroy_timeout": 240,
-  
+
   "services": [
     "Amazon ECS",
-    "Amazon ECR", 
+    "Amazon ECR",
     "Amazon VPC",
     "Application Load Balancer",
     "AWS CloudFormation",
     "Amazon CloudWatch"
   ],
-  
+
   "regions": [
     "us-east-1",
-    "us-west-2", 
+    "us-west-2",
     "eu-west-1",
     "ap-southeast-1"
   ],
-  
+
   "infrastructure": {
     "cloudformation_template": "templates/infrastructure.yaml",
     "parameters": {
@@ -348,13 +348,13 @@ This is the core file of AWS Workshop Studio:
       "KeyPairName": "workshop-keypair"
     }
   },
-  
+
   "validation": {
     "pre_workshop": "scripts/validate-prerequisites.sh",
     "post_module": "scripts/validate-module.sh",
     "cleanup_verification": "scripts/verify-cleanup.sh"
   },
-  
+
   "features": {
     "progress_tracking": true,
     "cost_tracking": true,
@@ -362,7 +362,7 @@ This is the core file of AWS Workshop Studio:
     "analytics": true,
     "multi_language": false
   },
-  
+
   "support": {
     "documentation_url": "https://github.com/your-org/ecs-workshop",
     "issues_url": "https://github.com/your-org/ecs-workshop/issues",
@@ -373,7 +373,7 @@ This is the core file of AWS Workshop Studio:
 
 ### 4.2 Content Structure Setup
 
-**📝 Homepage (content/index.md):**
+**Homepage (content/index.md):**
 ```markdown
 ---
 title: "Amazon ECS Container Workshop"
@@ -384,7 +384,7 @@ description: "Learn containerization and microservices with Amazon ECS"
 
 ![ECS Workshop Architecture](../static/images/ecs-architecture-overview.png)
 
-## 🎯 Workshop Overview
+##  Workshop Overview
 
 Welcome to the Amazon ECS Container Workshop! In this hands-on session, you'll learn how to:
 
@@ -394,7 +394,7 @@ Welcome to the Amazon ECS Container Workshop! In this hands-on session, you'll l
 - Implement monitoring and logging best practices
 - Optimize container performance and costs
 
-## 🏗️ Architecture
+##  Architecture
 
 You'll build a complete microservices architecture:
 
@@ -416,26 +416,26 @@ You'll build a complete microservices architecture:
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## ⏱️ Duration
+## ⏱ Duration
 **Estimated Time:** 2-3 hours
 
 ## 💰 Cost
 **Estimated Cost:** $8.50 USD (automatically tracked)
 
-## 🎓 Prerequisites
+##  Prerequisites
 - Basic AWS Console familiarity
 - Understanding of containerization concepts
 - Command line experience
 
-## 🚀 Ready to Start?
+##  Ready to Start?
 
 Click **Next** to begin with the prerequisites setup!
 
 ---
-**💡 Tip:** This workshop uses automatic resource cleanup to prevent unexpected charges.
+**Tip:** This workshop uses automatic resource cleanup to prevent unexpected charges.
 ```
 
-**📋 Prerequisites (content/prerequisites/index.md):**
+**Prerequisites (content/prerequisites/index.md):**
 ```markdown
 ---
 title: "Prerequisites & Setup"
@@ -444,7 +444,7 @@ weight: 10
 
 # Prerequisites & Setup
 
-## 🔧 Required Tools
+##  Required Tools
 
 ### 1. AWS CLI v2
 ```bash
@@ -475,20 +475,20 @@ docker --version
 
 ### 3. AWS Account Requirements
 
-✅ **Account Permissions:**
+ **Account Permissions:**
 - EC2 full access
-- ECS full access  
+- ECS full access
 - ECR full access
 - VPC management
 - IAM role creation
 - CloudFormation access
 
-✅ **Service Limits:**
+ **Service Limits:**
 - EC2 instances: Minimum 2 t3.micro
 - VPC: 1 additional VPC
 - ECS clusters: 1 cluster
 
-## 🔍 Environment Validation
+##  Environment Validation
 
 Run this validation script to ensure your environment is ready:
 
@@ -496,34 +496,34 @@ Run this validation script to ensure your environment is ready:
 #!/bin/bash
 # validate-environment.sh
 
-echo "🔍 Validating AWS Workshop Environment..."
+echo " Validating AWS Workshop Environment..."
 
 # Check AWS CLI
 if ! command -v aws &> /dev/null; then
-    echo "❌ AWS CLI not found. Please install AWS CLI v2"
+    echo " AWS CLI not found. Please install AWS CLI v2"
     exit 1
 fi
 
 # Check AWS credentials
 if ! aws sts get-caller-identity &> /dev/null; then
-    echo "❌ AWS credentials not configured"
+    echo " AWS credentials not configured"
     exit 1
 fi
 
 # Check Docker
 if ! command -v docker &> /dev/null; then
-    echo "❌ Docker not found. Please install Docker"
+    echo " Docker not found. Please install Docker"
     exit 1
 fi
 
 # Check Docker daemon
 if ! docker info &> /dev/null; then
-    echo "❌ Docker daemon not running"
+    echo " Docker daemon not running"
     exit 1
 fi
 
-echo "✅ Environment validation successful!"
-echo "🚀 Ready to proceed with the workshop"
+echo " Environment validation successful!"
+echo " Ready to proceed with the workshop"
 ```
 
 ## 🌍 Region Selection
@@ -534,9 +534,9 @@ This workshop supports multiple regions:
 - **eu-west-1** (Ireland)
 - **ap-southeast-1** (Singapore)
 
-**💡 Note:** Ensure you're working in your selected region throughout the workshop.
+**Note:** Ensure you're working in your selected region throughout the workshop.
 
-## ✅ Validation Checklist
+##  Validation Checklist
 
 Before proceeding, verify:
 
@@ -548,7 +548,7 @@ Before proceeding, verify:
 
 ---
 
-**🎯 Next Step:** Once validation is complete, proceed to Module 1!
+**Next Step:** Once validation is complete, proceed to Module 1!
 ```
 
 I'll continue with the remaining parts in the next file...

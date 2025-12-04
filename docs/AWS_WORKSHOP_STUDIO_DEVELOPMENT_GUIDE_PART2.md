@@ -1,10 +1,10 @@
-# 🚀 AWS WORKSHOP STUDIO DEVELOPMENT GUIDE - PART 2
+#  AWS WORKSHOP STUDIO DEVELOPMENT GUIDE - PART 2
 
 ## 5. Content Development
 
 ### 5.1 Module Development Framework
 
-**📚 Module Template Structure:**
+**Module Template Structure:**
 ```markdown
 ---
 title: "Module 1: Container Fundamentals"
@@ -18,20 +18,20 @@ objectives:
 
 # Module 1: Container Fundamentals
 
-## 🎯 Learning Objectives
+##  Learning Objectives
 By the end of this module, you will:
-- ✅ Understand containerization principles
-- ✅ Build optimized Docker images
-- ✅ Configure Amazon ECR repositories
-- ✅ Implement container security best practices
+-  Understand containerization principles
+-  Build optimized Docker images
+-  Configure Amazon ECR repositories
+-  Implement container security best practices
 
-## 📋 Prerequisites Check
+##  Prerequisites Check
 Before starting, ensure you have:
 - [ ] Docker installed and running
 - [ ] AWS CLI configured
 - [ ] Text editor available
 
-## 🏗️ Architecture Overview
+##  Architecture Overview
 
 ![Module 1 Architecture](../../static/images/module1-architecture.png)
 
@@ -47,7 +47,7 @@ In this module, we'll work with:
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 🛠️ Hands-on Exercise 1: Build Your First Container
+##  Hands-on Exercise 1: Build Your First Container
 
 ### Step 1: Create Application Code
 ```javascript
@@ -153,46 +153,46 @@ docker stop test-app
 docker rm test-app
 ```
 
-## 🔍 Validation Checkpoint
+##  Validation Checkpoint
 
-**✅ Verify your progress:**
+**Verify your progress:**
 ```bash
 #!/bin/bash
 # validate-module1.sh
 
-echo "🔍 Validating Module 1 Progress..."
+echo " Validating Module 1 Progress..."
 
 # Check if Docker image exists
 if docker images | grep -q "ecs-workshop-app"; then
-    echo "✅ Docker image built successfully"
+    echo " Docker image built successfully"
 else
-    echo "❌ Docker image not found"
+    echo " Docker image not found"
     exit 1
 fi
 
 # Check image size (should be < 100MB for optimized build)
 IMAGE_SIZE=$(docker images ecs-workshop-app:v1.0 --format "table {{.Size}}" | tail -n 1)
-echo "📊 Image size: $IMAGE_SIZE"
+echo " Image size: $IMAGE_SIZE"
 
-echo "✅ Module 1 validation complete!"
+echo " Module 1 validation complete!"
 ```
 
-## 🎯 Key Takeaways
+##  Key Takeaways
 - **Multi-stage builds** reduce image size significantly
 - **Non-root users** improve container security
 - **Health checks** enable better monitoring
 - **Proper tagging** facilitates version management
 
-## 🚀 Next Steps
+##  Next Steps
 In Module 2, we'll push this image to Amazon ECR and deploy it to ECS!
 
 ---
-**💡 Pro Tip:** Always test containers locally before pushing to registries.
+**Pro Tip:** Always test containers locally before pushing to registries.
 ```
 
 ### 5.2 Interactive Elements and Rich Content
 
-**🎨 Visual Elements Integration:**
+**Visual Elements Integration:**
 ```markdown
 ## Interactive Diagrams
 
@@ -234,7 +234,7 @@ graph TD
 ```
 ```
 
-**🔧 Code Validation Blocks:**
+**Code Validation Blocks:**
 ```markdown
 ## Automated Validation
 
@@ -268,24 +268,24 @@ REGION=$(aws configure get region)
 
 # Check if ECR repository exists
 if aws ecr describe-repositories --repository-names $REPO_NAME --region $REGION &>/dev/null; then
-    echo "✅ ECR repository created successfully"
-    
+    echo " ECR repository created successfully"
+
     # Check if image is pushed
     IMAGE_COUNT=$(aws ecr list-images --repository-name $REPO_NAME --region $REGION --query 'length(imageIds)')
     if [ "$IMAGE_COUNT" -gt 0 ]; then
-        echo "✅ Docker image pushed to ECR"
+        echo " Docker image pushed to ECR"
     else
-        echo "⚠️  ECR repository exists but no images found"
+        echo "⚠  ECR repository exists but no images found"
     fi
 else
-    echo "❌ ECR repository not found"
-    echo "💡 Run: aws ecr create-repository --repository-name $REPO_NAME"
+    echo " ECR repository not found"
+    echo " Run: aws ecr create-repository --repository-name $REPO_NAME"
 fi
 ```
 
 ### 5.3 Content Quality Standards
 
-**📝 Writing Guidelines:**
+**Writing Guidelines:**
 
 1. **Clear Instructions:**
    - Use numbered steps for sequential tasks
@@ -302,7 +302,7 @@ fi
    - Include comments explaining complex logic
    - Use consistent formatting and indentation
 
-**🎯 Content Validation Checklist:**
+**Content Validation Checklist:**
 ```markdown
 ## Content Quality Checklist
 
@@ -337,7 +337,7 @@ fi
 
 ### 6.1 CloudFormation Template Design
 
-**🏗️ Main Infrastructure Template (templates/infrastructure.yaml):**
+**Main Infrastructure Template (templates/infrastructure.yaml):**
 ```yaml
 AWSTemplateFormatVersion: '2010-09-09'
 Description: 'ECS Workshop Infrastructure - Complete setup for containerized applications'
@@ -347,27 +347,27 @@ Parameters:
     Description: Environment name prefix for resources
     Type: String
     Default: ECSWorkshop
-    
+
   VpcCIDR:
     Description: CIDR block for VPC
     Type: String
     Default: 10.192.0.0/16
-    
+
   PublicSubnet1CIDR:
     Description: CIDR block for public subnet in AZ1
     Type: String
     Default: 10.192.10.0/24
-    
+
   PublicSubnet2CIDR:
     Description: CIDR block for public subnet in AZ2
     Type: String
     Default: 10.192.11.0/24
-    
+
   PrivateSubnet1CIDR:
     Description: CIDR block for private subnet in AZ1
     Type: String
     Default: 10.192.20.0/24
-    
+
   PrivateSubnet2CIDR:
     Description: CIDR block for private subnet in AZ2
     Type: String
@@ -706,7 +706,7 @@ Outputs:
 
 ### 6.2 IAM Roles and Security
 
-**🔐 IAM Roles Template (templates/iam-roles.yaml):**
+**IAM Roles Template (templates/iam-roles.yaml):**
 ```yaml
 AWSTemplateFormatVersion: '2010-09-09'
 Description: 'IAM Roles for ECS Workshop'

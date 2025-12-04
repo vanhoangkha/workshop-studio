@@ -32,14 +32,14 @@ graph TB
         A --> C[CloudWatch Logs]
         D[Local Testing] --> A
     end
-    
+
     subgraph "Lambda Functions"
-        E[createTask] 
+        E[createTask]
         F[getTasks]
         G[updateTask]
         H[deleteTask]
     end
-    
+
     A --> E
     A --> F
     A --> G
@@ -200,7 +200,7 @@ class TaskRepository {
             Item: task,
             ConditionExpression: 'attribute_not_exists(taskId)'
         });
-        
+
         try {
             await docClient.send(command);
             return task;
@@ -411,7 +411,7 @@ const validateTask = (task) => {
 
 const validateTaskUpdate = (updates) => {
     const errors = [];
-    
+
     // Don't allow updating certain fields
     const forbiddenFields = ['taskId', 'userId', 'createdAt'];
     forbiddenFields.forEach(field => {
@@ -485,7 +485,7 @@ exports.handler = async (event, context) => {
 
     } catch (error) {
         console.error('Error creating task:', error);
-        
+
         if (error.message === 'Task already exists') {
             return errorResponse('Task already exists', 409, 'TASK_EXISTS');
         }
@@ -509,15 +509,15 @@ exports.handler = async (event, context) => {
 
     try {
         const { pathParameters, queryStringParameters } = event;
-        
+
         // Get single task by ID
         if (pathParameters && pathParameters.taskId) {
             const task = await taskRepository.getTask(pathParameters.taskId);
-            
+
             if (!task) {
                 return errorResponse('Task not found', 404, 'TASK_NOT_FOUND');
             }
-            
+
             return successResponse(task);
         }
 
@@ -578,7 +578,7 @@ const createMockEvent = (httpMethod, path, body = null, queryStringParameters = 
 
 const testCreateTask = async () => {
     console.log('\n🧪 Testing Create Task...');
-    
+
     const event = createMockEvent('POST', '/tasks', {
         userId: 'user-123',
         title: 'Test Task from Local Environment',
@@ -600,7 +600,7 @@ const testCreateTask = async () => {
 
 const testGetTasks = async (userId) => {
     console.log('\n🧪 Testing Get Tasks...');
-    
+
     const event = createMockEvent('GET', '/tasks', null, { userId, limit: '10' });
 
     try {
@@ -614,15 +614,15 @@ const testGetTasks = async (userId) => {
 // Run tests
 const runTests = async () => {
     console.log('🚀 Starting Local Tests...');
-    
+
     // Test create task
     const createdTask = await testCreateTask();
-    
+
     if (createdTask) {
         // Test get tasks
         await testGetTasks(createdTask.userId);
     }
-    
+
     console.log('\n✅ Local tests completed!');
 };
 

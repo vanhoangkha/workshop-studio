@@ -31,21 +31,21 @@ graph TB
         A[React SPA] --> B[CloudFront CDN]
         B --> C[S3 Static Hosting]
     end
-    
+
     subgraph "API Layer"
         D[API Gateway] --> E[Lambda Functions]
         E --> F[DynamoDB]
     end
-    
+
     subgraph "Authentication"
         G[Cognito User Pool] --> H[Cognito Identity Pool]
     end
-    
+
     subgraph "Monitoring"
         I[CloudWatch Logs] --> J[CloudWatch Metrics]
         J --> K[CloudWatch Alarms]
     end
-    
+
     A --> D
     A --> G
     E --> I
@@ -226,13 +226,13 @@ Choose your path:
     <p>Start with our comprehensive prerequisites guide</p>
     <a href="prerequisites/" class="btn btn-primary">Begin Prerequisites</a>
   </div>
-  
+
   <div class="nav-card">
     <h3>⚡ Experienced Developer?</h3>
     <p>Jump straight into building the backend</p>
     <a href="modules/module1/" class="btn btn-secondary">Start Module 1</a>
   </div>
-  
+
   <div class="nav-card">
     <h3>🔍 Just Exploring?</h3>
     <p>Check out the architecture and code samples</p>

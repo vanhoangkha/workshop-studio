@@ -1,17 +1,17 @@
-# 🚀 AWS WORKSHOP STUDIO DEVELOPMENT GUIDE - PART 3
+#  AWS WORKSHOP STUDIO DEVELOPMENT GUIDE - PART 3
 
 ## 7. Testing and Validation
 
 ### 7.1 Automated Testing Framework
 
-**🧪 Testing Strategy:**
+**Testing Strategy:**
 ```bash
 #!/bin/bash
 # tests/run-all-tests.sh - Comprehensive testing suite
 
 set -e
 
-echo "🧪 Starting AWS Workshop Studio Testing Suite..."
+echo " Starting AWS Workshop Studio Testing Suite..."
 
 # Test Categories
 TESTS_DIR="$(dirname "$0")"
@@ -31,34 +31,34 @@ FAILED_TESTS=0
 run_test() {
     local test_name="$1"
     local test_command="$2"
-    
+
     echo -e "\n${YELLOW}Running: $test_name${NC}"
     TOTAL_TESTS=$((TOTAL_TESTS + 1))
-    
+
     if eval "$test_command"; then
-        echo -e "${GREEN}✅ PASSED: $test_name${NC}"
+        echo -e "${GREEN} PASSED: $test_name${NC}"
         PASSED_TESTS=$((PASSED_TESTS + 1))
     else
-        echo -e "${RED}❌ FAILED: $test_name${NC}"
+        echo -e "${RED} FAILED: $test_name${NC}"
         FAILED_TESTS=$((FAILED_TESTS + 1))
     fi
 }
 
 # 1. Configuration Validation Tests
-echo -e "\n📋 Configuration Validation Tests"
+echo -e "\n Configuration Validation Tests"
 run_test "Workshop Config JSON Syntax" "python3 -m json.tool $WORKSHOP_ROOT/workshop-config.json > /dev/null"
 run_test "CloudFormation Template Syntax" "aws cloudformation validate-template --template-body file://$WORKSHOP_ROOT/templates/infrastructure.yaml > /dev/null"
 run_test "Required Files Exist" "$TESTS_DIR/unit/test-file-structure.sh"
 
 # 2. Content Quality Tests
-echo -e "\n📝 Content Quality Tests"
+echo -e "\n Content Quality Tests"
 run_test "Markdown Syntax Check" "$TESTS_DIR/unit/test-markdown-syntax.sh"
 run_test "Link Validation" "$TESTS_DIR/unit/test-links.sh"
 run_test "Image References" "$TESTS_DIR/unit/test-images.sh"
 run_test "Code Block Syntax" "$TESTS_DIR/unit/test-code-blocks.sh"
 
 # 3. Infrastructure Tests
-echo -e "\n🏗️ Infrastructure Tests"
+echo -e "\n Infrastructure Tests"
 run_test "CloudFormation Linting" "$TESTS_DIR/unit/test-cfn-lint.sh"
 run_test "Security Best Practices" "$TESTS_DIR/unit/test-security.sh"
 run_test "Cost Optimization Check" "$TESTS_DIR/unit/test-cost-optimization.sh"
@@ -70,11 +70,11 @@ if aws sts get-caller-identity &>/dev/null; then
     run_test "Application Deployment" "$TESTS_DIR/integration/test-app-deployment.sh"
     run_test "End-to-End Workflow" "$TESTS_DIR/integration/test-e2e-workflow.sh"
 else
-    echo -e "\n⚠️ Skipping integration tests (AWS credentials not configured)"
+    echo -e "\n⚠ Skipping integration tests (AWS credentials not configured)"
 fi
 
 # Test Summary
-echo -e "\n📊 Test Summary"
+echo -e "\n Test Summary"
 echo "=================================="
 echo "Total Tests: $TOTAL_TESTS"
 echo -e "Passed: ${GREEN}$PASSED_TESTS${NC}"
@@ -82,21 +82,21 @@ echo -e "Failed: ${RED}$FAILED_TESTS${NC}"
 echo "=================================="
 
 if [ $FAILED_TESTS -eq 0 ]; then
-    echo -e "${GREEN}🎉 All tests passed!${NC}"
+    echo -e "${GREEN} All tests passed!${NC}"
     exit 0
 else
-    echo -e "${RED}❌ Some tests failed. Please review and fix issues.${NC}"
+    echo -e "${RED} Some tests failed. Please review and fix issues.${NC}"
     exit 1
 fi
 ```
 
-**🔍 Unit Tests Examples:**
+**Unit Tests Examples:**
 
 ```bash
 #!/bin/bash
 # tests/unit/test-file-structure.sh
 
-echo "🔍 Testing workshop file structure..."
+echo " Testing workshop file structure..."
 
 WORKSHOP_ROOT="$(dirname "$(dirname "$0")")"
 REQUIRED_FILES=(
@@ -118,7 +118,7 @@ REQUIRED_DIRS=(
 # Check required files
 for file in "${REQUIRED_FILES[@]}"; do
     if [ ! -f "$WORKSHOP_ROOT/$file" ]; then
-        echo "❌ Missing required file: $file"
+        echo " Missing required file: $file"
         exit 1
     fi
 done
@@ -126,12 +126,12 @@ done
 # Check required directories
 for dir in "${REQUIRED_DIRS[@]}"; do
     if [ ! -d "$WORKSHOP_ROOT/$dir" ]; then
-        echo "❌ Missing required directory: $dir"
+        echo " Missing required directory: $dir"
         exit 1
     fi
 done
 
-echo "✅ File structure validation passed"
+echo " File structure validation passed"
 ```
 
 ### 7.2 Integration Testing
@@ -159,7 +159,7 @@ cleanup() {
 # Set up cleanup trap
 trap cleanup EXIT
 
-echo "📋 Step 1: Deploy Infrastructure"
+echo " Step 1: Deploy Infrastructure"
 aws cloudformation create-stack \
     --stack-name "$STACK_NAME" \
     --template-body "file://$WORKSHOP_ROOT/templates/infrastructure.yaml" \
@@ -172,7 +172,7 @@ aws cloudformation wait stack-create-complete \
     --stack-name "$STACK_NAME" \
     --region "$REGION"
 
-echo "📋 Step 2: Get Stack Outputs"
+echo " Step 2: Get Stack Outputs"
 ECR_URI=$(aws cloudformation describe-stacks \
     --stack-name "$STACK_NAME" \
     --region "$REGION" \
@@ -185,7 +185,7 @@ ALB_URL=$(aws cloudformation describe-stacks \
     --query 'Stacks[0].Outputs[?OutputKey==`LoadBalancerURL`].OutputValue' \
     --output text)
 
-echo "📋 Step 3: Build and Push Test Image"
+echo " Step 3: Build and Push Test Image"
 cd "$WORKSHOP_ROOT"
 
 # Create simple test app
@@ -222,30 +222,30 @@ aws ecr get-login-password --region "$REGION" | docker login --username AWS --pa
 docker tag test-app:latest "$ECR_URI:latest"
 docker push "$ECR_URI:latest"
 
-echo "📋 Step 4: Test Application"
+echo " Step 4: Test Application"
 # Wait for ALB to be ready and test
 sleep 60
 RESPONSE=$(curl -s "$ALB_URL" || echo "Connection failed")
 
 if echo "$RESPONSE" | grep -q "Test successful"; then
-    echo "✅ End-to-end test PASSED"
+    echo " End-to-end test PASSED"
 else
-    echo "❌ End-to-end test FAILED"
+    echo " End-to-end test FAILED"
     echo "Response: $RESPONSE"
     exit 1
 fi
 
-echo "🎉 All integration tests completed successfully!"
+echo " All integration tests completed successfully!"
 ```
 
 ### 7.3 Performance and Load Testing
 
-**⚡ Performance Testing:**
+**Performance Testing:**
 ```bash
 #!/bin/bash
 # tests/performance/load-test.sh
 
-echo "⚡ Running Performance Tests..."
+echo " Running Performance Tests..."
 
 # Configuration
 TARGET_URL="$1"
@@ -264,12 +264,12 @@ if ! command -v ab &> /dev/null; then
     sudo apt-get update && sudo apt-get install -y apache2-utils
 fi
 
-echo "🎯 Target URL: $TARGET_URL"
+echo " Target URL: $TARGET_URL"
 echo "👥 Concurrent Users: $CONCURRENT_USERS"
-echo "⏱️ Test Duration: ${TEST_DURATION}s"
+echo "⏱ Test Duration: ${TEST_DURATION}s"
 
 # Run load test
-echo "🚀 Starting load test..."
+echo " Starting load test..."
 ab -n 1000 -c "$CONCURRENT_USERS" -t "$TEST_DURATION" "$TARGET_URL" > load-test-results.txt
 
 # Parse results
@@ -277,7 +277,7 @@ REQUESTS_PER_SECOND=$(grep "Requests per second" load-test-results.txt | awk '{p
 MEAN_TIME=$(grep "Time per request" load-test-results.txt | head -1 | awk '{print $4}')
 FAILED_REQUESTS=$(grep "Failed requests" load-test-results.txt | awk '{print $3}')
 
-echo "📊 Performance Test Results:"
+echo " Performance Test Results:"
 echo "================================"
 echo "Requests per second: $REQUESTS_PER_SECOND"
 echo "Mean response time: ${MEAN_TIME}ms"
@@ -286,16 +286,16 @@ echo "================================"
 
 # Performance thresholds
 if (( $(echo "$REQUESTS_PER_SECOND > 50" | bc -l) )); then
-    echo "✅ Performance test PASSED (RPS > 50)"
+    echo " Performance test PASSED (RPS > 50)"
 else
-    echo "❌ Performance test FAILED (RPS <= 50)"
+    echo " Performance test FAILED (RPS <= 50)"
     exit 1
 fi
 
 if [ "$FAILED_REQUESTS" -eq 0 ]; then
-    echo "✅ Reliability test PASSED (0 failed requests)"
+    echo " Reliability test PASSED (0 failed requests)"
 else
-    echo "⚠️ Reliability test WARNING ($FAILED_REQUESTS failed requests)"
+    echo "⚠ Reliability test WARNING ($FAILED_REQUESTS failed requests)"
 fi
 ```
 
@@ -305,7 +305,7 @@ fi
 
 ### 8.1 Workshop Studio Deployment Process
 
-**🚀 Deployment Checklist:**
+**Deployment Checklist:**
 ```markdown
 ## Pre-Deployment Checklist
 
@@ -337,14 +337,14 @@ fi
 - [ ] Legal review completed (if required)
 ```
 
-**📦 Deployment Script:**
+**Deployment Script:**
 ```bash
 #!/bin/bash
 # scripts/deploy-workshop.sh
 
 set -e
 
-echo "🚀 Deploying AWS Workshop Studio..."
+echo " Deploying AWS Workshop Studio..."
 
 # Configuration
 WORKSHOP_NAME="ecs-container-workshop"
@@ -352,19 +352,19 @@ VERSION=$(jq -r '.version' workshop-config.json)
 REGIONS=("us-east-1" "us-west-2" "eu-west-1")
 
 # Validation
-echo "📋 Pre-deployment validation..."
+echo " Pre-deployment validation..."
 if ! python3 -m json.tool workshop-config.json > /dev/null; then
-    echo "❌ Invalid workshop-config.json"
+    echo " Invalid workshop-config.json"
     exit 1
 fi
 
 if ! aws cloudformation validate-template --template-body file://templates/infrastructure.yaml > /dev/null; then
-    echo "❌ Invalid CloudFormation template"
+    echo " Invalid CloudFormation template"
     exit 1
 fi
 
 # Package workshop
-echo "📦 Packaging workshop..."
+echo " Packaging workshop..."
 PACKAGE_NAME="${WORKSHOP_NAME}-${VERSION}.zip"
 zip -r "$PACKAGE_NAME" \
     workshop-config.json \
@@ -374,40 +374,40 @@ zip -r "$PACKAGE_NAME" \
     scripts/ \
     -x "*.git*" "*.DS_Store" "node_modules/*" "tests/*"
 
-echo "✅ Workshop packaged: $PACKAGE_NAME"
+echo " Workshop packaged: $PACKAGE_NAME"
 
 # Upload to S3 (Workshop Studio distribution)
-echo "☁️ Uploading to Workshop Studio..."
+echo "☁ Uploading to Workshop Studio..."
 aws s3 cp "$PACKAGE_NAME" "s3://aws-workshop-studio-content/$WORKSHOP_NAME/"
 
 # Deploy to multiple regions
 for region in "${REGIONS[@]}"; do
     echo "🌍 Deploying to region: $region"
-    
+
     # Upload regional assets
     aws s3 sync static/ "s3://aws-workshop-studio-$region/$WORKSHOP_NAME/static/" --region "$region"
-    
+
     # Validate templates in region
     aws cloudformation validate-template \
         --template-body file://templates/infrastructure.yaml \
         --region "$region"
-    
-    echo "✅ Region $region deployment complete"
+
+    echo " Region $region deployment complete"
 done
 
 # Register with Workshop Studio
-echo "📝 Registering with AWS Workshop Studio..."
+echo " Registering with AWS Workshop Studio..."
 aws workshop-studio register-workshop \
     --workshop-config file://workshop-config.json \
     --package-url "s3://aws-workshop-studio-content/$WORKSHOP_NAME/$PACKAGE_NAME"
 
-echo "🎉 Workshop deployment completed successfully!"
-echo "📊 Workshop URL: https://workshop-studio.aws.amazon.com/workshops/$WORKSHOP_NAME"
+echo " Workshop deployment completed successfully!"
+echo " Workshop URL: https://workshop-studio.aws.amazon.com/workshops/$WORKSHOP_NAME"
 ```
 
 ### 8.2 Version Management
 
-**🏷️ Versioning Strategy:**
+**🏷 Versioning Strategy:**
 ```json
 {
   "versioning": {
@@ -438,7 +438,7 @@ echo "📊 Workshop URL: https://workshop-studio.aws.amazon.com/workshops/$WORKS
 
 ### 9.1 Operational Monitoring
 
-**🔍 Health Check System:**
+**Health Check System:**
 ```bash
 #!/bin/bash
 # scripts/health-check.sh
@@ -460,12 +460,12 @@ CLOUDFORMATION_STACKS=(
 check_endpoint() {
     local url="$1"
     local response_code=$(curl -s -o /dev/null -w "%{http_code}" "$url")
-    
+
     if [ "$response_code" -eq 200 ]; then
-        echo "✅ $url - Healthy"
+        echo " $url - Healthy"
         return 0
     else
-        echo "❌ $url - Unhealthy (HTTP $response_code)"
+        echo " $url - Unhealthy (HTTP $response_code)"
         return 1
     fi
 }
@@ -473,23 +473,23 @@ check_endpoint() {
 check_cloudformation_stack() {
     local stack_name="$1"
     local stack_status=$(aws cloudformation describe-stacks --stack-name "$stack_name" --query 'Stacks[0].StackStatus' --output text 2>/dev/null)
-    
+
     if [ "$stack_status" = "CREATE_COMPLETE" ] || [ "$stack_status" = "UPDATE_COMPLETE" ]; then
-        echo "✅ Stack $stack_name - Healthy ($stack_status)"
+        echo " Stack $stack_name - Healthy ($stack_status)"
         return 0
     else
-        echo "❌ Stack $stack_name - Unhealthy ($stack_status)"
+        echo " Stack $stack_name - Unhealthy ($stack_status)"
         return 1
     fi
 }
 
 # Run health checks
-echo "🌐 Checking Workshop Endpoints..."
+echo " Checking Workshop Endpoints..."
 for endpoint in "${WORKSHOP_ENDPOINTS[@]}"; do
     check_endpoint "$endpoint"
 done
 
-echo -e "\n☁️ Checking CloudFormation Stacks..."
+echo -e "\n☁ Checking CloudFormation Stacks..."
 for stack in "${CLOUDFORMATION_STACKS[@]}"; do
     check_cloudformation_stack "$stack"
 done
@@ -499,15 +499,15 @@ echo "🏥 Health check completed"
 
 ### 9.2 Maintenance Procedures
 
-**🔧 Regular Maintenance Tasks:**
+**Regular Maintenance Tasks:**
 ```bash
 #!/bin/bash
 # scripts/maintenance.sh
 
-echo "🔧 Workshop Maintenance Procedures"
+echo " Workshop Maintenance Procedures"
 
 # 1. Update Dependencies
-echo "📦 Updating Dependencies..."
+echo " Updating Dependencies..."
 npm audit fix
 pip install --upgrade -r requirements.txt
 
@@ -526,14 +526,14 @@ aws ce get-cost-and-usage \
     --query 'ResultsByTime[0].Groups[?Metrics.BlendedCost.Amount>`10`]'
 
 # 4. Performance Review
-echo "⚡ Performance Review..."
+echo " Performance Review..."
 aws logs filter-log-events \
     --log-group-name "/aws/workshop/ecs" \
     --start-time "$(date -d '7 days ago' +%s)000" \
     --filter-pattern "ERROR" \
     --query 'events[*].message'
 
-echo "✅ Maintenance completed"
+echo " Maintenance completed"
 ```
 
 ---
@@ -542,19 +542,19 @@ echo "✅ Maintenance completed"
 
 ### 10.1 Workshop Studio Best Practices
 
-**🎯 Planning Phase:**
+**Planning Phase:**
 - **Define clear learning objectives** with measurable outcomes
 - **Estimate costs accurately** including all AWS services
 - **Plan for multiple skill levels** with optional advanced sections
 - **Design for scalability** to handle various audience sizes
 
-**🏗️ Development Phase:**
+**Development Phase:**
 - **Use infrastructure as code** with CloudFormation/CDK
 - **Implement comprehensive validation** at each step
 - **Design for failure** with robust error handling
 - **Test across regions** to ensure global compatibility
 
-**🚀 Deployment Phase:**
+**Deployment Phase:**
 - **Validate thoroughly** before publishing
 - **Monitor costs** during initial runs
 - **Collect feedback** and iterate quickly
@@ -592,7 +592,7 @@ echo "✅ Maintenance completed"
 - **Network isolation** with VPCs and security groups
 - **Regular security audits** and vulnerability scanning
 
-**🛡️ Compliance Considerations:**
+**🛡 Compliance Considerations:**
 - **Data residency** requirements
 - **Audit logging** for all actions
 - **Access controls** and authentication
@@ -600,7 +600,7 @@ echo "✅ Maintenance completed"
 
 ---
 
-## 🎉 Conclusion
+##  Conclusion
 
 This comprehensive guide provides everything you need to develop professional AWS Workshop Studio workshops. From initial planning to deployment and maintenance, following these practices will ensure your workshops are:
 
@@ -610,4 +610,4 @@ This comprehensive guide provides everything you need to develop professional AW
 - **Scalable** for various audience sizes
 - **Maintainable** with proper monitoring
 
-**🚀 Ready to build amazing workshops? Start with the examples and customize for your needs!**
+**Ready to build amazing workshops? Start with the examples and customize for your needs!**

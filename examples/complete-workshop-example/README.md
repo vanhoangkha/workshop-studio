@@ -1,8 +1,8 @@
-# 🚀 Complete AWS Workshop Studio Example
+#  Complete AWS Workshop Studio Example
 
 This is a comprehensive example of a production-ready AWS Workshop Studio implementation, demonstrating best practices for creating modern, interactive workshops.
 
-## 📋 Overview
+##  Overview
 
 This example showcases a **Serverless Web Application Workshop** that teaches participants how to build a complete task management application using:
 
@@ -13,7 +13,7 @@ This example showcases a **Serverless Web Application Workshop** that teaches pa
 - **Amazon S3 + CloudFront** for frontend hosting
 - **AWS CloudFormation** for infrastructure as code
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -78,7 +78,7 @@ complete-workshop-example/
 └── README.md                         # This file
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Option 1: Complete Deployment (Recommended)
 
@@ -111,7 +111,7 @@ open content/modules/module3/index.md  # Frontend
 open content/modules/module4/index.md  # Monitoring
 ```
 
-## 📋 Prerequisites
+##  Prerequisites
 
 ### Required Tools
 - **AWS CLI v2** - AWS command line interface
@@ -138,7 +138,7 @@ sudo apt-get install -y nodejs
 aws configure
 ```
 
-## 🎯 Workshop Features
+##  Workshop Features
 
 ### ✨ **Interactive Elements**
 - **Real-time cost tracking** throughout the workshop
@@ -146,19 +146,19 @@ aws configure
 - **Automated validation** of participant work
 - **Interactive architecture diagrams**
 
-### 🔧 **Automation**
+###  **Automation**
 - **One-click deployment** of complete infrastructure
 - **Automated testing** and validation
 - **Resource cleanup** scripts
 - **Prerequisites validation**
 
-### 📊 **Monitoring**
+###  **Monitoring**
 - **CloudWatch dashboards** for application metrics
 - **Cost monitoring** and alerts
 - **Performance tracking** and optimization
 - **Error monitoring** and alerting
 
-### 🛡️ **Security**
+### 🛡 **Security**
 - **IAM least privilege** principles
 - **Encryption at rest** and in transit
 - **Security best practices** throughout
@@ -177,9 +177,9 @@ aws configure
 | **Data Transfer** | Various | $2.00 |
 | **Total** | 4-hour workshop | **~$12.50** |
 
-> 💡 **Note**: Costs are estimates and may vary by region and usage patterns.
+>  **Note**: Costs are estimates and may vary by region and usage patterns.
 
-## 🧪 Testing
+##  Testing
 
 ### Automated Testing Suite
 ```bash
@@ -203,22 +203,22 @@ curl -X POST https://api-url/tasks \
 open https://cloudfront-url
 ```
 
-## 📚 Learning Objectives
+##  Learning Objectives
 
 ### **Primary Objectives**
-- ✅ Design and implement serverless architectures
-- ✅ Configure API Gateway with Lambda integration
-- ✅ Implement DynamoDB data modeling
-- ✅ Set up authentication with Cognito
-- ✅ Deploy static websites with S3 and CloudFront
+-  Design and implement serverless architectures
+-  Configure API Gateway with Lambda integration
+-  Implement DynamoDB data modeling
+-  Set up authentication with Cognito
+-  Deploy static websites with S3 and CloudFront
 
 ### **Secondary Objectives**
-- ✅ Implement monitoring and logging
-- ✅ Apply security best practices
-- ✅ Optimize costs in serverless applications
-- ✅ Set up CI/CD pipelines
+-  Implement monitoring and logging
+-  Apply security best practices
+-  Optimize costs in serverless applications
+-  Set up CI/CD pipelines
 
-## 🔧 Customization
+##  Customization
 
 ### Modify Workshop Configuration
 ```json
@@ -307,7 +307,7 @@ aws s3 ls | grep serverlessworkshop
 aws lambda list-functions | grep ServerlessWorkshop
 ```
 
-## 📈 Workshop Analytics
+##  Workshop Analytics
 
 ### Metrics Tracked
 - **Participation rates** by module
@@ -353,6 +353,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**🎉 Ready to build amazing serverless applications? Start your workshop journey today!**
+** Ready to build amazing serverless applications? Start your workshop journey today!**
 
 For questions or support, please open an issue or contact the workshop team.

@@ -158,7 +158,7 @@ This is a warning
 {{% /notice %}}
 
 <!-- Workshop Studio -->
-> ⚠️ **Warning**: This is a warning
+> ⚠ **Warning**: This is a warning
 
 <!-- Hugo -->
 {{< highlight bash >}}
@@ -204,10 +204,10 @@ find "$HUGO_DIR/content" -name "_index.md" | while read file; do
     # Get relative path and convert
     rel_path=$(realpath --relative-to="$HUGO_DIR/content" "$file")
     new_path="$OUTPUT_DIR/content/${rel_path/_index.md/index.md}"
-    
+
     # Create directory if needed
     mkdir -p "$(dirname "$new_path")"
-    
+
     # Convert content (remove Hugo front matter and shortcodes)
     sed -e '/^---$/,/^---$/d' \
         -e 's/{{% notice \([^}]*\) %}}/> **\1**:/g' \
@@ -318,13 +318,13 @@ Ready to master the AWS CLI? Let's begin with the [Introduction](introduction/) 
 
 ## 4. Checklist chuyển đổi
 
-### ✅ Pre-migration
+###  Pre-migration
 - [ ] Backup original Hugo workshop
 - [ ] Review Hugo content structure
 - [ ] Identify custom shortcodes used
 - [ ] List static assets to migrate
 
-### ✅ During migration
+###  During migration
 - [ ] Create Workshop Studio directory structure
 - [ ] Convert config.toml to workshop-config.json
 - [ ] Convert _index.md files to index.md
@@ -333,7 +333,7 @@ Ready to master the AWS CLI? Let's begin with the [Introduction](introduction/) 
 - [ ] Migrate static assets
 - [ ] Update internal links
 
-### ✅ Post-migration
+###  Post-migration
 - [ ] Test all internal links
 - [ ] Verify images display correctly
 - [ ] Review content formatting
@@ -348,9 +348,9 @@ Ready to master the AWS CLI? Let's begin with the [Introduction](introduction/) 
 
 ```bash
 # Replace Hugo notices
-sed -i 's/{{% notice tip %}}/> 💡 **Tip**:/g' *.md
-sed -i 's/{{% notice warning %}}/> ⚠️ **Warning**:/g' *.md
-sed -i 's/{{% notice info %}}/> ℹ️ **Info**:/g' *.md
+sed -i 's/{{% notice tip %}}/>  **Tip**:/g' *.md
+sed -i 's/{{% notice warning %}}/> ⚠ **Warning**:/g' *.md
+sed -i 's/{{% notice info %}}/> ℹ **Info**:/g' *.md
 ```
 
 ### Issue 2: Links bị broken
