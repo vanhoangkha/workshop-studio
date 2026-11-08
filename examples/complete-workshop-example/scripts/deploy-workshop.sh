@@ -24,15 +24,15 @@ log_info() {
 }
 
 log_success() {
-    echo -e "${GREEN}✅ $1${NC}"
+    echo -e "${GREEN}$1${NC}"
 }
 
 log_warning() {
-    echo -e "${YELLOW}⚠️  $1${NC}"
+    echo -e "${YELLOW}$1${NC}"
 }
 
 log_error() {
-    echo -e "${RED}❌ $1${NC}"
+    echo -e "${RED}$1${NC}"
 }
 
 # Function to check if stack exists
@@ -277,30 +277,30 @@ deploy_frontend() {
 </head>
 <body>
     <div class="container">
-        <h1>🚀 Serverless Task Manager</h1>
+        <h1>Serverless Task Manager</h1>
         
         <div class="status success">
-            <h3>✅ Deployment Successful!</h3>
+            <h3>Deployment Successful!</h3>
             <p>Your serverless web application has been deployed successfully.</p>
         </div>
         
         <div class="status info">
-            <h3>📋 Workshop Progress</h3>
-            <p><strong>Infrastructure:</strong> ✅ Complete</p>
-            <p><strong>Backend API:</strong> ✅ Complete</p>
-            <p><strong>Frontend:</strong> ✅ Complete</p>
-            <p><strong>Authentication:</strong> 🔄 Ready for configuration</p>
+            <h3>Workshop Progress</h3>
+            <p><strong>Infrastructure:</strong> Complete</p>
+            <p><strong>Backend API:</strong> Complete</p>
+            <p><strong>Frontend:</strong> Complete</p>
+            <p><strong>Authentication:</strong> Ready for configuration</p>
         </div>
         
         <div class="api-test">
-            <h3>🧪 API Test</h3>
+            <h3>API Test</h3>
             <p>Test your serverless backend API:</p>
             <button onclick="testAPI()">Test Create Task API</button>
             <div id="result"></div>
         </div>
         
         <div class="status info">
-            <h3>🎯 Next Steps</h3>
+            <h3>Next Steps</h3>
             <ul>
                 <li>Configure Cognito authentication</li>
                 <li>Build the React frontend application</li>
@@ -466,7 +466,7 @@ run_tests() {
 # Function to display deployment summary
 show_summary() {
     echo ""
-    echo "🎉 Deployment Summary"
+    echo "Deployment Summary"
     echo "===================="
     echo ""
     
@@ -499,7 +499,7 @@ show_summary() {
 
 # Main deployment function
 main() {
-    echo "🚀 AWS Workshop Studio - Complete Deployment"
+    echo "AWS Workshop Studio - Complete Deployment"
     echo "============================================="
     echo ""
     
@@ -564,7 +564,7 @@ main() {
     # Show summary
     show_summary
     
-    log_success "Deployment completed successfully! 🎉"
+    log_success "Deployment completed successfully!"
 }
 
 # Run deployment if script is executed directly
