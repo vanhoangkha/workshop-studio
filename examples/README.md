@@ -17,7 +17,7 @@ A comprehensive serverless web application workshop demonstrating:
 
 **Perfect for**: Learning complete workshop development lifecycle
 
-### 2. 🤖 **AI/ML Workshop Example** - Machine Learning Pipeline
+### 2. **AI/ML Workshop Example** - Machine Learning Pipeline
 **Path**: `ai-ml-workshop-example/`
 
 An advanced machine learning workshop covering:
@@ -29,7 +29,7 @@ An advanced machine learning workshop covering:
 
 **Perfect for**: AI/ML focused workshops
 
-### 3. 🔒 **Security Workshop Example** - Cloud Security Best Practices
+### 3. **Security Workshop Example** - Cloud Security Best Practices
 **Path**: `security-workshop-example/`
 
 A security-focused workshop demonstrating:
@@ -53,7 +53,7 @@ A data analytics workshop covering:
 
 **Perfect for**: Data engineering and analytics workshops
 
-### 5. 🏢 **Enterprise Workshop Example** - Multi-Account Architecture
+### 5. **Enterprise Workshop Example** - Multi-Account Architecture
 **Path**: `enterprise-workshop-example/`
 
 An enterprise-grade workshop demonstrating:
@@ -222,7 +222,7 @@ vim templates/main-infrastructure.yaml
 4. **Data Analytics** - 10% of usage
 5. **Enterprise** - 5% of usage
 
-## 🤝 Contributing New Examples
+## Contributing New Examples
 
 ### Example Contribution Guidelines
 
@@ -275,7 +275,7 @@ git push origin feature/my-new-example
 # Create pull request on GitHub
 ```
 
-## 📞 Support and Resources
+## Support and Resources
 
 ### Getting Help
 - **GitHub Issues**: [Report bugs or request features](https://github.com/aws-samples/workshop-studio/issues)

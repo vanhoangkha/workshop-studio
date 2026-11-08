@@ -275,10 +275,10 @@ aws sts get-caller-identity --profile workshop
 
 Your CLI setup is complete when:
 
-- ✅ AWS CLI v2 is installed (`aws --version` shows 2.x)
-- ✅ Credentials are configured (`aws sts get-caller-identity` succeeds)
-- ✅ You can list AWS resources (e.g., `aws s3 ls`)
-- ✅ You understand output formats and filtering
+- AWS CLI v2 is installed (`aws --version` shows 2.x)
+- Credentials are configured (`aws sts get-caller-identity` succeeds)
+- You can list AWS resources (e.g., `aws s3 ls`)
+- You understand output formats and filtering
 
 ## Troubleshooting
 

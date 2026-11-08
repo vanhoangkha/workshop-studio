@@ -92,7 +92,7 @@ sudo apt update
 sudo apt install code
 ```
 
-**🔑 AWS Account Setup:**
+**AWS Account Setup:**
 ```bash
 # Configure AWS credentials
 aws configure
@@ -105,7 +105,7 @@ aws configure
 aws sts get-caller-identity
 ```
 
-**📁 Workspace Setup:**
+**Workspace Setup:**
 ```bash
 # Create workspace directory
 mkdir -p ~/aws-workshop-development
@@ -194,7 +194,7 @@ my-workshop/
 - Satisfaction score: 4.5/5
 ```
 
-**👥 Audience Analysis:**
+**Audience Analysis:**
 ```json
 {
   "target_audience": {
@@ -261,7 +261,7 @@ Workshop Flow Design
 
 ### 3.3 Cost Planning and Estimation
 
-**💰 Cost Analysis Framework:**
+**Cost Analysis Framework:**
 ```json
 {
   "cost_estimation": {
@@ -416,10 +416,10 @@ You'll build a complete microservices architecture:
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## ⏱ Duration
+## Duration
 **Estimated Time:** 2-3 hours
 
-## 💰 Cost
+## Cost
 **Estimated Cost:** $8.50 USD (automatically tracked)
 
 ##  Prerequisites
@@ -526,7 +526,7 @@ echo " Environment validation successful!"
 echo " Ready to proceed with the workshop"
 ```
 
-## 🌍 Region Selection
+## Region Selection
 
 This workshop supports multiple regions:
 - **us-east-1** (N. Virginia) - Recommended

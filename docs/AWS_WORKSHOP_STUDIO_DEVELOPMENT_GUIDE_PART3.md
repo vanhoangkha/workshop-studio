@@ -136,7 +136,7 @@ echo " File structure validation passed"
 
 ### 7.2 Integration Testing
 
-**🔗 End-to-End Testing Script:**
+**End-to-End Testing Script:**
 ```bash
 #!/bin/bash
 # tests/integration/test-e2e-workflow.sh
@@ -407,7 +407,7 @@ echo " Workshop URL: https://workshop-studio.aws.amazon.com/workshops/$WORKSHOP_
 
 ### 8.2 Version Management
 
-**🏷 Versioning Strategy:**
+**Versioning Strategy:**
 ```json
 {
   "versioning": {
@@ -562,7 +562,7 @@ echo " Maintenance completed"
 
 ### 10.2 Cost Optimization Strategies
 
-**💰 Resource Right-sizing:**
+**Resource Right-sizing:**
 ```json
 {
   "cost_optimization": {
@@ -574,7 +574,7 @@ echo " Maintenance completed"
 }
 ```
 
-**🧹 Automatic Cleanup:**
+**Automatic Cleanup:**
 ```bash
 # Built-in cleanup ensures no lingering costs
 {
@@ -586,13 +586,13 @@ echo " Maintenance completed"
 
 ### 10.3 Security Best Practices
 
-**🔒 Security Implementation:**
+**Security Implementation:**
 - **Least privilege IAM** policies for all resources
 - **Encryption at rest** and in transit
 - **Network isolation** with VPCs and security groups
 - **Regular security audits** and vulnerability scanning
 
-**🛡 Compliance Considerations:**
+**Compliance Considerations:**
 - **Data residency** requirements
 - **Audit logging** for all actions
 - **Access controls** and authentication
