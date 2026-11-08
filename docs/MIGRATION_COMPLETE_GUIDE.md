@@ -54,10 +54,10 @@ Migration từ Hugo workshop `000011-AWSCLI` sang AWS Workshop Studio format đ�
 | Hugo Shortcode | Workshop Studio Equivalent |
 |----------------|---------------------------|
 | `{{% notice tip %}}` | `>  **Tip**:` |
-| `{{% notice warning %}}` | `> ⚠ **Warning**:` |
-| `{{% notice info %}}` | `> ℹ **Info**:` |
+| `{{% notice warning %}}` | `> **Warning**:` |
+| `{{% notice info %}}` | `> **Info**:` |
 | `{{% notice note %}}` | `>  **Note**:` |
-| `{{% notice danger %}}` | `> 🚨 **Danger**:` |
+| `{{% notice danger %}}` | `> **Danger**:` |
 | `{{< highlight bash >}}` | `\`\`\`bash` |
 | `{{% children %}}` | Manual navigation links |
 

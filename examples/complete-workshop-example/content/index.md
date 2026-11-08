@@ -5,17 +5,17 @@ weight: 1
 duration: "3-4 hours"
 ---
 
-# 🚀 Serverless Web Application Workshop
+# Serverless Web Application Workshop
 
 ![Serverless Architecture](../static/images/serverless-architecture-hero.png)
 
 Welcome to the **Serverless Web Application Workshop**! In this comprehensive hands-on session, you'll build a complete, production-ready serverless web application using modern AWS services.
 
-## 🎯 What You'll Build
+## What You'll Build
 
 You'll create a **Task Management Application** with the following features:
 
-### ✨ Application Features
+### Application Features
 - **User Authentication** with Amazon Cognito
 - **RESTful API** with API Gateway and Lambda
 - **Real-time Data** with DynamoDB
@@ -23,7 +23,7 @@ You'll create a **Task Management Application** with the following features:
 - **Monitoring & Logging** with CloudWatch
 - **Security Best Practices** throughout
 
-### 🏗️ Architecture Overview
+### Architecture Overview
 
 ```mermaid
 graph TB
@@ -51,34 +51,34 @@ graph TB
     E --> I
 ```
 
-## 📊 Workshop Metrics
+## Workshop Metrics
 
 | Metric | Target | Your Progress |
 |--------|--------|---------------|
-| **Duration** | 3-4 hours | ⏱️ Starting... |
-| **Cost** | ~$12.50 USD | 💰 $0.00 |
-| **Modules** | 6 modules | 📚 0/6 complete |
-| **Hands-on Labs** | 4 labs | 🧪 0/4 complete |
+| **Duration** | 3-4 hours | Starting... |
+| **Cost** | ~$12.50 USD | $0.00 |
+| **Modules** | 6 modules | 0/6 complete |
+| **Hands-on Labs** | 4 labs | 0/4 complete |
 
-## 🎓 Learning Objectives
+## Learning Objectives
 
 By the end of this workshop, you will be able to:
 
-### 🎯 **Core Objectives**
-- ✅ **Design serverless architectures** using AWS best practices
-- ✅ **Implement Lambda functions** with proper error handling and logging
-- ✅ **Configure API Gateway** with authentication and authorization
-- ✅ **Model data in DynamoDB** with efficient access patterns
-- ✅ **Deploy static websites** with global CDN distribution
-- ✅ **Implement security controls** following least privilege principles
+### **Core Objectives**
+- **Design serverless architectures** using AWS best practices
+- **Implement Lambda functions** with proper error handling and logging
+- **Configure API Gateway** with authentication and authorization
+- **Model data in DynamoDB** with efficient access patterns
+- **Deploy static websites** with global CDN distribution
+- **Implement security controls** following least privilege principles
 
-### 🚀 **Advanced Objectives**
-- ✅ **Optimize performance** with caching and connection pooling
-- ✅ **Monitor applications** with custom metrics and alarms
-- ✅ **Implement CI/CD pipelines** for serverless applications
-- ✅ **Apply cost optimization** techniques for serverless workloads
+### **Advanced Objectives**
+- **Optimize performance** with caching and connection pooling
+- **Monitor applications** with custom metrics and alarms
+- **Implement CI/CD pipelines** for serverless applications
+- **Apply cost optimization** techniques for serverless workloads
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### **Backend Services**
 ```yaml
@@ -106,7 +106,7 @@ Package Manager: npm
 Version Control: Git
 ```
 
-## 💰 Cost Breakdown
+## Cost Breakdown
 
 | Service | Usage | Estimated Cost |
 |---------|-------|----------------|
@@ -119,9 +119,9 @@ Version Control: Git
 | **Data Transfer** | Various | $2.00 |
 | **Total** | | **$12.50** |
 
-> 💡 **Cost Optimization Tip**: This workshop uses on-demand pricing. In production, consider Reserved Capacity for predictable workloads.
+> **Cost Optimization Tip**: This workshop uses on-demand pricing. In production, consider Reserved Capacity for predictable workloads.
 
-## 🏃‍♂️ Quick Start
+## Quick Start
 
 ### Option 1: Guided Workshop (Recommended)
 Follow the step-by-step modules for a comprehensive learning experience:
@@ -152,89 +152,89 @@ npm install
 npm run deploy
 ```
 
-## 🔧 Prerequisites Checklist
+## Prerequisites Checklist
 
 Before starting, ensure you have:
 
-### ✅ **AWS Account Setup**
+### **AWS Account Setup**
 - [ ] AWS Account with administrative access
 - [ ] AWS CLI v2 installed and configured
 - [ ] Default region set (us-east-1 recommended)
 
-### ✅ **Development Environment**
+### **Development Environment**
 - [ ] Node.js 18+ installed
 - [ ] Git installed and configured
 - [ ] Text editor (VS Code recommended)
 - [ ] Terminal/Command prompt access
 
-### ✅ **AWS Service Limits**
+### **AWS Service Limits**
 - [ ] Lambda concurrent executions: 1000+
 - [ ] API Gateway APIs: 10+
 - [ ] DynamoDB tables: 10+
 - [ ] S3 buckets: 5+
 - [ ] CloudFront distributions: 2+
 
-### ✅ **Knowledge Prerequisites**
+### **Knowledge Prerequisites**
 - [ ] Basic JavaScript/Node.js understanding
 - [ ] Familiarity with REST APIs
 - [ ] Basic AWS Console navigation
 - [ ] Understanding of web application concepts
 
-## 🎨 Workshop Features
+## Workshop Features
 
-### 🔄 **Interactive Elements**
+### **Interactive Elements**
 - **Real-time cost tracking** throughout the workshop
 - **Progress indicators** for each module
 - **Automated validation** of your work
 - **Interactive architecture diagrams**
 
-### 📱 **Multi-Device Support**
+### **Multi-Device Support**
 - **Desktop optimized** for development work
 - **Tablet friendly** for reading and reference
 - **Mobile accessible** for quick checks
 
-### ♿ **Accessibility Features**
+### **Accessibility Features**
 - **Screen reader compatible** content
 - **High contrast** code examples
 - **Keyboard navigation** support
 - **Alt text** for all images
 
-## 🆘 Getting Help
+## Getting Help
 
-### 📚 **Documentation**
+### **Documentation**
 - **[Workshop GitHub Repository](https://github.com/aws-samples/serverless-workshop-studio)**
 - **[AWS Serverless Documentation](https://docs.aws.amazon.com/serverless/)**
 - **[Troubleshooting Guide](troubleshooting/)**
 
-### 💬 **Community Support**
+### **Community Support**
 - **Slack Channel**: #serverless-workshop-support
 - **Office Hours**: Tuesdays 2-3 PM PST
 - **GitHub Issues**: Report bugs and request features
 
-### 🎯 **Workshop Support**
+### **Workshop Support**
 - **Email**: serverless-workshop@amazon.com
 - **Response Time**: Within 24 hours
 - **Languages**: English, Spanish, Portuguese
 
-## 🚀 Ready to Start?
+## Ready to Start?
 
 Choose your path:
 
 <div class="workshop-navigation">
   <div class="nav-card">
-    <h3>🎓 New to Serverless?</h3>
+    <h3>New to Serverless?</h3>
     <p>Start with our comprehensive prerequisites guide</p>
     <a href="prerequisites/" class="btn btn-primary">Begin Prerequisites</a>
   </div>
 
   <div class="nav-card">
-    <h3>⚡ Experienced Developer?</h3>
+    <h3>Experienced Developer?</h3>
     <p>Jump straight into building the backend</p>
     <a href="modules/module1/" class="btn btn-secondary">Start Module 1</a>
   </div>
 
   <div class="nav-card">
-    <h3>🔍 Just Exploring?</h3>
+    <h3>Just Exploring?</h3>
     <p>Check out the architecture and code samples</p>
     <a href="architecture/" class="btn btn-outline">View Architecture</a>
   </div>
@@ -242,23 +242,23 @@ Choose your path:
 
 ---
 
-## 📈 Workshop Roadmap
+## Workshop Roadmap
 
 This workshop is continuously updated with new features:
 
-### ✅ **Current Version (2.1.0)**
+### **Current Version (2.1.0)**
 - Complete serverless application
 - Authentication with Cognito
 - Real-time monitoring
 - Cost optimization techniques
 
-### 🔄 **Coming Soon (2.2.0)**
+### **Coming Soon (2.2.0)**
 - GraphQL API with AppSync
 - Real-time features with WebSockets
 - Advanced security patterns
 - Multi-region deployment
 
-### 🎯 **Future Enhancements**
+### **Future Enhancements**
 - Machine learning integration
 - Event-driven architectures
 - Microservices patterns
@@ -266,6 +266,6 @@ This workshop is continuously updated with new features:
 
 ---
 
-**💡 Pro Tip**: Bookmark this page and use the progress tracker to resume where you left off!
+**Pro Tip**: Bookmark this page and use the progress tracker to resume where you left off!
 
-**🎉 Let's build something amazing together!**
+**Let's build something amazing together!**

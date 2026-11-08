@@ -158,7 +158,7 @@ This is a warning
 {{% /notice %}}
 
 <!-- Workshop Studio -->
-> ⚠ **Warning**: This is a warning
+> **Warning**: This is a warning
 
 <!-- Hugo -->
 {{< highlight bash >}}

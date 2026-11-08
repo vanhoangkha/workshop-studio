@@ -210,7 +210,7 @@ graph TD
 ```html
 <!-- Embedded cost tracker -->
 <div class="cost-tracker">
-  <h4>💰 Current Workshop Cost</h4>
+  <h4>Current Workshop Cost</h4>
   <div class="cost-display">
     <span class="amount">$2.45</span>
     <span class="currency">USD</span>
@@ -275,7 +275,7 @@ if aws ecr describe-repositories --repository-names $REPO_NAME --region $REGION 
     if [ "$IMAGE_COUNT" -gt 0 ]; then
         echo " Docker image pushed to ECR"
     else
-        echo "⚠  ECR repository exists but no images found"
+        echo "ECR repository exists but no images found"
     fi
 else
     echo " ECR repository not found"

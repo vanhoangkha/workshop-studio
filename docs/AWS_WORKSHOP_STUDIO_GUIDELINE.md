@@ -141,7 +141,7 @@ weight: 10
 ##  Workshop Overview
 Brief description of what participants will learn and build.
 
-## 🕐 Duration
+## Duration
 Approximately X hours
 
 ##  Learning Objectives
@@ -153,7 +153,7 @@ By the end of this workshop, you will be able to:
 ##  Architecture
 ![Architecture Diagram](images/architecture.png)
 
-## 💰 Cost
+## Cost
 This workshop will cost approximately $X.XX to run.
 
 ##  Let's Get Started!
@@ -225,7 +225,7 @@ git --version
 docker --version
 ```
 
-## 🚨 Important Notes
+## Important Notes
 - This workshop will create AWS resources that incur costs
 - Make sure to complete the cleanup section
 - Estimated cost: $X.XX
@@ -251,7 +251,7 @@ Brief overview of what will be covered.
 ##  Architecture
 What we're building in this module.
 
-## ⏱ Estimated Time
+## Estimated Time
 X minutes
 
 ##  Let's Begin!
@@ -303,7 +303,7 @@ Common issues and solutions:
 - [ ] Task 2 completed
 - [ ] Verification successful
 
-## 📸 Screenshots
+## Screenshots
 Include relevant screenshots with annotations.
 ```
 
@@ -484,7 +484,7 @@ esac
 echo " Module $MODULE validation completed!"
 ```
 
-## 🧹 Cleanup Section
+## Cleanup Section
 
 ### Cleanup Instructions (content/cleanup/index.md)
 ```markdown
@@ -495,10 +495,10 @@ weight: 90
 
 # Workshop Cleanup
 
-## 🚨 Important
+## Important
 To avoid ongoing charges, please complete all cleanup steps.
 
-## 🗑 Resources to Delete
+## Resources to Delete
 
 ### 1. CloudFormation Stacks
 ```bash
@@ -536,7 +536,7 @@ aws s3 ls | grep workshop
 aws lambda list-functions | grep workshop
 ```
 
-## 💰 Cost Verification
+## Cost Verification
 - Check AWS Billing Dashboard
 - Verify no ongoing charges
 - Set up billing alerts for future
@@ -575,7 +575,7 @@ weight: 100
 ### Additional Comments
 [Text area for feedback]
 
-## 📧 Contact
+## Contact
 For questions or support: your.email@example.com
 ```
 

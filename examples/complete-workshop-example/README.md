@@ -41,7 +41,7 @@ This example showcases a **Serverless Web Application Workshop** that teaches pa
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 complete-workshop-example/
@@ -140,7 +140,7 @@ aws configure
 
 ##  Workshop Features
 
-### ✨ **Interactive Elements**
+### **Interactive Elements**
 - **Real-time cost tracking** throughout the workshop
 - **Progress indicators** for each module
 - **Automated validation** of participant work
@@ -158,13 +158,13 @@ aws configure
 - **Performance tracking** and optimization
 - **Error monitoring** and alerting
 
-### 🛡 **Security**
+### **Security**
 - **IAM least privilege** principles
 - **Encryption at rest** and in transit
 - **Security best practices** throughout
 - **Compliance considerations**
 
-## 💰 Cost Estimation
+## Cost Estimation
 
 | Service | Usage | Estimated Cost |
 |---------|-------|----------------|
@@ -251,7 +251,7 @@ Resources:
       # Your custom resource configuration
 ```
 
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -288,7 +288,7 @@ aws lambda get-policy --function-name ServerlessWorkshop-CreateTask
 - **AWS Documentation**: [Official AWS service documentation](https://docs.aws.amazon.com/)
 - **Community Support**: [AWS Developer Forums](https://forums.aws.amazon.com/)
 
-## 🧹 Cleanup
+## Cleanup
 
 ### Automatic Cleanup
 ```bash
@@ -324,7 +324,7 @@ aws cloudwatch get-dashboard --dashboard-name ServerlessWorkshop
 aws ce get-cost-and-usage --time-period Start=2024-01-01,End=2024-01-31
 ```
 
-## 🤝 Contributing
+## Contributing
 
 ### How to Contribute
 1. **Fork the repository**
@@ -340,11 +340,11 @@ aws ce get-cost-and-usage --time-period Start=2024-01-01,End=2024-01-31
 - Update documentation as needed
 - Ensure all tests pass before submitting
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **AWS Solutions Architecture Team** for architectural guidance
 - **AWS Workshop Studio Team** for platform development

@@ -175,10 +175,10 @@ aws ec2 describe-security-groups --group-ids $SG_ID
 
 Your ECS cluster setup is complete when:
 
-- ✅ ECS cluster status is `ACTIVE`
-- ✅ VPC and subnets are created
-- ✅ IAM role `ecsTaskExecutionRole` exists
-- ✅ Security group allows HTTP/HTTPS traffic
+- ECS cluster status is `ACTIVE`
+- VPC and subnets are created
+- IAM role `ecsTaskExecutionRole` exists
+- Security group allows HTTP/HTTPS traffic
 
 ## Troubleshooting
 
