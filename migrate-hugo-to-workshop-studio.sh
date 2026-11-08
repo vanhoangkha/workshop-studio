@@ -65,11 +65,11 @@ convert_hugo_content() {
     
     # Convert Hugo content to Workshop Studio format
     sed -e '/^---$/,/^---$/d' \
-        -e 's/{{% notice tip %}}/> 💡 **Tip**:/g' \
-        -e 's/{{% notice warning %}}/> ⚠️ **Warning**:/g' \
+        -e 's/{{% notice tip %}}/> **Tip**:/g' \
+        -e 's/{{% notice warning %}}/> **Warning**:/g' \
         -e 's/{{% notice info %}}/> ℹ️ **Info**:/g' \
-        -e 's/{{% notice note %}}/> 📝 **Note**:/g' \
-        -e 's/{{% notice danger %}}/> 🚨 **Danger**:/g' \
+        -e 's/{{% notice note %}}/> **Note**:/g' \
+        -e 's/{{% notice danger %}}/> **Danger**:/g' \
         -e 's/{{% \/notice %}}/\n/g' \
         -e 's/{{< highlight \([^>]*\) >}}/```\1/g' \
         -e 's/{{< \/highlight >}}/```/g' \
@@ -324,19 +324,19 @@ print_status "Creating cleanup script..."
 cat > "$OUTPUT_DIR/scripts/cleanup.sh" << 'EOF'
 #!/bin/bash
 
-echo "🧹 Starting AWS CLI Workshop Cleanup..."
+echo "Starting AWS CLI Workshop Cleanup..."
 
 # Note: This is a template cleanup script
 # Add specific cleanup commands based on resources created in your workshop
 
-echo "⚠️  Please manually verify and delete the following resources:"
+echo "Please manually verify and delete the following resources:"
 echo "   - IAM users created during the workshop"
 echo "   - S3 buckets and objects"
 echo "   - EC2 instances"
 echo "   - Any other resources created"
 
-echo "✅ Cleanup reminder completed"
-echo "💡 Always verify in AWS Console that all resources are deleted"
+echo "Cleanup reminder completed"
+echo "Always verify in AWS Console that all resources are deleted"
 EOF
 
 chmod +x "$OUTPUT_DIR/scripts/cleanup.sh"
@@ -362,13 +362,13 @@ done
 # Summary
 print_success "Migration completed successfully!"
 echo ""
-echo "📁 Workshop Studio structure created at: $OUTPUT_DIR"
-echo "📝 Next steps:"
+echo "Workshop Studio structure created at: $OUTPUT_DIR"
+echo "Next steps:"
 echo "   1. Review and customize content in $OUTPUT_DIR/content/"
 echo "   2. Update workshop-config.json with accurate information"
 echo "   3. Add any missing static assets to $OUTPUT_DIR/static/"
 echo "   4. Test the workshop flow"
 echo "   5. Update cleanup procedures in $OUTPUT_DIR/scripts/cleanup.sh"
 echo ""
-echo "🚀 Your workshop is ready for AWS Workshop Studio!"
+echo "Your workshop is ready for AWS Workshop Studio!"
 EOF

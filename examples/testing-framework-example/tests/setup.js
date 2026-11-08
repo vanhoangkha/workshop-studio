@@ -206,4 +206,4 @@ expect.extend({
   }
 });
 
-console.log('🧪 Test environment setup complete');
+console.log('Test environment setup complete');

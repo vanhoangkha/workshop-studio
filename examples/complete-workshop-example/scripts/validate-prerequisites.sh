@@ -23,16 +23,16 @@ log_info() {
 }
 
 log_success() {
-    echo -e "${GREEN}✅ $1${NC}"
+    echo -e "${GREEN}$1${NC}"
 }
 
 log_warning() {
-    echo -e "${YELLOW}⚠️  $1${NC}"
+    echo -e "${YELLOW}$1${NC}"
     WARNINGS+=("$1")
 }
 
 log_error() {
-    echo -e "${RED}❌ $1${NC}"
+    echo -e "${RED}$1${NC}"
     ERRORS+=("$1")
     VALIDATION_PASSED=false
 }
@@ -248,7 +248,7 @@ check_internet_connectivity() {
 
 # Main validation function
 main() {
-    echo "🔍 AWS Workshop Studio - Prerequisites Validation"
+    echo "AWS Workshop Studio - Prerequisites Validation"
     echo "=================================================="
     echo ""
     
@@ -256,7 +256,7 @@ main() {
     echo ""
     
     # Check required tools
-    echo "📦 Checking Required Tools..."
+    echo "Checking Required Tools..."
     check_aws_cli_version
     check_node_version
     check_command "git" "Git" "https://git-scm.com/downloads"
@@ -264,25 +264,25 @@ main() {
     echo ""
     
     # Check AWS configuration
-    echo "☁️  Checking AWS Configuration..."
+    echo "Checking AWS Configuration..."
     check_aws_credentials
     check_aws_region
     check_aws_permissions
     echo ""
     
     # Check system resources
-    echo "💻 Checking System Resources..."
+    echo "Checking System Resources..."
     check_disk_space
     check_internet_connectivity
     echo ""
     
     # Check AWS service limits
-    echo "📊 Checking AWS Service Limits..."
+    echo "Checking AWS Service Limits..."
     check_service_limits
     echo ""
     
     # Summary
-    echo "📋 Validation Summary"
+    echo "Validation Summary"
     echo "===================="
     
     if [ ${#WARNINGS[@]} -gt 0 ]; then
@@ -302,7 +302,7 @@ main() {
     fi
     
     if [ "$VALIDATION_PASSED" = true ]; then
-        echo -e "${GREEN}🎉 All prerequisites validated successfully!${NC}"
+        echo -e "${GREEN}All prerequisites validated successfully!${NC}"
         echo -e "${GREEN}You're ready to start the workshop.${NC}"
         echo ""
         echo "Next steps:"
@@ -312,7 +312,7 @@ main() {
         echo ""
         exit 0
     else
-        echo -e "${RED}❌ Prerequisites validation failed.${NC}"
+        echo -e "${RED}Prerequisites validation failed.${NC}"
         echo -e "${RED}Please resolve the errors above before starting the workshop.${NC}"
         echo ""
         echo "Common solutions:"
